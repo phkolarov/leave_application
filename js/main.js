@@ -35,7 +35,6 @@ app.run = (function () {
 
                             appCh[params.controllerName][action]();
 
-                            asynchronizer(false);
                             return;
                         }else{
                             console.log("ERROR: Action idoess not implemented")

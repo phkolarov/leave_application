@@ -207,3 +207,73 @@ body, html {
         padding: 15px 5px;
     }
 }
+.test{
+    border: 1px solid black;
+}
+#userInfoWrapper{
+
+    display: block;
+    margin-top: 20px;
+    padding-bottom: 50px;
+}
+#userInfoWrapper div h5{
+    margin-right: 10px;
+    line-height: 20px;
+}
+#userInfoWrapper div h4{
+    margin-left: 15px;
+    line-height: 20px;
+}
+#userInfoHeading{
+    background-color: #4E667D;
+    color: white;
+}
+#profileImageContainer{
+
+    margin-top: 20px;
+
+}
+#profileImageContainer img{
+    border: 1px solid black;
+}
+#profileImageContainer label{
+    margin-top: 10px;
+    height: 30px;
+}
+#saveUserInfo{
+    margin-top: 10px;
+}
+#userInformationContainer{
+
+
+    margin-top: 20px;
+}
+#userInformationContainer label{
+    margin-top: 5px;
+}
+#profileStatus {
+    color: #5cb85c;
+}
+#profileImage{
+    width: 150px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

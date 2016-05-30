@@ -82,7 +82,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li><a href="/leave_application/user/index">Профил</a>
+                    <li><a href="/leave_application/user/profile">Профил</a>
 
                     <li>
                         <a class="btn btn-default btn-outline btn-circle"  href="/leave_application/user/logout"  >Изход</a>
