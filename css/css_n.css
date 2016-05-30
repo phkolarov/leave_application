@@ -1,0 +1,36 @@
+/*
+Official Leave Application
+*/
+
+
+h2 {
+	
+}
+table{
+	border: 1px solid #E8EEF4;
+	width:100%
+}
+th{
+	background-color: #E8EEF4;
+	width:30%;
+}
+h3{
+	background-color:#4E667D;
+	color: white;
+}
+.year{
+	width:100%;
+	text-align:center;
+}
+
+label{
+	width: 100%;
+	text-align: center;
+}
+#submit{
+	background-color: #4E667D ;
+
+}
+.buttonDiv{
+	text-align: center;
+}

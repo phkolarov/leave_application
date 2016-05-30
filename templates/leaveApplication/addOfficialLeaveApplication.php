@@ -1,5 +1,41 @@
-<h1>Add Official Leave Application</h1>
 
+<link rel="stylesheet" type="text/css" href="/leave_application/css/css_n.css">
+<h1>Добави официална отпуска</h1>
+<hr/>
+<h3 >Заявени отпуски</h3>
+<div >Година <select class="year"></select></div>
+<div>
+	<table >
+		<th >Период</th>
+		<th >Брой работни дни</th>
+		<th >Заместван от</th>
+	</table>
+</div>
+<h3 >Добавяне</h3>
+<div class="row">
+	<div class='col-sm-4'>
+		<label for="startDate">От дата</label>
+		<input type='text' class="form-control" id='startDate' />
+	</div>
+
+	<div class='col-sm-4	'>
+		<label for="endDate">До дата</label>
+		<input type='text' class="form-control" id='endDate' />
+	</div>
+	<div class="col-sm-4">
+		<label for="debuty">Ще бъда заместван от</label>
+		<select id="debuty" class="col-sm-12"></select>
+	</div>
+</div>
+<hr/>
+<div class="row buttonDiv">
+	<button type="button" class="btn btn-primary" id="submit">Добави</button>
+</div>
+
+<div>
+
+	
+</div>
 <?php
 /**
  * Created by PhpStorm.
