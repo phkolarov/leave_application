@@ -10,43 +10,60 @@ app.run = (function () {
 
         var params = urlParser();
         var controllerPath = "/leave_application/js/controllers/" + params.controllerName + ".js";
-        var action = params.action ;
-        var fileref = document.createElement('script');
+        var systemFuncPath = "/leave_application/js/extendedSystemFunctions/systemFunctions.js";
+        var action = params.action;
+        var controllerfileref = document.createElement('script');
+        var systemfileref = document.createElement('script');
 
-        fileref.setAttribute("type", "text/javascript");
-        fileref.setAttribute("src", controllerPath);
+        controllerfileref.setAttribute("type", "text/javascript");
+        controllerfileref.setAttribute("src", controllerPath);
+        systemfileref.setAttribute("type", "text/javascript");
+        systemfileref.setAttribute("src", systemFuncPath);
 
         asynchronizer();
 
-        if (typeof fileref != "undefined")
-            $(document.getElementsByTagName("head")[0]).append(fileref);
+        if (typeof controllerfileref != "undefined") {
+            $(document.getElementsByTagName("head")[0]).append(controllerfileref);
+        }
+        if (typeof systemfileref != "undefined") {
+            $(document.getElementsByTagName("head")[0]).append(systemfileref);
+        }
 
         setTimeout(function () {
             var counter = 0;
 
-            function objectGetter(){
-                if(typeof appCh == undefined){
-                    counter++;
-                    objectGetter();
-                }else{
-                    if( appCh[params.controllerName]){
+            function objectGetter() {
+                if (typeof appCh == undefined || !appCh) {
 
-                        if(appCh[params.controllerName][action]){
+                    counter++;
+
+                    if (counter < 1000) {
+
+                        objectGetter();
+                    } else {
+                        console.log("ERROR: Can't load file controller");
+                    }
+
+                } else {
+                    if (appCh[params.controllerName]) {
+
+                        if (appCh[params.controllerName][action]) {
 
                             appCh[params.controllerName][action]();
 
                             return;
-                        }else{
+                        } else {
                             console.log("ERROR: Action idoess not implemented")
                         }
-                    }else{
+                    } else {
                         console.log(appCh);
-                       console.log("ERROR: Controller does not implemented");
+                        console.log("ERROR: Controller does not implemented");
                     }
                 }
             }
+
             objectGetter();
-        },0);
+        }, 0);
     }
 
     function urlParser() {
@@ -66,13 +83,13 @@ app.run = (function () {
         }
     }
 
-    function asynchronizer(inputParam){
+    function asynchronizer(inputParam) {
 
         var checker = true;
-        if(inputParam == false){
+        if (inputParam == false) {
             checker = false;
         }
-        $.ajaxPrefilter(function( options, originalOptions, jqXHR ) {
+        $.ajaxPrefilter(function (options, originalOptions, jqXHR) {
             options.async = checker;
         });
     }

@@ -63,14 +63,18 @@ class UserController extends Controller
                 $_COOKIE['username'] = $user->getUsername();
                 setcookie('username', $user->getUsername(), time() + 60 * 60 * 24 * 30, '/');
 
-                $_COOKIE['days'] = $user->getVacantionDays();
-                setcookie('days', $user->getVacantionDays(), time() + 60 * 60 * 24 * 30, '/');
-
-                $_COOKIE['minutes'] = $user->getVacantionMinutes();
-                setcookie('minutes', $user->getVacantionMinutes(), time() + 60 * 60 * 24 * 30, '/');
+                $_COOKIE['userID'] = $user->getId();
+                setcookie('userID', $user->getId(), time() + 60 * 60 * 24 * 30, '/');
 
                 $_COOKIE['name'] = $user->getName();
                 setcookie('name', $user->getName(), time() + 60 * 60 * 24 * 30, '/');
+
+                $_COOKIE['role'] = $user->getRole();
+                setcookie('role', $user->getRole(), time() + 60 * 60 * 24 * 30, '/');
+
+                $_COOKIE['isActive'] = $user->getIsActive();
+                setcookie('isActive', $user->getIsActive(), time() + 60 * 60 * 24 * 30, '/');
+
 
                 if ($user->getRole() == "admin") {
 

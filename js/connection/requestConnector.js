@@ -27,15 +27,13 @@ app.connect = (function () {
 
     function connector(url, method, headers, data) {
 
+        console.log( baseServiceURL + url);
          return $.ajax({
-            async: false,
             url: baseServiceURL + url,
             method: method,
             headers: headers,
-            data: data
-        }).done(function () {
-             
-         });
+            data: JSON.stringify(data)
+        });
     }
 
     function getCookie(cname) {

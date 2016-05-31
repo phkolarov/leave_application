@@ -210,34 +210,37 @@ body, html {
 .test{
     border: 1px solid black;
 }
-#userInfoWrapper{
+.PageWrapper{
 
     display: block;
     margin-top: 20px;
     padding-bottom: 50px;
 }
-#userInfoWrapper div h5{
+.PageWrapper div h5{
     margin-right: 10px;
     line-height: 20px;
 }
-#userInfoWrapper div h4{
+.PageWrapper div h4{
     margin-left: 15px;
     line-height: 20px;
 }
-#userInfoHeading{
+#InfoHeading{
     background-color: #4E667D;
     color: white;
 }
+/*-------------------------*/
 #profileImageContainer{
 
     margin-top: 20px;
 
 }
 #profileImageContainer img{
+    vertical-align: top;
     border: 1px solid black;
+    margin-bottom: 10px;
 }
 #profileImageContainer label{
-    margin-top: 10px;
+
     height: 30px;
 }
 #saveUserInfo{
@@ -257,12 +260,28 @@ body, html {
 #profileImage{
     width: 150px;
 }
+/*-------------------------*/
+#leaveReportContainer{
 
+    margin-top: 10px;
+}
 
+#yearOption{
 
+    display: inline-block;
+    width: 80px;
+}
+/*-------------------------*/
+#requestReportContainer{
 
+    margin-top: 10px;
+}
+#monthOption{
 
-
+    margin-left: 30px;
+    display: inline-block;
+    width: 100px;
+}
 
 
 

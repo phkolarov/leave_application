@@ -35,13 +35,11 @@ class AdministrationController extends Controller
 
     public function officialLeaveReport(){
 
-        var_dump("officialLeaveReport");
         $this->view->render();
 
     }
 
     public function requestReport(){
-        var_dump("requestReport");
         $this->view->render();
 
     }

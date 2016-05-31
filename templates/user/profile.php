@@ -2,8 +2,8 @@
 <hr>
 
 
-<div id="userInfoWrapper">
-   <div id="userInfoHeading" class="row">
+<div class="PageWrapper">
+   <div id="InfoHeading" class="row">
        <div class="pull-left">
            <h4>Потребителска информация: </h4>
        </div>
@@ -21,9 +21,9 @@
 
         <div id="userInformationContainer" class="col-lg-6">
 
-            <p><strong>Статус на профила: <span id="profileStatus">Активен</span></strong></p>
+            <p><strong>Статус на профила: <span id="profileStatus"></span></strong></p>
             <label>Имена:</label>
-            <input id="names" disabled class="form-control">
+            <input id="names"  class="form-control">
             <label>Потребителско име:</label>
             <input id="username" disabled class="form-control">
             <label>Email адрес:</label>

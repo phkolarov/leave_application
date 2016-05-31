@@ -1,4 +1,5 @@
 <h1>Official Holidays</h1>
+<hr>
 <?php
 /**
  * Created by PhpStorm.
