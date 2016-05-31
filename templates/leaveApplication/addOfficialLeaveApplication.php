@@ -1,8 +1,8 @@
 
 <link rel="stylesheet" type="text/css" href="/leave_application/css/css_n.css">
-<h1>Добави официална отпуска</h1>
+<h1>Добави официален формуляр</h1>
 <hr/>
-<h3 >Заявени отпуски</h3>
+<h4 >Заявени отпуски</h4>
 <div >Година <select class="year"></select></div>
 <div>
 	<table >
@@ -11,7 +11,7 @@
 		<th >Заместван от</th>
 	</table>
 </div>
-<h3 >Добавяне</h3>
+<h4 >Добавяне</h4>
 <div class="row">
 	<div class='col-sm-4'>
 		<label for="startDate">От дата</label>
@@ -24,12 +24,12 @@
 	</div>
 	<div class="col-sm-4">
 		<label for="debuty">Ще бъда заместван от</label>
-		<select id="debuty" class="col-sm-12"></select>
+		<select id="debuty" class="form-control"></select>
 	</div>
 </div>
 <hr/>
 <div class="row buttonDiv">
-	<button type="button" class="btn btn-primary" id="submit">Добави</button>
+	<button type="button" class="btn btn-info btn-file btn-sm" id="submit">Добави</button>
 </div>
 
 <div>

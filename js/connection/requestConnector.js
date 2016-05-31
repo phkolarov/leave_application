@@ -33,9 +33,7 @@ app.connect = (function () {
             method: method,
             headers: headers,
             data: data
-        }).done(function () {
-             
-         });
+        });
     }
 
     function getCookie(cname) {

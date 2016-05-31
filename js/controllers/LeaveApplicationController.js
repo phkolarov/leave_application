@@ -7,24 +7,31 @@ appCh.LeaveApplicationController = (function () {
         console.log("index");
     }
 
-    function addOfficialLeaveApplication(){
+    function addOfficialLeaveApplication() {
 
-        $(".year").empty();
-        $(".year").append("<option>"+(new Date().getFullYear()-3)+"</option>");
-        $(".year").append("<option>"+(new Date().getFullYear()-2)+"</option>");
-        $(".year").append("<option>"+(new Date().getFullYear()-1)+"</option>");
-        $(".year").append("<option selected='selected'>"+ new Date().getFullYear()+"</option>");
-        $("#startDate,#endDate").on('click', function () {
-            console.log("datetimepicker here");
+        $(".year").empty()
+            .append("<option>" + (new Date().getFullYear() - 3) + "</option>")
+            .append("<option>" + (new Date().getFullYear() - 2) + "</option>")
+            .append("<option>" + (new Date().getFullYear() - 1) + "</option>")
+            .append("<option selected='selected'>" + new Date().getFullYear() + "</option>");
+
+        $(document).ready(function () {
+            var date_input = $("#datetimepicker4");
+            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+            var options = {
+                format: 'mm/dd/yyyy',
+                container: container,
+                todayHighlight: true,
+                autoclose: true,
+            };
+            date_input.datepicker(options);
         });
-
-
-        console.log("addOfficialLeaveApplication");
     }
 
 
+
     function addUnofficialLeaveApplication(){
-        
+
 
         console.log("addUnofficialLeaveApplication");
     }
