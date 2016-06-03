@@ -36,23 +36,25 @@
             </select>
         </div>
 
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th>Служител</th>
-                <th>Заявена на</th>
-                <th>От дата</th>
-                <th>До дата</th>
-                <th>дни/часове/минути</th>
-                <th>Пламен</th>
-                <th>Митко</th>
-            </tr>
-            </thead>
-            <tbody id="requestReportTableBody">
+        <div class="innerTableContainer">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>Служител</th>
+                    <th>Заявена на</th>
+                    <th>От дата</th>
+                    <th>До дата</th>
+                    <th>дни/часове/минути</th>
+                    <th>Пламен</th>
+                    <th>Митко</th>
+                    <th>Статус</th>
+                </tr>
+                </thead>
+                <tbody id="requestReportTableBody">
 
-            </tbody>
-        </table>
-
+                </tbody>
+            </table>
+        </div>
 
     </div>
 </div>

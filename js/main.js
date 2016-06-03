@@ -11,14 +11,18 @@ app.run = (function () {
         var params = urlParser();
         var controllerPath = "/leave_application/js/controllers/" + params.controllerName + ".js";
         var systemFuncPath = "/leave_application/js/extendedSystemFunctions/systemFunctions.js";
+        var moment = "/leave_application/libraries/moment/moment.js";
         var action = params.action;
         var controllerfileref = document.createElement('script');
         var systemfileref = document.createElement('script');
+        var momentfileref = document.createElement('script');
 
         controllerfileref.setAttribute("type", "text/javascript");
         controllerfileref.setAttribute("src", controllerPath);
         systemfileref.setAttribute("type", "text/javascript");
         systemfileref.setAttribute("src", systemFuncPath);
+        momentfileref.setAttribute("type", "text/javascript");
+        momentfileref.setAttribute("src", moment);
 
         asynchronizer();
 
@@ -28,42 +32,60 @@ app.run = (function () {
         if (typeof systemfileref != "undefined") {
             $(document.getElementsByTagName("head")[0]).append(systemfileref);
         }
+        if (typeof momentfileref != "undefined") {
+            $(document.getElementsByTagName("head")[0]).append(momentfileref);
+        }
 
-        setTimeout(function () {
-            var counter = 0;
+        $(document).ready(function () {
 
-            function objectGetter() {
-                if (typeof appCh == undefined || !appCh) {
+            setTimeout(function () {
 
-                    counter++;
+                var counter = 0;
 
-                    if (counter < 1000) {
+                function objectGetter() {
 
-                        objectGetter();
-                    } else {
-                        console.log("ERROR: Can't load file controller");
-                    }
+                    if (typeof(appCh) === 'undefined') {
 
-                } else {
-                    if (appCh[params.controllerName]) {
+                        counter++;
 
-                        if (appCh[params.controllerName][action]) {
-
-                            appCh[params.controllerName][action]();
-
-                            return;
+                        if (counter < 10000) {
+                            objectGetter();
                         } else {
-                            console.log("ERROR: Action idoess not implemented")
+
+                            counter = 0;
+                            setTimeout(function () {
+
+                                if(counter < 10){
+                                    objectGetter();
+                                    console.log("WARNING: Slow loading: " + counter);
+
+                                }else{
+                                    console.log("ERROR: Can't load file controller: " + counter);
+                                    return;
+                                }
+                            }, 10);
+                            return;
                         }
+
                     } else {
-                        console.log(appCh);
-                        console.log("ERROR: Controller does not implemented");
+                        if (appCh[params.controllerName]) {
+
+                            if (appCh[params.controllerName][action]) {
+
+                                appCh[params.controllerName][action]();
+
+                                return;
+                            } else {
+                                console.log("ERROR: Action idoess not implemented")
+                            }
+                        } else {
+                            console.log("ERROR: Controller does not implemented");
+                        }
                     }
                 }
-            }
-
-            objectGetter();
-        }, 0);
+                objectGetter();
+            }, 0);
+        })
     }
 
     function urlParser() {

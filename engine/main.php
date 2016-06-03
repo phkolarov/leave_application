@@ -47,6 +47,7 @@ class LeaveApp
 
         if(isset($_COOKIE['session'])){
 
+            var_dump($_COOKIE);
             $this->mainMenuLoader();
         }
 

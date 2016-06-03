@@ -4,10 +4,17 @@
 /*
  * General styles
  */
-body, html {
-    height: 100%;
+body {
+
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(94, 127, 220), rgb(70, 70, 144));
+    background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));
+
+}
+html {
+
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));
+    height: 100%;
 }
 
 .card-container.card {
@@ -194,6 +201,7 @@ body, html {
 
     background-color: #f8f8f8;
     border-radius: 5px;
+
 }
 
 
@@ -271,6 +279,12 @@ body, html {
     display: inline-block;
     width: 80px;
 }
+.innerTableContainer{
+
+    overflow: auto;
+    display: block;
+    max-height: 400px;
+}
 /*-------------------------*/
 #requestReportContainer{
 
@@ -283,16 +297,89 @@ body, html {
     width: 100px;
 }
 
+/*-------------------------*/
+#officialHolidaysAdministration{
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#holidaysAdminOptions{
+
+    margin-bottom: 10px;
+}
+#workedOption{
+    margin-top: 10px;
+}
+
+#description{
+    position: static;
+    max-width: 390px;
+    min-height: 145px;
+}
+.datePreview{
+
+    display: inline-block;
+}
+.ui-datepicker-inline{
+    height: 230px;
+}
+.datePreviewContainer{
+    text-align: left;
+}
+
+.ui-datepicker-week-end a {
+    background-image: none;
+    background-color: #8cbbff !important;
+    color: white !important;
+}
+.ui-state-highlight{
+    border: 3px solid #e84000 !important;
+    /*background-color: #8cbbff !important;*/
+}
+.ui-state-highlight a{
+    color: white !important;
+    background-color: #8cbbff !important;
+}
+#previewBox{
+    max-width: 715px;
+    margin-top: 10px;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 10px;
+
+}
+#monthHolidays{
+    max-width: 1135px;
+    max-height: 400px;
+    overflow: auto;
+}
+#addHoliday{
+    margin-top: 25px;
+}
+/*-------------------------------*/
+
+#userAdministrationInfoUsersWrapper{
 
 
+    margin-top: 20px;
+}
+#usersList{
+    margin-top: 10px;
+    overflow: auto;
+    display: block;
+    max-height: 500px;
+}
+#userAdministrationUsersWrapper{
+    margin-top: 20px;
+}
+#userRoleOptions{
+}
+#isActive{
 
 
+}
+#addUser,#generatePassword{
 
-
-
-
-
-
-
-
-
+margin-top: 10px;
+}

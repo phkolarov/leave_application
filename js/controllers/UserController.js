@@ -56,7 +56,6 @@ appCh.UserController = (function () {
 
                     var resultObject = JSON.parse(data);
 
-                    console.log(resultObject);
                     if(resultObject.result){
 
                         app.system.systemMessage("Успешно променен профил");

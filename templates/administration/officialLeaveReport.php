@@ -21,6 +21,7 @@
             </select>
         </div>
 
+        <div class="innerTableContainer">
 
         <table class="table table-bordered">
             <thead>
@@ -34,7 +35,7 @@
 
             </tbody>
         </table>
-
+        </div>
 
     </div>
 

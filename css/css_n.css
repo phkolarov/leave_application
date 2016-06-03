@@ -12,7 +12,7 @@ table{
 }
 th{
 	background-color: #E8EEF4;
-	width:30%;
+	/*width:30%;*/
 }
 h4{
 	background-color:#4E667D;
@@ -21,11 +21,6 @@ h4{
 .year{
 	width:100%;
 	text-align:center;
-}
-
-label{
-	width: 100%;
-	text-align: center;
 }
 
 .buttonDiv{

@@ -50,7 +50,7 @@ class UserController extends Controller
             $userRepo = new UserRepository();
 
             $user = $userRepo->userLogin($username, $password);
-            var_dump($user);
+
             if ($user) {
 
                 //ob_end_clean();
@@ -109,10 +109,11 @@ class UserController extends Controller
             setcookie('password', null, -1, '/');
             unset($_COOKIE['isAdmin']);
             setcookie('isAdmin', null, -1, '/');
+
             var_dump($_COOKIE);
 
             header("Location: /leave_application/user/login");
-            //die();
+            exit;
         }
     }
 
