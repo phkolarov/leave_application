@@ -18,7 +18,7 @@ class serviceConnection
 
     public function __construct($session = null)
     {
-        $baseUrl = "http://192.168.4.96/VacationsWebAPI/api/";
+        $baseUrl = "http://external.euroins.bg/VacationsWebAPI/api/";
         $this->setBaseUrl($baseUrl);
         $this->setSession($session);
     }
@@ -73,9 +73,10 @@ class serviceConnection
     private function requestCreator($uri, $method, $inputData = null)
     {
 
+
         $url = $this->getBaseUrl() . $uri;
-        $data = array('key1' => 'value1', 'key2' => 'value2');
-        $result = null;
+        $data = array();
+
 
         if (is_array($inputData)) {
             $data = json_encode($inputData);
@@ -88,7 +89,7 @@ class serviceConnection
         curl_setopt($ch, CURLOPT_NOBODY,1);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-type: application/json", "SessionId: ". $this->session));
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
         if($method == 'POST'){
 
@@ -103,72 +104,16 @@ class serviceConnection
         }
 
         $result = curl_exec($ch);
+        var_dump($result);
 
         curl_close($ch);
 
-        // Will dump a beauty json :3
-        var_dump(json_decode($result, true));
-
-        if ($result === FALSE) {
+        if ($result == FALSE) {
             return false;
         } else {
             return $result;
         }
 
-//        $options = array(
-//            CURLOPT_URL            => $url,
-//            CURLOPT_RETURNTRANSFER => true,
-//            CURLOPT_HEADER         => true,
-//            CURLOPT_HTTPHEADER     => array("Content-type: application/json", "SessionId: ". $this->session),
-//            CURLOPT_POST           => true,
-//            CURLOPT_POSTFIELDS     => $data,
-//            CURLOPT_SSL_VERIFYPEER => false,
-//            CURLOPT_FOLLOWLOCATION => true,
-//            CURLOPT_ENCODING       => "",
-//            CURLOPT_AUTOREFERER    => true,
-//            CURLOPT_CONNECTTIMEOUT => 120,
-//            CURLOPT_TIMEOUT        => 120,
-//            CURLOPT_MAXREDIRS      => 10,
-//        );
-//
-//        curl_setopt_array( $curl, $options );
-
-
-
-//        if ($method == "GET") {
-//
-//            $result = @file_get_contents($url);
-//
-//            if ($result === FALSE) {
-//                return false;
-//            } else {
-//                return $result;
-//            }
-//
-//        }
-// else if ($method == "POST") {
-//
-//            $options = array(
-//                'http' => array(
-//                    'header' => "Content-type: application/json\r\n",
-//                    'method' => 'POST',
-//                    'SessionId' => $this->session,
-//                    'content' => http_build_query(jso)
-//                )
-//            );
-//
-//            $context = stream_context_create($options);
-//            $result = file_get_contents($url, false, $context);
-//
-//
-//            if ($result === FALSE) {
-//                return false;
-//            } else {
-//                return $result;
-//            }
-//        } else {
-//            throw new \Exception('Request method type is not implement!');
-//        }
     }
 
 

@@ -22,7 +22,8 @@ class UserRepository
         $hashedPassword = hash('sha512', $password);
         $loginUri = "User/AuthorizeUser?UserName=$username&Password=$hashedPassword";
         $connection = new serviceConnection();
-        $data = $connection->postData($loginUri, null);
+        $empty = array("null"=>"null");
+        $data = $connection->postData($loginUri, $empty);
         $tempObject = json_decode($data);
 
         if (isset($tempObject->result)) {
@@ -47,8 +48,6 @@ class UserRepository
 
     public function addUser($username, $name, $session, $email, $inPassword, $userRoleOptions, $isActive)
     {
-
-
         $password = hash('sha512', $inPassword);
         $role = $userRoleOptions == 1 ? "user" : "admin";
         $active = $isActive == 1 ? "true" : "false";
@@ -66,13 +65,19 @@ class UserRepository
             "isActive" => $active
         );
 
-        $jsonObject = json_encode($userObject);
 
         $connection = new serviceConnection($session);
         $data = $connection->postData($saveUserUrl, $userObject);
         $tempObject = json_decode($data);
 
-        var_dump($tempObject);
+
+        if(isset($tempObject->result)){
+
+            header("Location: /leave_application/administration/usersList/added=true");
+        }else{
+
+            header("Location: /leave_application/administration/usersList/added=false");
+        }
 
     }
 

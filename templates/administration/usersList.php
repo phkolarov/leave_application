@@ -15,8 +15,8 @@
         <div class="row">
             <div class="col-xs-2">
                 <select id="usersFilter" class="form-control">
-                    <option value="1">Всички</option>
-                    <option value="2">Активни</option>
+                    <option value="1">Активни</option>
+                    <option value="2">Всички</option>
                     <option value="3">Неактивни</option>
                 </select>
             </div>
@@ -81,7 +81,7 @@
                     <option value="2">Admin</option>
                 </select>
                 <div >
-                    <label for="isActive">Роля</label>
+                    <label for="isActive">Статус</label>
                     <select name="isActive" id="isActive" class="form-control">
                         <option value="1">Активен</option>
                         <option value="2">Неактивен</option>
