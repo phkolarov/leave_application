@@ -22,7 +22,6 @@ class AdministrationController extends Controller
 
     public function editRemainingLeave(){
 
-        var_dump("editRemainingLeave");
         $this->view->render();
 
     }
@@ -50,8 +49,10 @@ class AdministrationController extends Controller
         $this->view->render();
     }
 
+    /**
+     * @MODERATOR
+     */
     public function addUser(){
-
 
         if(($_COOKIE['role'] == 'admin') && isset($_COOKIE['session'])){
 
@@ -71,15 +72,11 @@ class AdministrationController extends Controller
                 $isActive = $_POST['isActive'];
                 $user = new UserRepository();
 
-
-
                 $user->addUser($username,$name,$session,$email,$password,$userRoleOptions, $isActive);
-
-
             }
-        }else{
-
-            header("Location: /leave_application/administration/usersList/added=false");
+        }
+        else{
+            header("Location: /leave_application/administration/usersList/added=false?message=Невалидни права");
         }
 
     }

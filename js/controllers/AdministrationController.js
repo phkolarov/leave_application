@@ -4,19 +4,89 @@ appCh.AdministrationController = (function () {
 
     function editRemainingLeave() {
 
-        console.log('editRemainingLeave');
+
+        function loadUsersList(param) {
+
+
+            let tableString = "";
+            let session = app.connect.cookie.get("session");
+
+            let uri = "User/GetAllUsers";
+
+            if (param == true || param == false) {
+
+                uri += ("?active=" + param);
+            }
+
+
+            app.connect.get(uri, {
+                "Content-type": "application/json",
+                "SessionId": session
+            }).then(function (data) {
+
+                usersListObject = JSON.parse(data);
+
+                for (let i in usersListObject.result) {
+
+
+                    let userElem = usersListObject.result[i];
+
+                    let dayd = (parseInt((parseInt(userElem.VacationMinutes) / 60) / 8));
+                    let hours = (parseInt((parseInt(userElem.VacationMinutes) / 60) % 8));
+                    let tempMinutes = (((parseInt(userElem.VacationMinutes) / 60) % 8) + "").slice(+2);
+                    let minutesLeft = parseInt(parseFloat("0." + tempMinutes) * 60);
+
+
+                    let rowString = "<tr name='"+ userElem.FullName +"' username='"+ userElem.UserName+"' officialLeave='"+ userElem.OfficialVacationDays+"'>" +
+                        "<td>" + userElem.FullName + "</td>" +
+                        "<td>" + userElem.UserName + "</td>" +
+                        "<td>" + dayd + " дни " + hours + " часа " + minutesLeft + " минути " + "</td>" +
+                        "<td>" + userElem.OfficialVacationDays + "</td>" +
+                        "</tr>";
+
+                    tableString += rowString;
+                }
+
+
+                $("#usersListTableBody").html(tableString);
+
+            })
+
+
+        }
+
+        loadUsersList(true);
     }
 
     function usersList() {
 
+
+        let uriParams = location.pathname.match(/added=((\btrue\b)|(\bfalse\b))/);
+        let message = location.href.match(/message=(.+)/);
+
+
+       setTimeout(function () {
+           if(uriParams){
+
+               if(uriParams[1] == 'true'){
+                   app.system.systemMessage("Успешно добавен потребител");
+               }else{
+                   app.system.systemMessage( decodeURIComponent(message[1]));
+               }
+           }
+       }, 0);
+
+
+
         let session = app.connect.cookie.get("session");
+
         $("#usersFilter").on('change', function () {
             if ($("#usersFilter").val() == 1) {
 
-                loadUsersList()
+                loadUsersList(true)
             } else if ($("#usersFilter").val() == 2) {
 
-                loadUsersList(true)
+                loadUsersList()
             } else {
                 loadUsersList(false)
             }
@@ -26,8 +96,8 @@ appCh.AdministrationController = (function () {
             generatePassword();
         });
 
-        $("#addUser").on('click', function () {
 
+        $("#addUser").on('click', function () {
 
             let username = $("#username").val();
             let names = $("#names").val();
@@ -36,35 +106,6 @@ appCh.AdministrationController = (function () {
             let isActive = $("#isActive").val();
             let password = $("#password").val();
 
-            if(username && names && email && password){
-
-                var userObject = {
-                    UserName : username,
-                    FullName : names,
-                    Email : email,
-                    VacationMinutes: 0,
-                    OfficialVacationDays: 0,
-                    Role: role,
-                    isActive: isActive,
-                    Password: password
-
-                };
-
-                app.connect.post("User/AddUser",{
-                    "Content-type": "application/json",
-                    "SessionId": session
-                },  userObject).then(function (data) {
-
-
-                    console.log(data);
-                })
-
-
-
-            }else {
-
-                app.system.systemMessage("Mоля попълнете всички данни");
-            }
 
         });
 
@@ -79,7 +120,6 @@ appCh.AdministrationController = (function () {
 
             if (param == true || param == false) {
 
-                console.log(param);
                 uri += ("?active=" + param);
             }
 
@@ -109,18 +149,42 @@ appCh.AdministrationController = (function () {
                         "<td>" + userElem.Role + "</td>" +
                         "<td>" + dayd + " дни " + hours + " часа " + minutesLeft + " минути " + "</td>" +
                         "<td>" + userElem.OfficialVacationDays + "</td>" +
-                        "<td><a>Изтрий</a></td>" +
-                        "</tr>"
+                        "<td><a href='#' class='deleteUser' id='"+userElem.ID +"'>Изтрий</a></td>" +
+                        "</tr>";
 
                     tableString += rowString;
                 }
 
 
                 $("#usersListTableBody").html(tableString);
+
+
+                $(".deleteUser").on('click', function () {
+
+                    app.connect.delete('User/DeactivateUser?ID='+ $(this)[0].id, {
+                        "Content-type": "application/json",
+                        "SessionId": session
+                    }).then(function (data) {
+
+                        if(data.result){
+
+                            app.system.systemMessage("Успешно изтрит потребител");
+                        }else {
+                            app.system.systemMessage("Неуспешно изтрит потребител");
+                        }
+
+                        loadUsersList();
+                    });
+
+
+                });
             })
 
 
         }
+
+
+
 
         function generatePassword() {
             String.prototype.pick = function (min, max) {
@@ -404,7 +468,7 @@ appCh.AdministrationController = (function () {
         function datePicker() {
 
             let year = 2013; //$("#year").val();
-            let month = 11;//$("#month").val();
+11;//       let month = 11;//$("#month").val();
             let lastDate = new Date(year, month, 0);
 
             app.connect.get("Request/GetRequestsForPeriod?DateFrom=" + year + "-" + month + "-1&DateTo=" + year + "-" + month + "-" + lastDate.getDate() + "&UserID=-1",

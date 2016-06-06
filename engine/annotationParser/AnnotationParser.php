@@ -30,7 +30,7 @@ class AnnotationParser
                             self::authentication();
                             break;
                         case "@ADMINISTRATOR":
-                            var_dump("ADMINISTRATOR");
+                           self::administrator();
                             break;
                         case "@MODERATOR":
                             self::moderator();
@@ -48,6 +48,11 @@ class AnnotationParser
         }
     }
 
+    private static function administrator()
+    {
+
+    }
+
     private static function authentication()
     {
         if(!isset($_SESSION['session'])){
@@ -59,9 +64,9 @@ class AnnotationParser
 
     public static function moderator(){
 
-        if(!isset($_COOKIE['isAdmin']) && $_COOKIE['isAdmin']){
+        if((!isset($_COOKIE['role']) || $_COOKIE['role'] != 'admin') && isset($_COOKIE['session'])){
             ob_end_clean();
-            header("Location: /leave_application/user/index");
+            header("Location: /leave_application/user/index?message=Невалидни права!");
             die();
         }
     }

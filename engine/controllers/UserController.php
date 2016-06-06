@@ -110,7 +110,6 @@ class UserController extends Controller
             unset($_COOKIE['isAdmin']);
             setcookie('isAdmin', null, -1, '/');
 
-            var_dump($_COOKIE);
 
             header("Location: /leave_application/user/login");
             exit;

@@ -383,3 +383,30 @@ html {
 
 margin-top: 10px;
 }
+/*--------------------------*/
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: darkgray;
+    color: white;
+}
+
+#addRemoveOfficialLeave{
+
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+#officialDescription{
+
+    max-height: 200px;
+}
+#addRemoveLeave{
+
+    margin-top: 20px;
+}
+#officialButtonsWrapper{
+
+    margin-top: 10px;
+}
+#unOfficialButtonsWrapper{
+    margin-top: 10px;
+}
