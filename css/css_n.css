@@ -25,4 +25,16 @@ h4{
 
 .buttonDiv{
 	text-align: center;
+
+}
+
+#desc{
+	height: auto;
+}
+.datePreviewContainer div#full-year{
+	text-align: center;
+}
+
+.addBtn{
+	background-color: #8CBBFF;
 }

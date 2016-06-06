@@ -1,6 +1,5 @@
 
-<link rel="stylesheet" type="text/css" href="/leave_application/css/css_n.css">
-<h1>Добави официален формуляр</h1>
+<h1>Добави официална отпуска</h1>
 <hr/>
 <h4 >Заявени отпуски</h4>
 <div >Година <select class="year"></select></div>
@@ -29,7 +28,7 @@
 </div>
 <hr/>
 <div class="row buttonDiv">
-	<button type="button" class="btn btn-info btn-file btn-sm" id="submit">Добави</button>
+	<button type="button" class="btn btn-info btn-file btn-sm addBtn" id="submit">Добави</button>
 </div>
 
 <div>
