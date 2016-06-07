@@ -98,7 +98,7 @@ class UserController extends Controller
     public function logout()
     {
 
-        if (isset($_SESSION['session'])) {
+        if (isset($_COOKIE['session'])) {
 
             unset($_COOKIE['session']);
             unset($_SESSION['session']);

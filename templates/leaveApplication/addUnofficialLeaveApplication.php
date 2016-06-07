@@ -37,10 +37,35 @@
     <hr/>
 
 </div>
+<div class="row">
 <h4>Календар</h4>
 <div class="col-lg-12">
     <div class="datePreviewContainer ">
         <div id="full-year" ></div>
+    </div>
+</div>
+</div>
+
+<div class="row">
+    <h4>Регистър</h4>
+</div>
+<div class="row">
+    <div>
+        <table id="unOfficialLeaveTable">
+            <thead>
+            <th >Заявена на</th>
+            <th >Служител</th>
+            <th >От дата</th>
+            <th >До дата</th>
+            <th >дни/часове/минути</th>
+            <th >Пламен</th>
+            <th >Митко</th>
+            <th>Изтрий</th>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
     </div>
 </div>
 </div>
