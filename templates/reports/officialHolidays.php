@@ -16,7 +16,15 @@
         <div id="full-year"></div>
 
 
+                <div id="previewBoxReport">
 
+                    <p ><strong>Дата:</strong> <span id="previewDate"></span></p>
+
+                    <p ><strong>Тип:</strong> <span id="previewType"> </span></p>
+
+                    <p ><strong>Описание:</strong> <span id="previewMessage"></span></p>
+
+                </div>
     </div>
 <?php
 /**

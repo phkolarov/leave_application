@@ -5,12 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d12f1b49-2cb3-47b1-8400-bc0223049335" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/images/Logo_ITS.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/images/back.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/images/blue-block.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/images/euroins-logo.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/pnotify/pnotify.custom.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/libraries/pnotify/pnotify.custom.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css_n.css" afterPath="$PROJECT_DIR$/css/css_n.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css_p.css" afterPath="$PROJECT_DIR$/css/css_p.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/viewLoader/view.php" afterPath="$PROJECT_DIR$/engine/viewLoader/view.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/HomeController.js" afterPath="$PROJECT_DIR$/js/controllers/HomeController.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" afterPath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/ReportsController.js" afterPath="$PROJECT_DIR$/js/controllers/ReportsController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/UserController.js" afterPath="$PROJECT_DIR$/js/controllers/UserController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/index.php" afterPath="$PROJECT_DIR$/templates/home/index.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/officialHolidays.php" afterPath="$PROJECT_DIR$/templates/reports/officialHolidays.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/user/login.php" afterPath="$PROJECT_DIR$/templates/user/login.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/user/profile.php" afterPath="$PROJECT_DIR$/templates/user/profile.php" />
     </list>
     <ignored path="leave_application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,31 +45,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="main.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/main.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5272727">
-              <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="css_p.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/css_p.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.709091">
-              <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+            <state vertical-scroll-proportion="-7.072727">
+              <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/home.php">
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/engine/viewLoader/view.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="4" />
+            <state vertical-scroll-proportion="-17.0">
+              <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="usersList.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/administration/usersList.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="9.807693">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -65,28 +78,18 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.65384614">
-              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+            <state vertical-scroll-proportion="-13.076923">
+              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/controllers/HomeController.php">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.8461537">
-              <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LeaveApplicationController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.653847">
-              <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state vertical-scroll-proportion="-11.769231">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -95,39 +98,53 @@
       <file leaf-file-name="LeaveApplicationController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.45791245">
-              <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.5150812">
+              <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+              <folding>
+                <element signature="e#5299#11814#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requestConnector.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/connection/requestConnector.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.814815">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/controllers/UserController.php">
+      <file leaf-file-name="addOfficialLeaveApplication.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="19.818182">
-              <caret line="22" column="13" selection-start-line="22" selection-start-column="8" selection-end-line="22" selection-end-column="13" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="officialHolidays.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/reports/officialHolidays.php">
+      <file leaf-file-name="HomeController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/controllers/HomeController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.5">
-              <caret line="13" column="58" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="58" />
+            <state vertical-scroll-proportion="-5.678571">
+              <caret line="29" column="19" selection-start-line="10" selection-start-column="14" selection-end-line="29" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="serviceConnection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/service/serviceConnection.php">
+      <file leaf-file-name="pnotify.custom.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/libraries/pnotify/pnotify.custom.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-26.272728">
-              <caret line="90" column="114" selection-start-line="90" selection-start-column="107" selection-end-line="90" selection-end-column="114" />
-              <folding />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <marker date="1465389984989" expanded="true" signature="51476:51502" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -151,7 +168,6 @@
       <list>
         <option value="$PROJECT_DIR$/engine/controllers/TestController.php" />
         <option value="$PROJECT_DIR$/engine/controllers/UnofficialApplicationController.php" />
-        <option value="$PROJECT_DIR$/templates/user/login.php" />
         <option value="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" />
         <option value="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" />
         <option value="$PROJECT_DIR$/templates/reports/unofficialReport.php" />
@@ -165,14 +181,11 @@
         <option value="$PROJECT_DIR$/js/controllers/reportsController.js" />
         <option value="$PROJECT_DIR$/js/controllers/leaveApplicationController.js" />
         <option value="$PROJECT_DIR$/js/controllers/homeController.js" />
-        <option value="$PROJECT_DIR$/engine/viewLoader/view.php" />
-        <option value="$PROJECT_DIR$/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/js/extendedSystemFunctions/systemFunctions.js" />
         <option value="$USER_HOME$/AppData/Roaming/Skype/My Skype Received Files/index(1).php" />
         <option value="$PROJECT_DIR$/css/css_n.css" />
         <option value="$PROJECT_DIR$/templates/administration/officialLeaveReport.php" />
         <option value="$PROJECT_DIR$/libraries/jquery/jquery-ui-1.11.4.custom/datepicker-bg.js" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.multidatespicker.js" />
         <option value="$PROJECT_DIR$/js/main.js" />
         <option value="$PROJECT_DIR$/engine/annotationParser/AnnotationParser.php" />
@@ -181,25 +194,29 @@
         <option value="$PROJECT_DIR$/templates/administration/editRemainingLeave.php" />
         <option value="$PROJECT_DIR$/templates/administration/usersList.php" />
         <option value="$PROJECT_DIR$/templates/administration/requestReport.php" />
-        <option value="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" />
         <option value="$PROJECT_DIR$/js/controllers/AdministrationController.js" />
         <option value="$PROJECT_DIR$/templates/partials/main_menu.php" />
         <option value="$PROJECT_DIR$/engine/controllers/ReportsController.php" />
         <option value="$PROJECT_DIR$/templates/administration/officialHolidays.php" />
         <option value="$PROJECT_DIR$/templates/leaveApplication/pendingRequests.php" />
-        <option value="$PROJECT_DIR$/js/controllers/ReportsController.js" />
-        <option value="$PROJECT_DIR$/templates/reports/officialHolidays.php" />
         <option value="$PROJECT_DIR$/engine/service/serviceConnection.php" />
         <option value="$PROJECT_DIR$/engine/repositories/UserRepository.php" />
-        <option value="$PROJECT_DIR$/templates/user/profile.php" />
         <option value="$PROJECT_DIR$/engine/controllers/UserController.php" />
-        <option value="$PROJECT_DIR$/js/controllers/UserController.js" />
         <option value="$PROJECT_DIR$/engine/main.php" />
         <option value="$PROJECT_DIR$/templates/home.php" />
-        <option value="$PROJECT_DIR$/templates/home/index.php" />
         <option value="$PROJECT_DIR$/engine/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php" />
+        <option value="$PROJECT_DIR$/js/controllers/UserController.js" />
+        <option value="$PROJECT_DIR$/js/controllers/ReportsController.js" />
+        <option value="$PROJECT_DIR$/templates/reports/officialHolidays.php" />
+        <option value="$PROJECT_DIR$/engine/viewLoader/view.php" />
+        <option value="$PROJECT_DIR$/templates/user/login.php" />
+        <option value="$PROJECT_DIR$/templates/user/profile.php" />
+        <option value="$PROJECT_DIR$/templates/home/index.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/js/controllers/HomeController.js" />
         <option value="$PROJECT_DIR$/css/css_p.css" />
+        <option value="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" />
       </list>
     </option>
   </component>
@@ -345,6 +362,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="leaveApplication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="home" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -380,22 +415,8 @@
               <option name="myItemId" value="libraries" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-          </PATH>
-          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="leave_application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="leave_application" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jquery" />
+              <option name="myItemId" value="pnotify" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -410,14 +431,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="libraries" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jquery" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="jquery-ui-1.11.4.custom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -463,7 +476,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="engine" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="viewLoader" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -535,6 +584,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="leave_application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
     </panes>
@@ -549,18 +616,18 @@
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp_1\htdocs\leave_application\libraries\jquery\jquery-ui-1.11.4.custom" />
-      <recent name="C:\xampp_1\htdocs\leave_application\libraries\jquery" />
-      <recent name="C:\xampp_1\htdocs\leave_application\libraries\moment" />
-      <recent name="C:\xampp_1\htdocs\leave_application\css\images" />
-      <recent name="C:\xampp_1\htdocs\leave_application\libraries\boostrap" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp_1\htdocs\leave_application\templates\user" />
       <recent name="C:\xampp_1\htdocs\leave_application\engine\service" />
       <recent name="C:\xampp_1\htdocs\leave_application\engine" />
       <recent name="C:\xampp_1\htdocs\leave_application\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp_1\htdocs\leave_application\templates\leaveApplication" />
+      <recent name="C:\xampp_1\htdocs\leave_application\libraries\pnotify" />
+      <recent name="C:\xampp_1\htdocs\leave_application\css\images" />
+      <recent name="C:\xampp_1\htdocs\leave_application\libraries\jquery\jquery-ui-1.11.4.custom" />
+      <recent name="C:\xampp_1\htdocs\leave_application\libraries\jquery" />
     </key>
   </component>
   <component name="RunManager">
@@ -622,7 +689,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.171875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -667,49 +734,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/engine/autoloader/Autoloader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24775785">
-          <caret line="18" column="62" selection-start-line="18" selection-start-column="62" selection-end-line="18" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/controllers/TestController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.9230769">
-          <caret line="11" column="39" selection-start-line="11" selection-start-column="39" selection-end-line="11" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/models/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.2181816">
-          <caret line="33" column="85" selection-start-line="33" selection-start-column="83" selection-end-line="33" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/viewLoader/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.384615">
-          <caret line="27" column="55" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/images/default_profile.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/engine/controllers/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26681614">
-          <caret line="19" column="27" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.htaccess">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.16666667">
@@ -717,17 +741,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/HomeController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.7777777">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/extendedSystemFunctions/systemFunctions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.851851">
           <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -792,26 +810,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/connection/requestConnector.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38682634">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/controllers/AdministrationController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3325359">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/administration/usersList.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37918216">
-          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
         </state>
       </provider>
     </entry>
@@ -831,14 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/reports/myOfficialVacations.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08133971">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/administration/requestReport.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1747212">
@@ -851,14 +846,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6507177">
           <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/administration/officialHolidays.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41759604">
-          <caret line="40" column="57" selection-start-line="40" selection-start-column="57" selection-end-line="40" selection-end-column="57" />
           <folding />
         </state>
       </provider>
@@ -943,45 +930,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/ReportsController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.660714">
-          <caret line="58" column="53" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="53" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/AdministrationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-28.803572">
-          <caret line="801" column="37" selection-start-line="801" selection-start-column="35" selection-end-line="801" selection-end-column="37" />
-          <folding>
-            <element signature="e#491#595#0" expanded="false" />
-            <element signature="e#1905#2233#0" expanded="false" />
-            <element signature="e#4291#6183#0" expanded="false" />
-            <element signature="e#6245#7578#0" expanded="false" />
-            <element signature="e#18265#20370#0" expanded="false" />
-            <marker date="1465379344579" expanded="true" signature="16968:16975" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/UserController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.464286">
-          <caret line="24" column="69" selection-start-line="24" selection-start-column="69" selection-end-line="24" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/user/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.090909">
-          <caret line="10" column="21" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/controllers/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="19.818182">
@@ -998,18 +946,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/main.php">
+    <entry file="file://$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5272727">
-          <caret line="50" column="0" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.653847">
+          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/images/back.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22869955">
+          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/UserController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.057239056">
+          <caret line="18" column="16" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/reports/myOfficialVacations.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.076233186">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/AdministrationController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.92227376">
+          <caret line="627" column="22" selection-start-line="594" selection-start-column="19" selection-end-line="627" selection-end-column="22" />
+          <folding>
+            <element signature="e#491#595#0" expanded="false" />
+            <element signature="e#1905#2233#0" expanded="false" />
+            <element signature="e#4291#6183#0" expanded="false" />
+            <element signature="e#6245#7578#0" expanded="false" />
+            <marker date="1465379344579" expanded="true" signature="16968:16975" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/administration/officialHolidays.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8116592">
+          <caret line="48" column="14" selection-start-line="34" selection-start-column="7" selection-end-line="48" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/ReportsController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8473625">
+          <caret line="78" column="22" selection-start-line="78" selection-start-column="22" selection-end-line="78" selection-end-column="22" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/reports/officialHolidays.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.5">
-          <caret line="13" column="58" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.34304932">
+          <caret line="18" column="41" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/main.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.418182">
+          <caret line="43" column="34" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/engine/viewLoader/view.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/images/default_profile.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0472973">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/user/profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.13789238">
+          <caret line="10" column="35" selection-start-line="10" selection-start-column="35" selection-end-line="10" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -1022,51 +1066,79 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
+    <entry file="file://$PROJECT_DIR$/templates/administration/usersList.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34304932">
-          <caret line="21" column="91" selection-start-line="21" selection-start-column="86" selection-end-line="21" selection-end-column="91" />
+        <state vertical-scroll-proportion="9.807693">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="11" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.65384614">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        <state vertical-scroll-proportion="-13.076923">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/libraries/pnotify/pnotify.custom.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.8461537">
-          <caret line="17" column="30" selection-start-line="17" selection-start-column="30" selection-end-line="17" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1465389984989" expanded="true" signature="51476:51502" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.769231">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php">
+    <entry file="file://$PROJECT_DIR$/js/controllers/HomeController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.653847">
-          <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state vertical-scroll-proportion="-5.678571">
+          <caret line="29" column="19" selection-start-line="10" selection-start-column="14" selection-end-line="29" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/css/css_p.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.709091">
-          <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+        <state vertical-scroll-proportion="-7.072727">
+          <caret line="244" column="17" selection-start-line="244" selection-start-column="17" selection-end-line="244" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/connection/requestConnector.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.814815">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45791245">
-          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
-          <folding />
+        <state vertical-scroll-proportion="0.5150812">
+          <caret line="56" column="40" selection-start-line="56" selection-start-column="40" selection-end-line="56" selection-end-column="40" />
+          <folding>
+            <element signature="e#5299#11814#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

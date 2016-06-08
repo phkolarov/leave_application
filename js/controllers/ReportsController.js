@@ -43,6 +43,40 @@ appCh.ReportsController = (function () {
 
 
                 $('#full-year').multiDatesPicker({
+                    onSelect: function(date) {
+
+
+                        let currentDate = moment(date);
+
+
+                        app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'),{
+                            "Content-type": "application/json",
+                            "SessionId": session
+                        }).then(function (data) {
+
+                            data = JSON.parse(data);
+
+                            if(data.result && data.result != null){
+
+                                let outputDate = moment(data.result.Date);
+                                let type = 'Работен';
+
+                                if(type == false){
+
+                                    type = 'Неработен'
+                                }
+                                $('#previewDate').text(outputDate.format('L'));
+
+                                $('#previewType').text(type);
+
+                                $('#previewMessage').text(data.result.Description);
+                            }
+
+
+                        });
+
+                        //alert(date);
+                    },
                     addDates: dateArray,
                     dateFormat: "m/d/yy",
                     numberOfMonths: [3, 4],

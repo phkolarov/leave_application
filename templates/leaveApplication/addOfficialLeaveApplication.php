@@ -37,15 +37,21 @@
     <div class="row">
         <div class="col-sm-12">
             <label for="showYear">Година</label>
-            <select class="year form-control" id="showYear"></select>
+            <select class="year form-control" id="showYear">
+
+            </select>
         </div>
     </div>
     <hr/>
     <div id="officialLeavesTable">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" id="officialLeaveTable">
+            <thead>
             <th>Период</th>
             <th>Брой работни дни</th>
             <th>Заместван от</th>
+            </thead>
+            <tbody id="tableData">
+            </tbody>
         </table>
     </div>
 </div>

@@ -16,8 +16,6 @@ appCh.UserController = (function () {
 
         if(isSaved != undefined){
 
-            console.log();
-
             if(isSaved[1] == 'true'){
 
                 app.system.systemMessage("Успешно обновен профил");
@@ -37,6 +35,16 @@ appCh.UserController = (function () {
 
             var userObject = JSON.parse(data);
             userObject = userObject.result;
+
+            let dayd = (parseInt((parseInt(userObject.VacationMinutes) / 60) / 8));
+            let hours = (parseInt((parseInt(userObject.VacationMinutes) / 60) % 8));
+            let tempMinutes = (((parseInt(userObject.VacationMinutes) / 60) % 8) + "").slice(+2);
+            let minutesLeft = parseInt(parseFloat("0." + tempMinutes) * 60);
+
+
+            let outputDate =  dayd + " дни "  + hours +" часа " + minutesLeft + " минути ";
+
+            $('#leaveLeft').text(outputDate)
             $('#names').val(userObject.FullName);
             $('#username').val(userObject.UserName);
             $('#email').val(userObject.Email);

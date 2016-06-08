@@ -25,7 +25,13 @@ class view
         $fullViewFilePath = 'templates/'.$this->controllerName.'/'.$this->actionName.'.php';
         if(file_exists($fullViewFilePath)){
 
-            echo '<div class="container content-wrapper">';
+
+            if($this->actionName != 'login'){
+                echo '<div class="container content-wrapper">';
+            }else{
+                echo '<div id="login" class="container content-wrapper">';
+
+            }
                 require_once $fullViewFilePath;
             echo '</div>';
 

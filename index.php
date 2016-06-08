@@ -13,6 +13,7 @@ session_start();
     <script src="/leave_application/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
     <script src="/leave_application/libraries/jquery/jquery-ui-1.11.4.custom/datepicker-bg.js"></script>
     <script src="/leave_application/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.multidatespicker.js"></script>
+    <script src="/leave_application/libraries/pnotify/pnotify.custom.js"></script>
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
@@ -21,6 +22,11 @@ session_start();
     <link href="/leave_application/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.structure.css" rel="stylesheet" type="text/css">
     <link href="/leave_application/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.theme.css" rel="stylesheet" type="text/css">
     <link href="/leave_application/libraries/jquery/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="/leave_application/libraries/pnotify/pnotify.custom.css" rel="stylesheet" type="text/css"/>
+
+    <script>
+
+    </script>
 </head>
 
 <body>

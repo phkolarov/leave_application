@@ -6,18 +6,19 @@
  /**!*/
 body {
 
-    background-repeat: no-repeat;
-    background-color: transparent;
-    height: 100%;
+    /*background-repeat: no-repeat;*/
+    /*background-color: transparent;*/
+    /*height: 100%;*/
+    background-image: url('images/blue-block.jpg');
 
+    margin-bottom: 100px;
 }
 html {
-    background-repeat: no-repeat;
-
-    background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));
-    height: 120%;
+    /*background-repeat: no-repeat;*/
+    background-image: url('images/blue-block.jpg');
+    /*background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));*/
+    height: auto;
 }
-
 
 
 .card-container.card {
@@ -34,7 +35,16 @@ html {
     user-select: none;
     cursor: default;
 }
+.content-wrapper{
 
+    background-color: #f8f8f8;
+    border-radius: 5px;
+}
+
+#login{
+
+    background-color: transparent;
+}
 /*
  * Card component
  */
@@ -54,13 +64,13 @@ html {
 }
 
 .profile-img-card {
-    width: 96px;
-    height: 96px;
+    /*width: 96px;*/
+    /*height: 96px;*/
     margin: 0 auto 10px;
     display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+    /*-moz-border-radius: 50%;*/
+    /*-webkit-border-radius: 50%;*/
+    /*border-radius: 50%;*/
 }
 
 /*
@@ -200,12 +210,7 @@ html {
     border-radius: 6px 0 6px 6px;
 }
 
-.content-wrapper{
 
-    background-color: #f8f8f8;
-    border-radius: 5px;
-
-}
 
 
 
@@ -234,6 +239,10 @@ html {
 .PageWrapper div h4{
     margin-left: 15px;
     line-height: 20px;
+}
+.ui-pnotify-title{
+    background-color: transparent;
+    color: black;
 }
 #InfoHeading{
     background-color: #4E667D;
@@ -418,7 +427,6 @@ margin-top: 10px;
 
 #pendingRequestsWrapper{
 
-
 }
 
     #officialRequestReportContainer{
@@ -442,4 +450,15 @@ margin-top: 10px;
     margin-left: auto;
     margin-right: auto;
 
+}
+
+#previewBoxReport{
+
+    margin-top: 10px;
+    width: 98.5%;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    padding: 10px;
+    margin-left: 10px;
 }
