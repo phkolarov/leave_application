@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d12f1b49-2cb3-47b1-8400-bc0223049335" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css_p.css" afterPath="$PROJECT_DIR$/css/css_p.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/controllers/HomeController.php" afterPath="$PROJECT_DIR$/engine/controllers/HomeController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php" afterPath="$PROJECT_DIR$/engine/controllers/LeaveApplicationController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/controllers/ReportsController.php" afterPath="$PROJECT_DIR$/engine/controllers/ReportsController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/controllers/UserController.php" afterPath="$PROJECT_DIR$/engine/controllers/UserController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/main.php" afterPath="$PROJECT_DIR$/engine/main.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/repositories/UserRepository.php" afterPath="$PROJECT_DIR$/engine/repositories/UserRepository.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/engine/service/serviceConnection.php" afterPath="$PROJECT_DIR$/engine/service/serviceConnection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/connection/requestConnector.js" afterPath="$PROJECT_DIR$/js/connection/requestConnector.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/AdministrationController.js" afterPath="$PROJECT_DIR$/js/controllers/AdministrationController.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/css_n.css" afterPath="$PROJECT_DIR$/css/css_n.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" afterPath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/ReportsController.js" afterPath="$PROJECT_DIR$/js/controllers/ReportsController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/UserController.js" afterPath="$PROJECT_DIR$/js/controllers/UserController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/administration/editRemainingLeave.php" afterPath="$PROJECT_DIR$/templates/administration/editRemainingLeave.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/administration/officialHolidays.php" afterPath="$PROJECT_DIR$/templates/administration/officialHolidays.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home.php" afterPath="$PROJECT_DIR$/templates/home.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/home/index.php" afterPath="$PROJECT_DIR$/templates/home/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/pendingRequests.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/pendingRequests.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/partials/main_menu.php" afterPath="$PROJECT_DIR$/templates/partials/main_menu.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/reports/officialHolidays.php" afterPath="$PROJECT_DIR$/templates/reports/officialHolidays.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/user/profile.php" afterPath="$PROJECT_DIR$/templates/user/profile.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" />
     </list>
     <ignored path="leave_application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -58,10 +42,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="css_p.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="css_p.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/css_p.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2363847">
+            <state vertical-scroll-proportion="-3.709091">
               <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
               <folding />
             </state>
@@ -108,6 +92,16 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="LeaveApplicationController.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.45791245">
+              <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/engine/controllers/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -133,16 +127,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-26.272728">
               <caret line="90" column="114" selection-start-line="90" selection-start-column="107" selection-end-line="90" selection-end-column="114" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="profile.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/user/profile.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.090909">
-              <caret line="10" column="21" selection-start-line="10" selection-start-column="15" selection-end-line="10" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -831,21 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.36352357">
-          <caret line="102" column="68" selection-start-line="102" selection-start-column="68" selection-end-line="102" selection-end-column="68" />
-          <folding>
-            <element signature="e#6678#11177#0" expanded="false" />
-            <marker date="1465285069148" expanded="true" signature="3865:4870" placeholder="..." />
-            <marker date="1465285069148" expanded="true" signature="8544:9220" placeholder="..." />
-            <marker date="1465285069148" expanded="true" signature="8581:8632" placeholder="..." />
-            <marker date="1465285069148" expanded="true" signature="8669:8737" placeholder="..." />
-            <marker date="1465285069148" expanded="true" signature="8774:8834" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/engine/annotationParser/AnnotationParser.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.230769">
@@ -992,7 +961,7 @@
             <element signature="e#4291#6183#0" expanded="false" />
             <element signature="e#6245#7578#0" expanded="false" />
             <element signature="e#18265#20370#0" expanded="false" />
-            <marker date="1465295201538" expanded="true" signature="16968:16975" placeholder="..." />
+            <marker date="1465379344579" expanded="true" signature="16968:16975" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -1087,8 +1056,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/css_p.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2363847">
+        <state vertical-scroll-proportion="-3.709091">
           <caret line="51" column="46" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.45791245">
+          <caret line="48" column="6" selection-start-line="48" selection-start-column="6" selection-end-line="48" selection-end-column="6" />
           <folding />
         </state>
       </provider>

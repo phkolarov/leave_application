@@ -1,2 +1,4 @@
 js/connection/requestConnector.js
 *.xml
+.idea/workspace.xml
+js/controllers/LeaveApplicationController.js
