@@ -82,6 +82,7 @@ class serviceConnection
             $data = json_encode($inputData);
         }
 
+
         //  Initiate curl
         $ch = curl_init();
 

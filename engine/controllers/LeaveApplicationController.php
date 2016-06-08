@@ -23,7 +23,6 @@ class LeaveApplicationController extends Controller
 
         $this->view->add = "OFFICIAL TEST";
         $this->view->render();
-        var_dump("OFFICIAL");
 
     }
 
@@ -32,7 +31,6 @@ class LeaveApplicationController extends Controller
         $this->view->add = "UNOFFICIAL TEST";
         $this->view->render();
 
-        var_dump("UNOFFICIAL");
     }
 
     public function pendingRequests(){
@@ -40,8 +38,6 @@ class LeaveApplicationController extends Controller
 
         $this->view->add = "PENDING TEST";
         $this->view->render();
-
-        var_dump("PENDING");
 
     }
 

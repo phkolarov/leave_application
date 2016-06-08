@@ -36,7 +36,7 @@
 
     <div id="InfoHeading" class="row">
         <div class="pull-left">
-            <h4>Добавяне отнемане на официален отпуск</h4>
+            <h4>Добавяне отнемане на отпуск</h4>
         </div>
         <div class="pull-right">
         </div>
@@ -47,25 +47,25 @@
 
             <div class="col-lg-3">
                 <label>Служител</label>
-                <input type="text" disabled="disabled" class="form-control">
+                <input  id="unEmployeeInput"  type="text" disabled="disabled" class="employee form-control">
             </div>
         </div>
         <div class="row">
 
             <div class="col-lg-3">
                 <label>Дни</label>
-                <input type="number" class="form-control">
+                <input id="unDays" type="number" class="form-control">
 
             </div>
             <div class="col-lg-3">
                 <label>Часове</label>
-                <input type="number" class="form-control">
+                <input id="unHours" type="number" class="form-control">
 
 
             </div>
             <div class="col-lg-3">
                 <label>Минути</label>
-                <input type="number" class="form-control">
+                <input id="unMinutes" type="number" class="form-control">
             </div>
 
 
@@ -73,20 +73,20 @@
         <div class="row">
            <div class="col-lg-12">
                <label>Описание</label>
-               <textarea id="officialDescription" type="text" class="form-control"></textarea>
+               <textarea id="unOfficialDescription" type="text" class="form-control"></textarea>
            </div>
         </div>
         <div class="row">
-            <div class="col-lg-12" id="officialButtonsWrapper">
-                <button class="btn btn-sm btn-success">Добави</button>
-                <button class="btn btn-sm btn-warning">Отнеми</button>
+            <div class="col-lg-12" id="unOfficialButtonsWrapper">
+                <button id="addUnofficial" class="btn btn-sm btn-success">Добави</button>
+                <button id="substrUnofficial" class="btn btn-sm btn-warning">Отнеми</button>
             </div>
         </div>
     </div>
 
     <div id="InfoHeading" class="row">
         <div class="pull-left">
-            <h4>Добавяне отнемане на отпуск </h4>
+            <h4>Добавяне отнемане на официален отпуск </h4>
         </div>
         <div class="pull-right">
         </div>
@@ -97,18 +97,18 @@
 
             <div class="col-lg-3">
                 <label>Служител</label>
-                <input type="text" disabled="disabled" class="form-control">
+                <input id="offEmployeeInput" type="text"disabled="disabled" class="employee form-control">
             </div>
             <div class="col-lg-3">
                 <label>Дни</label>
-                <input type="number" class="form-control">
+                <input id="officialDays" type="number" class="form-control">
 
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12" id="unOfficialButtonsWrapper">
-                <button class="btn btn-sm btn-success">Добави</button>
-                <button class="btn btn-sm btn-warning">Отнеми</button>
+            <div class="col-lg-12" id="officialButtonsWrapper">
+                <button id="addOfficial" class="btn btn-sm btn-success">Добави</button>
+                <button id="substrOfficial" class="btn btn-sm btn-warning">Отнеми</button>
             </div>
         </div>
     </div>

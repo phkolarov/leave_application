@@ -94,11 +94,10 @@ class UserController extends Controller
         }
     }
 
-
     public function logout()
     {
 
-        if (isset($_SESSION['session'])) {
+        if (isset($_COOKIE['session'])) {
 
             unset($_COOKIE['session']);
             unset($_SESSION['session']);
@@ -107,9 +106,10 @@ class UserController extends Controller
             setcookie('username', null, -1, '/');
             unset($_COOKIE['password']);
             setcookie('password', null, -1, '/');
+            unset($_COOKIE['userID']);
+            setcookie('userID', null, -1, '/');
             unset($_COOKIE['isAdmin']);
             setcookie('isAdmin', null, -1, '/');
-
 
             header("Location: /leave_application/user/login");
             exit;
@@ -119,8 +119,24 @@ class UserController extends Controller
 
     public function changeUserParams()
     {
+        $userRepo = new UserRepository();
+        $password = hash('sha512', $_POST['password']);
+        $names = $_POST['names'];
+        $userId = $_COOKIE['userID'];
+        $email = $_POST['email'];
+        $username = $_COOKIE['username'];
 
-        var_dump("USER PARAMS");
+        $result = $userRepo->changeUserParams($userId,$username,$names,$email,$password);
+        $jsonOutput = json_decode($result);
+
+        if(isset($jsonOutput->result)){
+
+            header("Location: /leave_application/user/profile/changeParams&isValid=true");
+            exit;
+        }else{
+            header("Location: /leave_application/user/profile/changeParams&isValid=false");
+            exit;
+        }
     }
 
     public function profile(){

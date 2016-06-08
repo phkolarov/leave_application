@@ -38,9 +38,11 @@
 
                 <div id="previewBox">
 
-                    <p id="previewDate"><strong>Дата:</strong> 12-12-12</p>
+                    <p ><strong>Дата:</strong> <span id="previewDate"></span></p>
 
-                    <p id="previewMessage"><strong>Описание:</strong> MNOGO VAJEN PRAZNIK</p>
+                    <p ><strong>Тип:</strong> <span id="previewType"> </span></p>
+
+                    <p ><strong>Описание:</strong> <span id="previewMessage"></span></p>
 
                 </div>
             </div>

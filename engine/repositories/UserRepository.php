@@ -22,7 +22,7 @@ class UserRepository
         $hashedPassword = hash('sha512', $password);
         $loginUri = "User/AuthorizeUser?UserName=$username&Password=$hashedPassword";
         $connection = new serviceConnection();
-        $empty = array("null"=>"null");
+        $empty = array("null" => "null");
         $data = $connection->postData($loginUri, $empty);
         $tempObject = json_decode($data);
 
@@ -71,14 +71,39 @@ class UserRepository
         $tempObject = json_decode($data);
 
 
-        if(isset($tempObject->result)){
+        if (isset($tempObject->result)) {
 
             header("Location: /leave_application/administration/usersList/added=true");
-        }else{
+        } else {
 
             header("Location: /leave_application/administration/usersList/added=false");
         }
 
+    }
+
+    public function changeUserParams($userId, $username, $names, $email, $password)
+    {
+
+
+        $changeUserUrl = "User/EditUser";
+        $session = $_COOKIE['session'];
+
+        $userObject = array(
+            "ID" => $userId,
+            "UserName" => $username,
+            "Password" => $password,
+            "FullName" => $names,
+            "Email" => $email,
+            "VacationMinutes" => 0,
+            "OfficialVacationDays" => 0,
+            "Role" => $_COOKIE['userID'],
+            "isActive" => true
+        );
+
+        $connection = new serviceConnection($session);
+        $data = $connection->postData($changeUserUrl, $userObject);
+
+        return $data;
     }
 
 }

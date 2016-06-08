@@ -4,13 +4,13 @@ appCh.AdministrationController = (function () {
 
     function editRemainingLeave() {
 
+        let session = app.connect.cookie.get("session");
+        let adminId = app.connect.cookie.get("userID");
 
         function loadUsersList(param) {
 
 
             let tableString = "";
-            let session = app.connect.cookie.get("session");
-
             let uri = "User/GetAllUsers";
 
             if (param == true || param == false) {
@@ -35,20 +35,241 @@ appCh.AdministrationController = (function () {
                     let hours = (parseInt((parseInt(userElem.VacationMinutes) / 60) % 8));
                     let tempMinutes = (((parseInt(userElem.VacationMinutes) / 60) % 8) + "").slice(+2);
                     let minutesLeft = parseInt(parseFloat("0." + tempMinutes) * 60);
-
-
-                    let rowString = "<tr name='"+ userElem.FullName +"' username='"+ userElem.UserName+"' officialLeave='"+ userElem.OfficialVacationDays+"'>" +
+                    let rowString = "<tr class='userListRow' userId='"+ userElem.ID +"' name='"+ userElem.FullName +"' username='"+ userElem.UserName+"' officialLeave='"+ userElem.OfficialVacationDays+"'>" +
                         "<td>" + userElem.FullName + "</td>" +
                         "<td>" + userElem.UserName + "</td>" +
                         "<td>" + dayd + " дни " + hours + " часа " + minutesLeft + " минути " + "</td>" +
-                        "<td>" + userElem.OfficialVacationDays + "</td>" +
+                        "<td>" + userElem.OfficialVacationDays + " дни </td>" +
                         "</tr>";
 
                     tableString += rowString;
+
                 }
 
 
-                $("#usersListTableBody").html(tableString);
+                $('#usersListTableBody').html(tableString);
+
+                $('.userListRow').on('click', function () {
+
+                    $(".employee").val($(this).attr("name"));
+                    $("#officialDays").val($(this).attr("officialLeave"));
+                    $("#unEmployeeInput").attr("employeeId",$(this).attr("userId"));
+                    $("#offEmployeeInput").attr("employeeId",$(this).attr("userId"));
+                });
+
+                $('#addUnofficial').on('click', function () {
+
+                    let userId = $("#unEmployeeInput").attr("employeeId");
+                    let description = $("#unOfficialDescription").val();
+                    let days = (parseInt($("#unDays").val()) * 8) * 60;
+                    let hours = (parseInt($("#unDays").val()) *  60);
+                    let minutes = parseInt($("#unMinutes").val()) ;
+
+                    let totalMinutes = 0;
+
+                    if(!isNaN(days)){
+                        totalMinutes += days;
+                    }
+                    if(!isNaN(hours)){
+                        totalMinutes += hours;
+                    }
+                    if(!isNaN(minutes)){
+                        totalMinutes += minutes;
+                    }
+
+
+
+                    if(!isNaN(userId)){
+
+                        let unofficialObject =	{
+                            "ChangedFrom": adminId,
+                            "UserID" : userId,
+                            "Minutes" : totalMinutes,
+                            "Description": description
+                        };
+
+                        app.connect.post("User/EditMinutes",{
+                            "Content-type": "application/json",
+                            "SessionId" : session
+                        }, unofficialObject).then(function (data) {
+
+                            data = JSON.parse(data);
+
+                            if(data.results){
+
+                                app.system.systemMessage("Успешно добавена отпуска");
+                                console.log(data);
+                            }else {
+
+                                app.system.systemMessage("Неуспешно добавена отпуска");
+                                console.log(data);
+
+                            }
+
+                        })
+
+                    }else {
+
+
+                        app.system.systemMessage("Моля изберете служител");
+                    }
+
+
+
+
+                })
+
+                $('#substrUnofficial').on('click', function () {
+                    let adminId = app.connect.cookie.get("userID");
+                    let userId = $("#unEmployeeInput").attr("employeeId");
+                    let description = $("#unOfficialDescription").val();
+                    let days = (parseInt($("#unDays").val()) * 8) * 60;
+                    let hours = (parseInt($("#unDays").val()) *  60);
+                    let minutes = parseInt($("#unMinutes").val()) ;
+
+                    let totalMinutes = 0;
+
+                    if(!isNaN(days)){
+                        totalMinutes += days;
+                    }
+                    if(!isNaN(hours)){
+                        totalMinutes += hours;
+                    }
+                    if(!isNaN(minutes)){
+                        totalMinutes += minutes;
+                    }
+
+                    totalMinutes = (totalMinutes * -1);
+
+
+                    if(!isNaN(userId)){
+
+                        let unofficialObject =	{
+                            "ChangedFrom": adminId,
+                            "UserID" : userId,
+                            "Minutes" : totalMinutes,
+                            "Description": description
+                        };
+
+                        app.connect.post("User/EditMinutes",{
+                            "Content-type": "application/json",
+                            "SessionId" : session
+                        }, unofficialObject).then(function (data) {
+
+
+                            if(data.results){
+
+                                app.system.systemMessage("Успешно отнета отпуска",true);
+                            }else {
+
+                                app.system.systemMessage("Неуспешно отнета отпуска");
+                            }
+                        })
+
+                    }else {
+
+
+                        app.system.systemMessage("Моля изберете служител");
+                    }
+
+                });
+
+                $('#addOfficial').on('click', function () {
+
+
+                    let employeeId = $('#offEmployeeInput').attr('employeeId');
+
+                    if(!isNaN(employeeId)){
+
+
+                        let days = 0;
+
+
+                        if($("#officialDays").val()){
+
+                            days += parseInt($("#officialDays").val());
+                        }
+
+                        let employeeObject ={
+                            "ChangedFrom": adminId,
+                            "UserID" : employeeId,
+                            "Days" : days,
+                            "Description": ""
+                        };
+
+                        app.connect.post("User/EditOfficialVacation", {
+                            "Content-type" : "application/json",
+                            "SessionId": session
+                        }, employeeObject).then(function (data) {
+
+
+                            if(data.result){
+
+                                app.system.systemMessage("Успешно добавена официална отпуска",true);
+
+                            }else{
+
+                                app.system.systemMessage("Неуспешно добавена официална отпуска");
+                            }
+                        })
+
+                    }else{
+
+
+                        app.system.systemMessage("Моля изберете служител");
+                    }
+
+
+
+
+                })
+
+                $('#substrOfficial').on('click', function () {
+
+
+                    let employeeId = $('#offEmployeeInput').attr('employeeId');
+
+                    if(!isNaN(employeeId)){
+
+
+                        let days = 0;
+
+
+                        if($("#officialDays").val()){
+
+                            days += parseInt($("#officialDays").val());
+                        }
+
+                        days = (days * -1);
+
+                        let employeeObject ={
+                            "ChangedFrom": adminId,
+                            "UserID" : employeeId,
+                            "Days" : days,
+                            "Description": ""
+                        };
+
+                        app.connect.post("User/EditOfficialVacation", {
+                            "Content-type" : "application/json",
+                            "SessionId": session
+                        }, employeeObject).then(function (data) {
+
+                            data = JSON.parse(data);
+                            if(data.result){
+
+                                app.system.systemMessage("Успешно отнета официална отпуска",true);
+
+                            }else{
+
+                                app.system.systemMessage("Неуспешно отнета официална отпуска");
+                            }
+                        })
+
+                    }else{
+
+                        app.system.systemMessage("Моля изберете служител");
+                    }
+                })
 
             })
 
@@ -56,6 +277,9 @@ appCh.AdministrationController = (function () {
         }
 
         loadUsersList(true);
+
+
+
     }
 
     function usersList() {
@@ -268,14 +492,23 @@ appCh.AdministrationController = (function () {
                 app.connect.post("Holiday/AddOfficialHoliday", {
                     "Content-type": "application/json",
                     "SessionId": session
-                }, holyProject).then(function () {
+                }, holyProject).then(function (data) {
 
-                    loadHolidays();
-                    loadYearHolidays();
-                    $("#datepicker").datepicker().val("");
-                    $("#isWorked").val("");
-                    $("#description").val("");
-                    app.system.systemMessage("Успешно добавен почивен ден");
+                    data = JSON.parse(data);
+
+                    if(data.result){
+                        loadHolidays();
+                        loadYearHolidays();
+                        $("#datepicker").datepicker().val("");
+                        $("#isWorked").val("");
+                        $("#description").val("");
+                        app.system.systemMessage("Успешно добавен почивен ден");
+                    }else{
+
+                        app.system.systemMessage("Неуспешно добавен почивен ден",true);
+
+                    }
+
                 });
 
             }
@@ -316,16 +549,21 @@ appCh.AdministrationController = (function () {
                     app.connect.delete("Holiday/DeleteOfficialHolidayByID?ID=" + holyId, {
                         "Content-type": "application/json",
                         "SessionId": session
-                    }).then(function () {
+                    }).then(function (data) {
 
-                        loadHolidays();
-                        loadYearHolidays();
-                        app.system.systemMessage("Успешно изтрит почивен ден", true);
+                        data = JSON.parse(data);
+
+                        if(data.result){
+                            loadHolidays();
+                            loadYearHolidays();
+                            app.system.systemMessage("Успешно изтрит почивен ден", true);
+
+                        }else{
+                            app.system.systemMessage("Неуспешно изтрит почивен ден", true);
+                        }
+
 
                     });
-
-                    console.log($(this)[0].id);
-
                 });
             });
         }
@@ -341,28 +579,74 @@ appCh.AdministrationController = (function () {
                 let today = new Date();
                 let y = today.getFullYear();
                 let m = today.getMonth();
+
                 let date;
                 let dateArray = [];
                 let holidayDates = JSON.parse(data);
 
                 for (var i in holidayDates.result) {
 
-                    tempDate = moment(holidayDates.result[i]);
+                    let tempDate = moment(holidayDates.result[i]);
                     let date = tempDate.format("L");
                     dateArray.push(date);
                 }
 
                 $('#full-year').multiDatesPicker({
+                    onSelect: function(date) {
+
+
+                    let currentDate = moment(date);
+
+
+                        app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'),{
+                            "Content-type": "application/json",
+                            "SessionId": session
+                        }).then(function (data) {
+
+                            data = JSON.parse(data);
+
+                            if(data.result && data.result != null){
+
+                                let outputDate = moment(data.result.Date);
+                                let type = 'Работен';
+
+                                if(type == false){
+
+                                    type = 'Неработен'
+                                }
+                                $('#previewDate').text(outputDate.format('L'));
+
+                                $('#previewType').text(type);
+
+                                $('#previewMessage').text(data.result.Description);
+                            }
+
+
+                        });
+
+                        //alert(date);
+                    },
                     addDates: dateArray,
                     dateFormat: "m/d/yy",
                     numberOfMonths: [1, 3],
                     defaultDate: m + '/1/' + y
                 });
+
             });
         }
 
         loadHolidays();
         loadYearHolidays();
+
+
+       $(document).ready(function () {
+
+           $('td').hover(function (data) {
+
+
+               console.log(data)
+           })
+       })
     }
 
     function officialLeaveReport() {
@@ -467,8 +751,8 @@ appCh.AdministrationController = (function () {
 
         function datePicker() {
 
-            let year = 2013; //$("#year").val();
-11;//       let month = 11;//$("#month").val();
+            let year = $("#year").val();
+            let month = $("#month").val();
             let lastDate = new Date(year, month, 0);
 
             app.connect.get("Request/GetRequestsForPeriod?DateFrom=" + year + "-" + month + "-1&DateTo=" + year + "-" + month + "-" + lastDate.getDate() + "&UserID=-1",

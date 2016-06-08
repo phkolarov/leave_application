@@ -9,6 +9,24 @@ appCh.UserController = (function () {
 
     function profile(){
 
+
+        let url = location.pathname;
+
+        let isSaved = url.match(/changeParams&isValid=((\btrue\b)|(\bfalse\b))/);
+
+        if(isSaved != undefined){
+
+            console.log();
+
+            if(isSaved[1] == 'true'){
+
+                app.system.systemMessage("Успешно обновен профил");
+            }else {
+                app.system.systemMessage("Неуспешно обновен профил");
+            }
+        }
+
+
         var id = app.connect.cookie.get("userID");
         var session = app.connect.cookie.get("session");
         var isActive = app.connect.cookie.get("isActive");
@@ -35,37 +53,37 @@ appCh.UserController = (function () {
 
         });
 
-        $("#saveUserInfo").on('click', function () {
-
-            var userObject = {};
-            var session = app.connect.cookie.get("session");
-
-            userObject.ID = app.connect.cookie.get("userID");
-            userObject.UserName = app.connect.cookie.get("username");
-            userObject.Password = null;
-            userObject.FullName = $('#names').val();
-            userObject.Email = $('#email').val();
-            userObject.Role = app.connect.cookie.get("role");
-            userObject.isActive = isActive;
-
-            var response = app.connect.post("User/EditUser",{"Content-type": "application/json", SessionId : session},userObject);
-
-            response.then(function (data) {
-
-                if(data){
-
-                    var resultObject = JSON.parse(data);
-
-                    if(resultObject.result){
-
-                        app.system.systemMessage("Успешно променен профил");
-                    }else{
-                        app.system.systemMessage("Проблем при промяна на профил",true);
-                    }
-
-                }
-            })
-        })
+        //$("#saveUserInfo").on('click', function () {
+        //
+        //    var userObject = {};
+        //    var session = app.connect.cookie.get("session");
+        //
+        //    userObject.ID = app.connect.cookie.get("userID");
+        //    userObject.UserName = app.connect.cookie.get("username");
+        //    userObject.Password = null;
+        //    userObject.FullName = $('#names').val();
+        //    userObject.Email = $('#email').val();
+        //    userObject.Role = app.connect.cookie.get("role");
+        //    userObject.isActive = isActive;
+        //
+        //    var response = app.connect.post("User/EditUser",{"Content-type": "application/json", SessionId : session},userObject);
+        //
+        //    response.then(function (data) {
+        //
+        //        if(data){
+        //
+        //            var resultObject = JSON.parse(data);
+        //
+        //            if(resultObject.result){
+        //
+        //                app.system.systemMessage("Успешно променен профил");
+        //            }else{
+        //                app.system.systemMessage("Проблем при промяна на профил",true);
+        //            }
+        //
+        //        }
+        //    })
+        //})
     }
 
     return {

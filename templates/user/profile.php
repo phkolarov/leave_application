@@ -21,20 +21,22 @@
 
         <div id="userInformationContainer" class="col-lg-6">
 
-            <p><strong>Статус на профила: <span id="profileStatus"></span></strong></p>
-            <label>Имена:</label>
-            <input id="names"  class="form-control">
-            <label>Потребителско име:</label>
-            <input id="username" disabled class="form-control">
-            <label>Email адрес:</label>
-            <input id="email" class="form-control">
-            <label>Роля</label>
-            <input id="role" disabled class="form-control">
-            <label>Парола:</label>
-            <input type="password" class="form-control">
-            <label>Повтори парола:</label>
-            <input type="password" class="form-control">
-            <input type="button" value="Запази" class="btn btn-success" id="saveUserInfo">
+            <form method="post" action="/leave_application/user/changeUserParams">
+                <p><strong>Статус на профила: <span id="profileStatus"></span></strong></p>
+                <label>Имена:</label>
+                <input id="names" name="names"  class="form-control">
+                <label>Потребителско име:</label>
+                <input id="username"  name="username" disabled class="form-control">
+                <label>Email адрес:</label>
+                <input id="email"  name="email" class="form-control">
+                <label>Роля</label>
+                <input id="role"  disabled class="form-control">
+                <label>Парола:</label>
+                <input type="password"  name="password" class="form-control">
+                <label>Повтори парола:</label>
+                <input type="password"  name="repassword" class="form-control">
+                <input type="submit" value="Запази" class="btn btn-success" id="saveUserInfo">
+            </form>
         </div>
     </div>
 

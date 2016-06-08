@@ -16,8 +16,6 @@ class HomeController extends Controller
     public function index(){
 
         $this->view->render();
-
         //var_dump($_COOKIE['session']);
-        var_dump("home index");
     }
 }

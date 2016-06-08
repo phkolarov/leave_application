@@ -51,7 +51,7 @@
                     <li><a href="#" data-toggle="dropdown">Справки<b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/leave_application/reports/myOfficialVacations" tabindex="-1">Официални отпуски</a></li>
-                            <li><a href="/leave_application/reports/officialHolidays" tabindex="-1">Молба за отпуск</a></li>
+                            <li><a href="/leave_application/reports/officialHolidays" tabindex="-1">Официални празници</a></li>
                         </ul>
                     </li>
                     <li><a href="/leave_application/leaveApplication/pendingRequests">Чакащи молби</a>

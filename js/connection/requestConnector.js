@@ -27,7 +27,6 @@ app.connect = (function () {
 
     function connector(url, method, headers, data) {
 
-        console.log( baseServiceURL + url);
          return $.ajax({
             url: baseServiceURL + url,
             method: method,
