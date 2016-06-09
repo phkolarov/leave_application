@@ -57,8 +57,8 @@
     </div>
     <hr/>
     <div class="row ">
-        <div>
-            <table id="unOfficialLeaveTable" class="table table-bordered table-hover">
+        <div class="col-lg-12" id="unOfficialLeaveTable">
+            <table  class="table table-bordered table-hover">
                 <thead>
                 <th>Заявена на</th>
                 <th>Служител</th>
