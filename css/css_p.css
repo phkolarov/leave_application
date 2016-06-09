@@ -13,13 +13,13 @@ body {
 
     margin-bottom: 100px;
 }
+
 html {
     /*background-repeat: no-repeat;*/
     background-image: url('images/blue-block.jpg');
     /*background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));*/
     height: auto;
 }
-
 
 .card-container.card {
     max-width: 350px;
@@ -35,16 +35,18 @@ html {
     user-select: none;
     cursor: default;
 }
-.content-wrapper{
+
+.content-wrapper {
 
     background-color: #f8f8f8;
     border-radius: 5px;
 }
 
-#login{
+#login {
 
     background-color: transparent;
 }
+
 /*
  * Card component
  */
@@ -123,8 +125,8 @@ html {
 .form-signin .form-control:focus {
     border-color: rgb(104, 145, 162);
     outline: 0;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
-    box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgb(104, 145, 162);
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgb(104, 145, 162);
 }
 
 .btn.btn-signin {
@@ -157,16 +159,15 @@ html {
 
 .forgot-password:hover,
 .forgot-password:active,
-.forgot-password:focus{
+.forgot-password:focus {
     color: rgb(88, 109, 191);
 }
-
 
 .dropdown-submenu {
     position: relative;
 }
 
-.dropdown-submenu>.dropdown-menu {
+.dropdown-submenu > .dropdown-menu {
     top: 0;
     left: 100%;
     margin-top: -6px;
@@ -176,11 +177,11 @@ html {
     border-radius: 0 6px 6px 6px;
 }
 
-.dropdown-submenu:hover>.dropdown-menu {
+.dropdown-submenu:hover > .dropdown-menu {
     display: block;
 }
 
-.dropdown-submenu>a:after {
+.dropdown-submenu > a:after {
     display: block;
     content: " ";
     float: right;
@@ -194,7 +195,7 @@ html {
     margin-right: -10px;
 }
 
-.dropdown-submenu:hover>a:after {
+.dropdown-submenu:hover > a:after {
     border-left-color: #fff;
 }
 
@@ -202,17 +203,13 @@ html {
     float: none;
 }
 
-.dropdown-submenu.pull-left>.dropdown-menu {
+.dropdown-submenu.pull-left > .dropdown-menu {
     left: -100%;
     margin-left: 10px;
     -webkit-border-radius: 6px 0 6px 6px;
     -moz-border-radius: 6px 0 6px 6px;
     border-radius: 6px 0 6px 6px;
 }
-
-
-
-
 
 /*RESPONSIVE*/
 
@@ -223,86 +220,103 @@ html {
         padding: 15px 5px;
     }
 }
-.test{
+
+.test {
     border: 1px solid black;
 }
-.PageWrapper{
+
+.PageWrapper {
 
     display: block;
     margin-top: 20px;
     padding-bottom: 50px;
 }
-.PageWrapper div h5{
+
+.PageWrapper div h5 {
     margin-right: 10px;
     line-height: 20px;
 }
-.PageWrapper div h4{
+
+.PageWrapper div h4 {
     margin-left: 15px;
     line-height: 20px;
 }
-.ui-pnotify-title{
+
+.ui-pnotify-title {
     background-color: transparent;
     color: black;
 }
-#InfoHeading{
+
+#InfoHeading {
     background-color: #4E667D;
     color: white;
 }
+
 /*-------------------------*/
-#profileImageContainer{
+#profileImageContainer {
 
     margin-top: 20px;
 
 }
-#profileImageContainer img{
+
+#profileImageContainer img {
     vertical-align: top;
     border: 1px solid black;
     margin-bottom: 10px;
 }
-#profileImageContainer label{
+
+#profileImageContainer label {
 
     height: 30px;
 }
-#saveUserInfo{
+
+#saveUserInfo {
     margin-top: 10px;
 }
-#userInformationContainer{
 
+#userInformationContainer {
 
     margin-top: 20px;
 }
-#userInformationContainer label{
+
+#userInformationContainer label {
     margin-top: 5px;
 }
+
 #profileStatus {
     color: #5cb85c;
 }
-#profileImage{
+
+#profileImage {
     width: 150px;
 }
+
 /*-------------------------*/
-#leaveReportContainer{
+#leaveReportContainer {
 
     margin-top: 10px;
 }
 
-#yearOption{
+#yearOption {
 
     display: inline-block;
     width: 80px;
 }
-.innerTableContainer{
+
+.innerTableContainer {
 
     overflow: auto;
     display: block;
     max-height: 400px;
 }
+
 /*-------------------------*/
-#requestReportContainer{
+#requestReportContainer {
 
     margin-top: 10px;
 }
-#monthOption{
+
+#monthOption {
 
     margin-left: 30px;
     display: inline-block;
@@ -310,32 +324,37 @@ html {
 }
 
 /*-------------------------*/
-#officialHolidaysAdministration{
+#officialHolidaysAdministration {
 
     margin-top: 20px;
     margin-bottom: 20px;
 }
-#holidaysAdminOptions{
+
+#holidaysAdminOptions {
 
     margin-bottom: 10px;
 }
-#workedOption{
+
+#workedOption {
     margin-top: 10px;
 }
 
-#description{
+#description {
     position: static;
     max-width: 390px;
     min-height: 130px;
 }
-.datePreview{
+
+.datePreview {
 
     display: inline-block;
 }
-.ui-datepicker-inline{
+
+.ui-datepicker-inline {
     height: 230px;
 }
-.datePreviewContainer{
+
+.datePreviewContainer {
     text-align: left;
 }
 
@@ -344,15 +363,18 @@ html {
     background-color: #8cbbff !important;
     color: white !important;
 }
-.ui-state-highlight{
+
+.ui-state-highlight {
     border: 3px solid #e84000 !important;
     /*background-color: #8cbbff !important;*/
 }
-.ui-state-highlight a{
+
+.ui-state-highlight a {
     color: white !important;
     background-color: #8cbbff !important;
 }
-#previewBox{
+
+#previewBox {
     max-width: 715px;
     margin-top: 10px;
     background-color: white;
@@ -361,40 +383,47 @@ html {
     padding: 10px;
 
 }
-#monthHolidays{
+
+#monthHolidays {
     max-width: 1135px;
     max-height: 400px;
     overflow: auto;
 }
-#addHoliday{
+
+#addHoliday {
     margin-top: 25px;
 }
+
 /*-------------------------------*/
 
-#userAdministrationInfoUsersWrapper{
-
+#userAdministrationInfoUsersWrapper {
 
     margin-top: 20px;
 }
-#usersList{
+
+#usersList {
     margin-top: 10px;
     overflow: auto;
     display: block;
     max-height: 500px;
 }
-#userAdministrationUsersWrapper{
+
+#userAdministrationUsersWrapper {
     margin-top: 20px;
 }
-#userRoleOptions{
-}
-#isActive{
 
+#userRoleOptions {
+}
+
+#isActive {
 
 }
-#addUser,#generatePassword{
 
-margin-top: 10px;
+#addUser, #generatePassword {
+
+    margin-top: 10px;
 }
+
 /*--------------------------*/
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
@@ -402,39 +431,44 @@ margin-top: 10px;
     color: white;
 }
 
-#addRemoveOfficialLeave{
+#addRemoveOfficialLeave {
 
     margin-top: 20px;
     margin-bottom: 10px;
 }
-#officialDescription{
+
+#officialDescription {
 
     max-height: 200px;
 }
-#addRemoveLeave{
+
+#addRemoveLeave {
 
     margin-top: 20px;
 }
-#unOfficialButtonsWrapper{
+
+#unOfficialButtonsWrapper {
 
     margin-top: 10px;
 }
-#officialButtonsWrapper{
+
+#officialButtonsWrapper {
     margin-top: 10px;
 }
 
 /*------------------------------*/
 
-#pendingRequestsWrapper{
+#pendingRequestsWrapper {
 
 }
 
-    #officialRequestReportContainer{
+#officialRequestReportContainer {
 
-        margin-top: 10px;
-    }
+    margin-top: 10px;
+}
+
 /*-------------------------------*/
-#fullOfficialReportContainer{
+#fullOfficialReportContainer {
 
     margin-top: 30px;
     margin-bottom: 30px;
@@ -452,7 +486,7 @@ margin-top: 10px;
 
 }
 
-#previewBoxReport{
+#previewBoxReport {
 
     margin-top: 10px;
     width: 98.5%;
@@ -461,4 +495,47 @@ margin-top: 10px;
     border-radius: 3px;
     padding: 10px;
     margin-left: 10px;
+}
+
+/*------------------*/
+.brighttheme.ui-pnotify-container {
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+#pending {
+    z-index: -10;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+#pending img {
+    position: relative;
+    height: 70px;
+    width: 70px;
+    vertical-align: middle;
+    margin-left: auto;
+    margin-right: auto;
+    display: table-cell;
+    margin-top: 20%;
+
+}
+/*---------------------*/
+#unOfficialLeaveInfo{
+    margin-top: 10px;
+    display: inline-block;
+
+}
+#officialLeaveInfo{
+    display: inline-block;
+    margin-top: 10px;
 }

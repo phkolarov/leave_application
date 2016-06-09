@@ -66,7 +66,7 @@ class AnnotationParser
 
         if((!isset($_COOKIE['role']) || $_COOKIE['role'] != 'admin') && isset($_COOKIE['session'])){
             ob_end_clean();
-            header("Location: /leave_application/user/index?message=Невалидни права!");
+            header("Location: /leave_application/home/index/status?message=Невалидни права!");
             die();
         }
     }

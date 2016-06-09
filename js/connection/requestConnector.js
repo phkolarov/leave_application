@@ -27,11 +27,28 @@ app.connect = (function () {
 
     function connector(url, method, headers, data) {
 
-         return $.ajax({
+        return $.ajax({
             url: baseServiceURL + url,
             method: method,
             headers: headers,
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
+            beforeSend: function () {
+
+                $('#pending').css({
+                    'z-index': 10,
+                    'display': 'block',
+                    'background-color': 'rgba(39, 39, 39, 0.29)'
+                });
+            },
+            complete: function(data){
+
+                $('#pending').css({
+                    'z-index': -10,
+                    'display': 'none',
+                    'background-color': 'transparent'
+                });
+
+            }
         });
     }
 

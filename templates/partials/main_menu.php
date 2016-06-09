@@ -37,6 +37,8 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="#">Отпуски</a>
+
+
             </div>
 
             <div class="collapse navbar-collapse" id="navbar-collapse-2">
@@ -54,10 +56,10 @@
                             <li><a href="/leave_application/reports/officialHolidays" tabindex="-1">Официални празници</a></li>
                         </ul>
                     </li>
-                    <li><a href="/leave_application/leaveApplication/pendingRequests">Чакащи молби</a>
+                    <li class="admin"><a href="/leave_application/leaveApplication/pendingRequests">Чакащи молби</a>
 
                     </li>
-                    <li><a href="" data-toggle="dropdown">Администрация<b class="caret"></b></a>
+                    <li class="admin"><a href="" data-toggle="dropdown">Администрация<b class="caret"></b></a>
 
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
                             <li><a href="/leave_application/administration/editRemainingLeave">Редакция на оставаща отпуска</a></li>
@@ -106,6 +108,33 @@
         </div>
     </nav>
 
+<script>
+
+    function getCookie(cname) {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0)==' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length,c.length);
+            }
+        }
+        return "";
+    }
+
+    console.log(getCookie('role'));
+    if(getCookie('role') != 'admin'){
+
+        $('.admin').css({
+
+            display: 'none'
+        })
+
+    }
+</script>
 <!--<div class="container-fluid">-->
 <!--    <nav class="navbar navbar-default">-->
 <!--        <div class="container">-->

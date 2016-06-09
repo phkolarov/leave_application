@@ -22,6 +22,12 @@ appCh.AdministrationController = (function () {
             app.connect.get(uri, {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
             }).then(function (data) {
 
                 usersListObject = JSON.parse(data);
@@ -91,7 +97,13 @@ appCh.AdministrationController = (function () {
                         app.connect.post("User/EditMinutes",{
                             "Content-type": "application/json",
                             "SessionId" : session
-                        }, unofficialObject).then(function (data) {
+                        }, unofficialObject).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
+                        }).then(function (data) {
 
                             data = JSON.parse(data);
 
@@ -154,7 +166,13 @@ appCh.AdministrationController = (function () {
                         app.connect.post("User/EditMinutes",{
                             "Content-type": "application/json",
                             "SessionId" : session
-                        }, unofficialObject).then(function (data) {
+                        }, unofficialObject).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
+                        }).then(function (data) {
 
 
                             if(data.results){
@@ -200,7 +218,13 @@ appCh.AdministrationController = (function () {
                         app.connect.post("User/EditOfficialVacation", {
                             "Content-type" : "application/json",
                             "SessionId": session
-                        }, employeeObject).then(function (data) {
+                        }, employeeObject).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
+                        }).then(function (data) {
 
 
                             if(data.result){
@@ -252,7 +276,13 @@ appCh.AdministrationController = (function () {
                         app.connect.post("User/EditOfficialVacation", {
                             "Content-type" : "application/json",
                             "SessionId": session
-                        }, employeeObject).then(function (data) {
+                        }, employeeObject).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
+                        }).then(function (data) {
 
                             data = JSON.parse(data);
                             if(data.result){
@@ -271,6 +301,16 @@ appCh.AdministrationController = (function () {
                     }
                 })
 
+                $('tr').on('click', function () {
+
+
+                    $('.table-hover > tbody > tr').css('background-color', 'transparent');
+                    $('.table-hover > tbody > tr').css('color', 'black');
+
+                    $(this).css('background-color','darkgrey')
+                    $(this).css('color','white')
+                    console.log(121221212121);
+                })
             })
 
 
@@ -351,6 +391,12 @@ appCh.AdministrationController = (function () {
             app.connect.get(uri, {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
             }).then(function (data) {
 
                 usersListObject = JSON.parse(data);
@@ -492,7 +538,13 @@ appCh.AdministrationController = (function () {
                 app.connect.post("Holiday/AddOfficialHoliday", {
                     "Content-type": "application/json",
                     "SessionId": session
-                }, holyProject).then(function (data) {
+                }, holyProject).error(function (data) {
+
+                    let dataObject = JSON.parse(data.responseJSON);
+
+                    app.system.systemMessage(dataObject.error);
+
+                }).then(function (data) {
 
                     data = JSON.parse(data);
 
@@ -519,6 +571,12 @@ appCh.AdministrationController = (function () {
             app.connect.get("Holiday/GetAllOfficialHolidaysForYear?year=2016", {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
             }).then(function (data) {
 
                 let holidaysTableString = "";
@@ -574,6 +632,12 @@ appCh.AdministrationController = (function () {
             app.connect.get("Holiday/GetAllHolidaysForPeriod?DateFrom=2016-1-1&DateTo=2016-12-30", {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
             }).then(function (data) {
 
                 let today = new Date();
@@ -601,6 +665,12 @@ appCh.AdministrationController = (function () {
                         app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'),{
                             "Content-type": "application/json",
                             "SessionId": session
+                        }).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
                         }).then(function (data) {
 
                             data = JSON.parse(data);
@@ -686,7 +756,13 @@ appCh.AdministrationController = (function () {
                     "Content-type": "application/json",
                     "SessionId": session
                 }
-            ).then(function (data) {
+            ).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
+            }).then(function (data) {
 
                 tableSource = "";
                 let offleaveObject = JSON.parse(data);
@@ -760,7 +836,13 @@ appCh.AdministrationController = (function () {
                     "Content-type": "application/json",
                     "SessionId": session
                 }
-            ).then(function (data) {
+            ).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
+            }).then(function (data) {
 
                 tableSource = "";
                 let offleaveObject = JSON.parse(data);

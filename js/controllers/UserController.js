@@ -31,7 +31,13 @@ appCh.UserController = (function () {
         var requestResult = app.connect.get("User/GetUserByID?ID="+ id,{"Content-type": "application/json", SessionId : session});
 
 
-        requestResult.then(function (data) {
+        requestResult.error(function (data) {
+
+            let dataObject = JSON.parse(data.responseJSON);
+
+            app.system.systemMessage(dataObject.error);
+
+        }).then(function (data) {
 
             var userObject = JSON.parse(data);
             userObject = userObject.result;

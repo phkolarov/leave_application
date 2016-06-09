@@ -12,12 +12,17 @@ namespace engine\controllers;
 class LeaveApplicationController extends Controller
 {
 
+    /**
+     * @AUTHENTICATE
+     */
     public function index(){
 
         var_dump("LeaveAppController");
     }
 
-
+    /**
+     * @AUTHENTICATE
+     */
     public function addOfficialLeaveApplication(){
 
 
@@ -26,6 +31,9 @@ class LeaveApplicationController extends Controller
 
     }
 
+    /**
+     * @AUTHENTICATE
+     */
     public function addUnofficialLeaveApplication(){
 
         $this->view->add = "UNOFFICIAL TEST";
@@ -33,6 +41,9 @@ class LeaveApplicationController extends Controller
 
     }
 
+    /**
+     * @AUTHENTICATE
+     */
     public function pendingRequests(){
 
 

@@ -51,7 +51,19 @@ app.run = (function () {
                         if (counter < 10000) {
                             objectGetter();
                         } else {
-                            console.log("ERROR: Can't load file controller: " + counter);
+
+                            counter = 0;
+                            setTimeout(function () {
+
+                                if(counter < 10){
+                                    objectGetter();
+                                    console.log("WARNING: Slow loading: " + counter);
+
+                                }else{
+                                    console.log("ERROR: Can't load file controller: " + counter);
+                                    return;
+                                }
+                            }, 10);
                             return;
                         }
 
@@ -71,7 +83,6 @@ app.run = (function () {
                         }
                     }
                 }
-
                 objectGetter();
             }, 0);
         })

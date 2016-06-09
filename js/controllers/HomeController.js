@@ -6,51 +6,62 @@ appCh.HomeController = (function () {
 
     function index(){
 
-       // app.connect.get("http://192.168.4.96/VacationsWebAPI/api/User/GetUserByID?ID=3",{SessionId : "7ccd29d5-b1f2-4b12-b322-787912d58c1b"});
+        app.system.notificationSeeker();
 
-        var stack_bar_bottom = {"dir1": "up", "dir2": "left", "push": "bottom", "spacing1": 25, "spacing2": 25, "context": $("body"), "modal": false}
+        let userId = app.connect.cookie.get('userID');
+        let session = app.connect.cookie.get('session');
 
-        function show_stack_bar_bottom(type) {
-            var opts = {
-                title: "Over Here",
-                text: "Check me out. I'm in a different stack.",
-                cornerclass: "",
-                width: "70%",
-                stack: stack_bar_bottom,
-                delay: 100000,
-                addclass: "stack-bottomright",
-        };
-            switch (type) {
-                case 'deniedOff':
-                    opts.title = "Системно съобщение";
-                    opts.text = "Нова отхвърлена официална отпуска";
-                    opts.type = "error";
-                    break;
-                case 'deniedUnoff':
-                    opts.title = "Системно съобщение";
-                    opts.text = "Нова отхвърлена неофициална отпуска";
-                    opts.type = "error";
-                    break;
-                case 'info':
-                    opts.title = "Breaking News";
-                    opts.text = message;
-                    opts.type = "info";
-                    break;
-                case 'approvedOff':
-                    opts.title = "Системно съобщение";
-                    opts.text = "Нова одобрена официална отпуска";
-                    opts.type = "success";
-                    break;
-                case 'approvedUnoff':
-                    opts.title = "Системно съобщение";
-                    opts.text = "Нова одобрена неофициална отпуска";
-                    opts.type = "success";
-                    break;
+
+        app.connect.get("User/GetUserByID?ID=" + userId,{'Content-type': 'application/json', SessionId : session}).error(function (data) {
+
+            let dataObject = JSON.parse(data.responseJSON);
+
+            app.system.systemMessage(dataObject.error);
+
+        }).then(function (data) {
+
+            data = JSON.parse(data);
+
+            $('#userNames').text(data.result.FullName);
+            $('#userName').text(data.result.UserName);
+
+            if(data.result.isActive){
+                $('#isActive').text('Активен');
+                $('#isActive').css('color', '#449d44');
+
+            }else{
+
+                $('#isActive').text('Неактивен');
+                $('#isActive').css('color', 'red');
+
             }
-            new PNotify(opts);
-        }
 
-        show_stack_bar_bottom('approvedOff');
+
+
+            let dayd = (parseInt((parseInt(data.result.VacationMinutes) / 60) / 8));
+            let hours = (parseInt((parseInt(data.result.VacationMinutes) / 60) % 8));
+            let tempMinutes = (((parseInt(data.result.VacationMinutes) / 60) % 8) + "").slice(+2);
+            let minutesLeft = parseInt(parseFloat("0." + tempMinutes) * 60);
+
+
+            $('#unOfficialLeave').text(dayd + ' дни ' + hours + ' часа ' + minutesLeft + ' минути');
+
+
+
+            console.log(data);
+        });
+
+        //app.connect.get('', {'Content-type': 'application/json', SessionId : session}).error(function (data) {
+        //
+        //    let dataObject = JSON.parse(data.responseJSON);
+        //
+        //    app.system.systemMessage(dataObject.error);
+        //
+        //}).then(function (data) {
+        //
+        //
+        //    console.log(data);
+        //})
     }
 
     function home(){

@@ -13,6 +13,9 @@ class HomeController extends Controller
 {
 
 
+    /**
+     * @AUTHENTICATE
+     */
     public function index(){
 
         $this->view->render();

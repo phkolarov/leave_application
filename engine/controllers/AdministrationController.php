@@ -13,6 +13,10 @@ use engine\repositories\UserRepository;
 
 class AdministrationController extends Controller
 {
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function index(){
 
         var_dump("ADMINISTRATION");
@@ -20,36 +24,56 @@ class AdministrationController extends Controller
     }
 
 
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function editRemainingLeave(){
 
         $this->view->render();
 
     }
 
-
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function officialHolidays(){
 
         $this->view->render();
 
     }
 
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function officialLeaveReport(){
 
         $this->view->render();
 
     }
 
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function requestReport(){
         $this->view->render();
 
     }
 
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function usersList(){
 
         $this->view->render();
     }
 
     /**
+     * @AUTHENTICATE
      * @MODERATOR
      */
     public function addUser(){

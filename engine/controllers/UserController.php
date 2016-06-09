@@ -15,7 +15,6 @@ class UserController extends Controller
 {
     /**
      * @AUTHENTICATE
-     *
      */
     public function index()
     {
@@ -25,7 +24,6 @@ class UserController extends Controller
 
     /**
      * @AUTHENTICATE
-     * @MODERATOR
      */
     public function test()
     {
@@ -94,6 +92,9 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * @AUTHENTICATE
+     */
     public function logout()
     {
 
@@ -117,6 +118,9 @@ class UserController extends Controller
     }
 
 
+    /**
+     * @AUTHENTICATE
+     */
     public function changeUserParams()
     {
         $userRepo = new UserRepository();

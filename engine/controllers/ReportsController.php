@@ -18,6 +18,10 @@ class ReportsController extends Controller
     }
 
 
+
+    /**
+     * @AUTHENTICATE
+     */
     public function officialHolidays(){
 
         $this->view->add = "officialReport TEST";
@@ -25,6 +29,10 @@ class ReportsController extends Controller
     }
 
 
+
+    /**
+     * @AUTHENTICATE
+     */
     public function myOfficialVacations(){
 
         $this->view->add = "unofficialReport TEST";

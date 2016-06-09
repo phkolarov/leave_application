@@ -24,15 +24,14 @@ session_start();
     <link href="/leave_application/libraries/jquery/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <link href="/leave_application/libraries/pnotify/pnotify.custom.css" rel="stylesheet" type="text/css"/>
 
-    <script>
-
-    </script>
 </head>
 
 <body>
 
 
-
+<div id="pending">
+    <img id="loadingAnimation" src="/leave_application/css/images/loading.gif">
+</div>
 <div class="mainContainer">
 
 
@@ -69,6 +68,14 @@ session_start();
         </div><!-- /.modal-content -->
     </div>
 </div>
+<script>
 
+
+
+
+
+
+
+</script>
 </body>
 </html>

@@ -11,65 +11,7 @@ appCh.ReportsController = (function () {
     }
 
     function myOfficialVacations(){
-
-        $(".year").empty()
-            .append("<option>" + (new Date().getFullYear() - 3) + "</option>")
-            .append("<option>" + (new Date().getFullYear() - 2) + "</option>")
-            .append("<option>" + (new Date().getFullYear() - 1) + "</option>")
-            .append("<option>" + new Date().getFullYear() + "</option>")
-            .append("<option selected='selected'>Година</option>");
-
-        $("#showYear").change(function () {
-            if ($("#showYear").val() != "Изберете година") {
-                var id = app.connect.cookie.get("userID");
-                var session = app.connect.cookie.get("session");
-                var selectedYear = $("#showYear").val();
-                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriod?DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
-                    "Content-type": "application/json",
-                    "SessionId": session
-                }).then(function (data) {
-                    var obj = JSON.parse(data);
-                    obj = obj.result;
-                    //console.log(obj);
-                    $("#tableData").empty();
-
-
-                    obj.forEach(function (el) {
-
-
-                        var dateFrom = el.DateFrom.split('T')[0];
-                        console.log(dateFrom)
-                        var dateTo = el.DateTo.split('T')[0];
-                        console.log(dateTo);
-                        var holidays = 0;
-                        app.connect.get("Holiday/GetAllHolidaysForPeriod?DateFrom=" + dateFrom + "&DateTo=" + dateTo, {
-                            "Content-type": "application/json",
-                            "SessionId": session
-                        }).then(function (data) {
-                                var data = JSON.parse(data);
-                                holidays = data.result.length;
-                                console.log(data.result);
-                                var workingDays = 1 + moment(dateTo).diff(moment(dateFrom), "days") - holidays; // Тук формулата е 1 + ....., защото при подаване на отпуска не включва и двата гранични дни (от дата до дата)
-                                console.log(workingDays);
-                                var debuty = el.SubstitutedBy.FullName;
-                                $("#tableData").append(
-                                    "<tr>" +
-                                    "<td>" + dateFrom + " <strong>до </strong>" + dateTo + "</td>" +
-                                    "<td>" + workingDays + "</td>" +
-                                    "<td>" + debuty + "</td>" +
-                                    "</tr>"
-                                )
-
-                            }
-                        )
-
-                    })
-                })
-            } else {
-                $("#tableData").empty();
-            }
-        })
-
+        console.log("myOfficialVacations")
     }
     function officialHolidays(){
 
@@ -80,6 +22,12 @@ appCh.ReportsController = (function () {
             app.connect.get("Holiday/GetAllOfficialHolidaysForYear?year=2016", {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                let dataObject = JSON.parse(data.responseJSON);
+
+                app.system.systemMessage(dataObject.error);
+
             }).then(function (data) {
 
 
@@ -110,6 +58,12 @@ appCh.ReportsController = (function () {
                         app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'),{
                             "Content-type": "application/json",
                             "SessionId": session
+                        }).error(function (data) {
+
+                            let dataObject = JSON.parse(data.responseJSON);
+
+                            app.system.systemMessage(dataObject.error);
+
                         }).then(function (data) {
 
                             data = JSON.parse(data);
