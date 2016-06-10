@@ -34,6 +34,7 @@ appCh.LeaveApplicationController = (function () {
             .append("<option selected='selected'>Изберете година</option>");
         $("#hideTable").hide();
         $("#showYear").change(function () {
+            $("#tableData").empty();
             if ($("#showYear").val() != "Изберете година") {
                 var id = app.connect.cookie.get("userID");
                 var session = app.connect.cookie.get("session");
@@ -44,40 +45,29 @@ appCh.LeaveApplicationController = (function () {
                 }).then(function (data) {
                     var obj = JSON.parse(data);
                     obj = obj.result;
-                    //console.log(obj);
+                    console.log(obj);
                     $("#tableData").empty();
 
 
                     obj.forEach(function (el) {
 
 
-                        var dateFrom = el.DateFrom.split('T')[0];
-                        console.log(dateFrom)
-                        var dateTo = el.DateTo.split('T')[0];
-                        console.log(dateTo);
-                        var holidays = 0;
-                        app.connect.get("Holiday/GetAllHolidaysForPeriod?DateFrom=" + dateFrom + "&DateTo=" + dateTo, {
-                            "Content-type": "application/json",
-                            "SessionId": session
-                        }).then(function (data) {
-                                var data = JSON.parse(data);
-                                holidays = data.result.length;
-                                console.log(data.result);
-                                var workingDays = 1 + moment(dateTo).diff(moment(dateFrom), "days") - holidays; // Тук формулата е 1 + ....., защото при подаване на отпуска не включва и двата гранични дни (от дата до дата)
-                                console.log(workingDays);
-                                var debuty = el.SubstitutedBy.FullName;
-                                $("#tableData").append(
-                                    "<tr>" +
-                                    "<td>" + dateFrom + " <strong>до </strong>" + dateTo + "</td>" +
-                                    "<td>" + workingDays + "</td>" +
-                                    "<td>" + debuty + "</td>" +
-                                    "</tr>"
-                                )
+                            var dateFrom = el.DateFrom.split('T')[0];
+                            console.log(dateFrom)
+                            var dateTo = el.DateTo.split('T')[0];
+                            console.log(dateTo);
 
-                            }
-                        )
+                            var debuty = el.SubstitutedBy.FullName;
+                            $("#tableData").append(
+                                "<tr>" +
+                                "<td><strong>" + dateFrom + "</strong> до <strong>"+dateTo + "</strong></td>" +
+                                "<td>" + el.WorkingDays + "</td>" +
+                                "<td>" + debuty + "</td>" +
+                                "</tr>"
+                            )
 
-                    })
+                        }
+                    )
                     $("#hideTable").show("slow");
                 })
             } else {
@@ -185,7 +175,6 @@ appCh.LeaveApplicationController = (function () {
                             "<td></td>" +
                             "<td></td>" +
                             "<td></td>" +
-                            "<td></td>" +
                             "<td class='link'></td>" +
                             "</tr>");
                     }
@@ -193,7 +182,7 @@ appCh.LeaveApplicationController = (function () {
                     var requestedFrom = leave.RequestDateTime.split('T');
                     requestedFromDate = requestedFrom[0];
                     requestedFromTime = requestedFrom[1].split('.')[0];
-                    requestedFromDate += " " + requestedFromTime;
+                    requestedFromDate += "/" + requestedFromTime;
                     console.log(requestedFromDate);
                     var tableCells = $("tr#" + index + " td").toArray();
                     $(tableCells[0]).text(requestedFromDate);
@@ -214,15 +203,15 @@ appCh.LeaveApplicationController = (function () {
                         return time[0] + "/" + time[1] + "/" + time[2];
                     }
 
-                    $(tableCells[4]).text(calculateDays(leaveTimeInMins))
-                    $(tableCells[5]).text(leave.isApprovedByPlamen === null ? "Чакаща" : leave.isApprovedByPlamen == true ? "Одобрена" : "Отказана");
-                    $(tableCells[6]).text(leave.isApprovedByMitko === null ? "Чакаща" : leave.isApprovedByMitko == true ? "Одобрена" : "Отказана");
+                    $(tableCells[3]).text(calculateDays(leaveTimeInMins))
+                    $(tableCells[4]).text(leave.isApprovedByPlamen === null ? "Чакаща" : leave.isApprovedByPlamen == true ? "Одобрена" : "Отказана");
+                    $(tableCells[5]).text(leave.isApprovedByMitko === null ? "Чакаща" : leave.isApprovedByMitko == true ? "Одобрена" : "Отказана");
                     console.log(res.result);
                     if (leave.isApproved === true) {
                         $(tableCells[7]).empty()
                     }
                     else {
-                        $(tableCells[7]).append("<a href='#' class='deleteRequest' id='" + leave.ID + "'>Изтрий</a>");
+                        $(tableCells[6]).append("<a href='#' class='deleteRequest' id='" + leave.ID + "'>Изтрий</a>");
                     }
                 })
 
