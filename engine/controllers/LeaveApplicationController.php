@@ -43,6 +43,7 @@ class LeaveApplicationController extends Controller
 
     /**
      * @AUTHENTICATE
+     * @MODERATOR
      */
     public function pendingRequests(){
 

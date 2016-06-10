@@ -89,6 +89,11 @@ app.connect = (function () {
         return "";
     }
 
+
+    function deleteCookie(name){
+        document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;"
+    }
+
     return {
         get: _get,
         put: _put,
@@ -96,7 +101,8 @@ app.connect = (function () {
         delete: _delete,
         cookie: {
             get: getCookie,
-            set: setCookie
+            set: setCookie,
+            delete: deleteCookie
         }
     }
 })();

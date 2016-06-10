@@ -463,6 +463,17 @@ appCh.LeaveApplicationController = (function () {
                     }
                 ).error(function (data) {
 
+                    if (data.responseText) {
+
+                        let errorObject = JSON.parse(data.responseText);
+
+                        if (errorObject.error == 'Session not exists or expired') {
+                            app.connect.cookie.delete('session');
+                            location.href = "/leave_application/user/login"
+                        }
+
+                    }
+
                     let dataObject = JSON.parse(data.responseJSON);
 
                     app.system.systemMessage(dataObject.error);
@@ -521,6 +532,17 @@ appCh.LeaveApplicationController = (function () {
                             "SessionId" : session
                         },null).error(function (data) {
 
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
+
                             let dataObject = JSON.parse(data.responseJSON);
 
                             app.system.systemMessage(dataObject.error);
@@ -545,6 +567,17 @@ appCh.LeaveApplicationController = (function () {
                             "Content-type" : "application/json",
                             "SessionId" : session
                         },null).error(function (data) {
+
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
 
                             let dataObject = JSON.parse(data.responseJSON);
 

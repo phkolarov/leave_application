@@ -51,7 +51,7 @@ app.run = (function () {
                         if (counter < 10000) {
                             objectGetter();
                         } else {
-                            console.log("ERROR: Can't load file controller: " + counter);
+                            console.log("ERROR: Can't load file controller: " + params.controllerName);
                             return;
                         }
 

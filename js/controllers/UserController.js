@@ -33,6 +33,17 @@ appCh.UserController = (function () {
 
         requestResult.error(function (data) {
 
+            if (data.responseText) {
+
+                let errorObject = JSON.parse(data.responseText);
+
+                if (errorObject.error == 'Session not exists or expired') {
+                    app.connect.cookie.delete('session');
+                    location.href = "/leave_application/user/login"
+                }
+
+            }
+
             let dataObject = JSON.parse(data.responseJSON);
 
             app.system.systemMessage(dataObject.error);
@@ -100,9 +111,14 @@ appCh.UserController = (function () {
         //})
     }
 
+    function login(){
+
+    }
+
     return {
         index : index,
-        profile: profile
+        profile: profile,
+        login  : login
     }
 
 

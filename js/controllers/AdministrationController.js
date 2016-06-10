@@ -24,6 +24,16 @@ appCh.AdministrationController = (function () {
                 "SessionId": session
             }).error(function (data) {
 
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
                 let dataObject = JSON.parse(data.responseJSON);
 
                 app.system.systemMessage(dataObject.error);
@@ -99,6 +109,17 @@ appCh.AdministrationController = (function () {
                             "SessionId" : session
                         }, unofficialObject).error(function (data) {
 
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
+
                             let dataObject = JSON.parse(data.responseJSON);
 
                             app.system.systemMessage(dataObject.error);
@@ -168,6 +189,17 @@ appCh.AdministrationController = (function () {
                             "SessionId" : session
                         }, unofficialObject).error(function (data) {
 
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
+
                             let dataObject = JSON.parse(data.responseJSON);
 
                             app.system.systemMessage(dataObject.error);
@@ -219,6 +251,17 @@ appCh.AdministrationController = (function () {
                             "Content-type" : "application/json",
                             "SessionId": session
                         }, employeeObject).error(function (data) {
+
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
 
                             let dataObject = JSON.parse(data.responseJSON);
 
@@ -277,6 +320,17 @@ appCh.AdministrationController = (function () {
                             "Content-type" : "application/json",
                             "SessionId": session
                         }, employeeObject).error(function (data) {
+
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
 
                             let dataObject = JSON.parse(data.responseJSON);
 
@@ -392,6 +446,17 @@ appCh.AdministrationController = (function () {
                 "Content-type": "application/json",
                 "SessionId": session
             }).error(function (data) {
+
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
 
                 let dataObject = JSON.parse(data.responseJSON);
 
@@ -540,6 +605,17 @@ appCh.AdministrationController = (function () {
                     "SessionId": session
                 }, holyProject).error(function (data) {
 
+                    if (data.responseText) {
+
+                        let errorObject = JSON.parse(data.responseText);
+
+                        if (errorObject.error == 'Session not exists or expired') {
+                            app.connect.cookie.delete('session');
+                            location.href = "/leave_application/user/login"
+                        }
+
+                    }
+
                     let dataObject = JSON.parse(data.responseJSON);
 
                     app.system.systemMessage(dataObject.error);
@@ -572,6 +648,17 @@ appCh.AdministrationController = (function () {
                 "Content-type": "application/json",
                 "SessionId": session
             }).error(function (data) {
+
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
 
                 let dataObject = JSON.parse(data.responseJSON);
 
@@ -634,6 +721,17 @@ appCh.AdministrationController = (function () {
                 "SessionId": session
             }).error(function (data) {
 
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
+
                 let dataObject = JSON.parse(data.responseJSON);
 
                 app.system.systemMessage(dataObject.error);
@@ -666,6 +764,17 @@ appCh.AdministrationController = (function () {
                             "Content-type": "application/json",
                             "SessionId": session
                         }).error(function (data) {
+
+                            if (data.responseText) {
+
+                                let errorObject = JSON.parse(data.responseText);
+
+                                if (errorObject.error == 'Session not exists or expired') {
+                                    app.connect.cookie.delete('session');
+                                    location.href = "/leave_application/user/login"
+                                }
+
+                            }
 
                             let dataObject = JSON.parse(data.responseJSON);
 
@@ -758,6 +867,17 @@ appCh.AdministrationController = (function () {
                 }
             ).error(function (data) {
 
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
+
                 let dataObject = JSON.parse(data.responseJSON);
 
                 app.system.systemMessage(dataObject.error);
@@ -774,10 +894,15 @@ appCh.AdministrationController = (function () {
                     let dateFrom = new Date(leaveElement.DateFrom);
                     let fromMoth = moths[dateFrom.getMonth()];
                     let fromDay = dateFrom.getDate();
-                    let dateTo = new Date(leaveElement.DateFrom);
+                    let dateTo = new Date(leaveElement.DateTo);
                     let toMoth = moths[dateTo.getMonth()];
                     let toDay = dateTo.getDate();
-                    let tempStr = "<tr><td>" + offleaveObject.result[i].User.FullName + "</td><td>" + fromDay + " " + fromMoth + " - " + toDay + " " + toMoth + "</td><td>" + offleaveObject.result[i].SubstitutedBy.FullName + "</td></tr>";
+                    let tempStr = "<tr>" +
+                        "<td>" + offleaveObject.result[i].User.FullName + "</td>" +
+                        "<td>" + fromDay + " " + fromMoth + " - " + toDay + " " + toMoth + "</td>" +
+                        "<td>" + offleaveObject.result[i].WorkingDays + "</td>" +
+                        "<td>" + offleaveObject.result[i].SubstitutedBy.FullName + "</td>" +
+                        "</tr>";
                     tableSource += tempStr;
                 }
 
@@ -837,6 +962,17 @@ appCh.AdministrationController = (function () {
                     "SessionId": session
                 }
             ).error(function (data) {
+
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+
+                }
 
                 let dataObject = JSON.parse(data.responseJSON);
 

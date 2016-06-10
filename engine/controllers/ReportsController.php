@@ -37,6 +37,5 @@ class ReportsController extends Controller
 
         $this->view->add = "unofficialReport TEST";
         $this->view->render();
-        var_dump("unofficialReport");
     }
 }
