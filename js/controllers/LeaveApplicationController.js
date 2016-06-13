@@ -9,6 +9,15 @@ appCh.LeaveApplicationController = (function () {
 
     function addOfficialLeaveApplication() {
         let session = app.connect.cookie.get("session");
+        $("#expand").hide();
+        $("#showExpand").click(function () {
+            if ($("#expand").is(":visible")) {
+                $("#expand").hide("slow");
+            } else {
+                $("#expand").show("slow");
+
+            }
+        })
 
         $(document).ready(function () {
             app.connect.get("User/GetAllUsers", {
@@ -39,35 +48,35 @@ appCh.LeaveApplicationController = (function () {
                 var id = app.connect.cookie.get("userID");
                 var session = app.connect.cookie.get("session");
                 var selectedYear = $("#showYear").val();
-                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriod?DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
+                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID=" + id + "&DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
                     "Content-type": "application/json",
                     "SessionId": session
                 }).then(function (data) {
                     var obj = JSON.parse(data);
                     obj = obj.result;
-                    console.log(obj);
                     $("#tableData").empty();
 
+                    if (obj !== undefined) {
+                        obj.reverse();
+                        obj.forEach(function (el) {
 
-                    obj.forEach(function (el) {
+
+                                var dateFrom = el.DateFrom.split('T')[0];
+                                var dateTo = el.DateTo.split('T')[0];
+
+                                var debuty = el.SubstitutedBy.FullName;
+                                $("#tableData").append(
+                                    "<tr>" +
+                                    "<td><strong>" + dateFrom + "</strong> до <strong>" + dateTo + "</strong></td>" +
+                                    "<td>" + el.WorkingDays + "</td>" +
+                                    "<td>" + debuty + "</td>" +
+                                    "</tr>"
+                                )
 
 
-                            var dateFrom = el.DateFrom.split('T')[0];
-                            console.log(dateFrom)
-                            var dateTo = el.DateTo.split('T')[0];
-                            console.log(dateTo);
-
-                            var debuty = el.SubstitutedBy.FullName;
-                            $("#tableData").append(
-                                "<tr>" +
-                                "<td><strong>" + dateFrom + "</strong> до <strong>" + dateTo + "</strong></td>" +
-                                "<td>" + el.WorkingDays + "</td>" +
-                                "<td>" + debuty + "</td>" +
-                                "</tr>"
-                            )
-
-                        }
-                    )
+                            }
+                        )
+                    }
                     $("#hideTable").show("slow");
                 })
             } else {
@@ -88,8 +97,7 @@ appCh.LeaveApplicationController = (function () {
                 "DateTo": endDateFormated,
                 "isApproved": null,
                 "SubstitutedBy": $("#debuty").val()
-            }
-            console.log(data);
+            };
             app.connect.post("OfficialVacation/AddOfficialVacation", {
                 "Content-type": "application/json",
                 "SessionId": session
@@ -106,21 +114,13 @@ appCh.LeaveApplicationController = (function () {
                 }
 
                 let errorMessage = JSON.parse(data.responseJSON);
+                app.system.systemMessage(errorMessage.error);
 
-
-                if(errorMessage.result){
-                    app.system.systemMessage(errorMessage.result)
-
-                }else if(errorMessage.error){
-                    app.system.systemMessage(errorMessage.error)
-
-                }
 
 
             }).then(
                 function (data) {
 
-                    console.log(12121);
                     data = JSON.parse(data);
 
                     if (data.result) {
@@ -178,10 +178,9 @@ appCh.LeaveApplicationController = (function () {
             }).then(function (data) {
                 var res = JSON.parse(data);
                 var index = 0;
-                $("#unOfficialLeaveTable").hide();
+                $("#unOfficialLeaveTable").hide("slow");
                 $("#unOfficialLeaveTable tbody").empty();
                 res.result.forEach(function (leave) {
-                    console.log(!$("a#" + leave.ID));
                     index++;
                     if ($("a#" + leave.ID).length === 0) {
                         $("#unOfficialLeaveTable tbody").append(
@@ -200,7 +199,6 @@ appCh.LeaveApplicationController = (function () {
                     requestedFromDate = requestedFrom[0];
                     requestedFromTime = requestedFrom[1].split('.')[0];
                     requestedFromDate += "/" + requestedFromTime;
-                    console.log(requestedFromDate);
                     var tableCells = $("tr#" + index + " td").toArray();
                     $(tableCells[0]).text(requestedFromDate);
                     $(tableCells[1]).text(leave.User.FullName);
@@ -223,7 +221,6 @@ appCh.LeaveApplicationController = (function () {
                     $(tableCells[3]).text(calculateDays(leaveTimeInMins))
                     $(tableCells[4]).text(leave.isApprovedByPlamen === null ? "Чакаща" : leave.isApprovedByPlamen == true ? "Одобрена" : "Отказана");
                     $(tableCells[5]).text(leave.isApprovedByMitko === null ? "Чакаща" : leave.isApprovedByMitko == true ? "Одобрена" : "Отказана");
-                    console.log(res.result);
                     if (leave.isApproved === true) {
                         $(tableCells[7]).empty()
                     }
@@ -267,18 +264,22 @@ appCh.LeaveApplicationController = (function () {
 
         getRequests();
         loadHolidays();
+
         $("#submit").click(function () {
             var id = app.connect.cookie.get("userID");
             var session = app.connect.cookie.get("session");
             var date = $("#fromDate").val().split('.');
             var dateFormat = "" + date[2] + "-" + date[1] + "-" + date[0];
+            var theDate = new Date();
+            theDate.setHours(theDate.getHours() + 3);
+            var isodate = theDate.toISOString();
             var data = {
                 "DateFrom": dateFormat,
                 "Description": $("#desc").val(),
                 "isApproved": null,
                 "isApprovedByMitko": null,
                 "isApprovedByPlamen": null,
-                "RequestDateTime": "" + new Date().toISOString() + "",
+                "RequestDateTime": "" + isodate,
                 "RequestedMinutes": ($("#numberDays").val() * 8 * 60 + $("#numberHours").val() * 60 + $("#numberMinutes").val() * 1).toString(),
                 "Type": "Неофициална отпуска",
                 "UserID": id
@@ -404,7 +405,6 @@ appCh.LeaveApplicationController = (function () {
                     }).then(function (data) {
 
                         data = JSON.parse(data);
-                        console.log(data);
                         if (data.result) {
 
                             app.system.systemMessage("Успешно одобрена отпуска", true);
