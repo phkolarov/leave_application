@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d12f1b49-2cb3-47b1-8400-bc0223049335" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" afterPath="$PROJECT_DIR$/js/controllers/LeaveApplicationController.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addOfficialLeaveApplication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" afterPath="$PROJECT_DIR$/templates/leaveApplication/addUnofficialLeaveApplication.php" />
     </list>
     <ignored path="leave_application.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,16 +24,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReportsController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/engine/controllers/ReportsController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-21.576923">
-              <caret line="38" column="30" selection-start-line="38" selection-start-column="30" selection-end-line="38" selection-end-column="30" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdministrationController.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/controllers/AdministrationController.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -107,8 +95,18 @@
       <file leaf-file-name="LeaveApplicationController.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.118329465">
-              <caret line="6" column="18" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="18" />
+            <state vertical-scroll-proportion="0.512761">
+              <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LeaveApplicationController.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../leave_application9/js/controllers/LeaveApplicationController.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="108" column="0" selection-start-line="107" selection-start-column="16" selection-end-line="108" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -576,13 +574,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/libraries/jquery/jquery-ui-1.11.4.custom/jquery-ui.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/libraries/jquery/jquery-ui-1.11.4.custom/datepicker-bg.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-23.296297">
@@ -956,10 +947,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../leave_application9/js/controllers/LeaveApplicationController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="108" column="0" selection-start-line="107" selection-start-column="16" selection-end-line="108" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/controllers/LeaveApplicationController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.118329465">
-          <caret line="6" column="18" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="18" />
+        <state vertical-scroll-proportion="0.512761">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding />
         </state>
       </provider>

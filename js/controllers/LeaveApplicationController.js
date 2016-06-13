@@ -114,9 +114,14 @@ appCh.LeaveApplicationController = (function () {
                 }
 
                 let errorMessage = JSON.parse(data.responseJSON);
-                app.system.systemMessage(errorMessage.error);
 
+                if(errorMessage.result){
+                    app.system.systemMessage(errorMessage.result)
 
+                }else if(errorMessage.error){
+                    app.system.systemMessage(errorMessage.error)
+
+                }
 
             }).then(
                 function (data) {
