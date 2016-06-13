@@ -15,20 +15,24 @@ appCh.HomeController = (function () {
 
         app.connect.get("User/GetUserByID?ID=" + userId,{'Content-type': 'application/json', SessionId : session}).error(function (data) {
 
-            if(data.responseText){
+            if (data.responseText) {
 
                 let errorObject = JSON.parse(data.responseText);
 
-                if(errorObject.error == 'Session not exists or expired'){
+                if (errorObject.error == 'Session not exists or expired') {
                     app.connect.cookie.delete('session');
                     location.href = "/leave_application/user/login"
                 }
-
             }
 
-            let dataObject = JSON.parse(data.responseJSON);
+            let errorMessage = JSON.parse(data.responseJSON);
 
-            app.system.systemMessage(dataObject.error);
+            if(errorMessage.result){
+                app.system.systemMessage(errorMessage.result)
+
+            }else if(errorMessage.error){
+                app.system.systemMessage(errorMessage.error)
+            }
 
         }).then(function (data) {
 
@@ -83,12 +87,16 @@ appCh.HomeController = (function () {
                     app.connect.cookie.delete('session');
                     location.href = "/leave_application/user/login"
                 }
-
             }
 
-            let dataObject = JSON.parse(data.responseJSON);
+            let errorMessage = JSON.parse(data.responseJSON);
 
-            app.system.systemMessage(dataObject.error);
+            if(errorMessage.result){
+                app.system.systemMessage(errorMessage.result)
+
+            }else if(errorMessage.error){
+                app.system.systemMessage(errorMessage.error)
+            }
 
         }).then(function (data) {
 

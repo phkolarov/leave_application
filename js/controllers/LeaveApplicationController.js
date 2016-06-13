@@ -120,7 +120,6 @@ appCh.LeaveApplicationController = (function () {
 
                 }else if(errorMessage.error){
                     app.system.systemMessage(errorMessage.error)
-
                 }
 
             }).then(
@@ -320,9 +319,24 @@ appCh.LeaveApplicationController = (function () {
                 }
             ).error(function (data) {
 
-                let dataObject = JSON.parse(data.responseJSON);
+                if (data.responseText) {
 
-                app.system.systemMessage(dataObject.error);
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+                }
+
+                let errorMessage = JSON.parse(data.responseJSON);
+
+                if(errorMessage.result){
+                    app.system.systemMessage(errorMessage.result)
+
+                }else if(errorMessage.error){
+                    app.system.systemMessage(errorMessage.error)
+                }
 
             }).then(function (data) {
 
@@ -403,9 +417,24 @@ appCh.LeaveApplicationController = (function () {
                         "SessionId": session
                     }).error(function (data) {
 
-                        let dataObject = JSON.parse(data.responseJSON);
+                        if (data.responseText) {
 
-                        app.system.systemMessage(dataObject.error);
+                            let errorObject = JSON.parse(data.responseText);
+
+                            if (errorObject.error == 'Session not exists or expired') {
+                                app.connect.cookie.delete('session');
+                                location.href = "/leave_application/user/login"
+                            }
+                        }
+
+                        let errorMessage = JSON.parse(data.responseJSON);
+
+                        if(errorMessage.result){
+                            app.system.systemMessage(errorMessage.result)
+
+                        }else if(errorMessage.error){
+                            app.system.systemMessage(errorMessage.error)
+                        }
 
                     }).then(function (data) {
 
@@ -429,11 +458,27 @@ appCh.LeaveApplicationController = (function () {
                         "SessionId": session
                     }).error(function (data) {
 
-                        let dataObject = JSON.parse(data.responseJSON);
+                        if (data.responseText) {
 
-                        app.system.systemMessage(dataObject.error);
+                            let errorObject = JSON.parse(data.responseText);
+
+                            if (errorObject.error == 'Session not exists or expired') {
+                                app.connect.cookie.delete('session');
+                                location.href = "/leave_application/user/login"
+                            }
+                        }
+
+                        let errorMessage = JSON.parse(data.responseJSON);
+
+                        if(errorMessage.result){
+                            app.system.systemMessage(errorMessage.result)
+
+                        }else if(errorMessage.error){
+                            app.system.systemMessage(errorMessage.error)
+                        }
 
                     }).then(function (data) {
+
                         data = JSON.parse(data);
                         if (data.result) {
 
@@ -482,12 +527,16 @@ appCh.LeaveApplicationController = (function () {
                             app.connect.cookie.delete('session');
                             location.href = "/leave_application/user/login"
                         }
-
                     }
 
-                    let dataObject = JSON.parse(data.responseJSON);
+                    let errorMessage = JSON.parse(data.responseJSON);
 
-                    app.system.systemMessage(dataObject.error);
+                    if(errorMessage.result){
+                        app.system.systemMessage(errorMessage.result)
+
+                    }else if(errorMessage.error){
+                        app.system.systemMessage(errorMessage.error)
+                    }
 
                 }).then(function (data) {
 
@@ -550,12 +599,16 @@ appCh.LeaveApplicationController = (function () {
                                     app.connect.cookie.delete('session');
                                     location.href = "/leave_application/user/login"
                                 }
-
                             }
 
-                            let dataObject = JSON.parse(data.responseJSON);
+                            let errorMessage = JSON.parse(data.responseJSON);
 
-                            app.system.systemMessage(dataObject.error);
+                            if(errorMessage.result){
+                                app.system.systemMessage(errorMessage.result)
+
+                            }else if(errorMessage.error){
+                                app.system.systemMessage(errorMessage.error)
+                            }
 
                         }).then(function (data) {
                             data = JSON.parse(data);
@@ -586,12 +639,16 @@ appCh.LeaveApplicationController = (function () {
                                     app.connect.cookie.delete('session');
                                     location.href = "/leave_application/user/login"
                                 }
-
                             }
 
-                            let dataObject = JSON.parse(data.responseJSON);
+                            let errorMessage = JSON.parse(data.responseJSON);
 
-                            app.system.systemMessage(dataObject.error);
+                            if(errorMessage.result){
+                                app.system.systemMessage(errorMessage.result)
+
+                            }else if(errorMessage.error){
+                                app.system.systemMessage(errorMessage.error)
+                            }
 
                         }).then(function (data) {
                             data = JSON.parse(data);

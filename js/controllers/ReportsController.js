@@ -114,12 +114,16 @@ appCh.ReportsController = (function () {
                         app.connect.cookie.delete('session');
                         location.href = "/leave_application/user/login"
                     }
-
                 }
 
-                let dataObject = JSON.parse(data.responseJSON);
+                let errorMessage = JSON.parse(data.responseJSON);
 
-                app.system.systemMessage(dataObject.error);
+                if(errorMessage.result){
+                    app.system.systemMessage(errorMessage.result)
+
+                }else if(errorMessage.error){
+                    app.system.systemMessage(errorMessage.error)
+                }
 
             }).then(function (data) {
 
@@ -161,12 +165,16 @@ appCh.ReportsController = (function () {
                                     app.connect.cookie.delete('session');
                                     location.href = "/leave_application/user/login"
                                 }
-
                             }
 
-                            let dataObject = JSON.parse(data.responseJSON);
+                            let errorMessage = JSON.parse(data.responseJSON);
 
-                            app.system.systemMessage(dataObject.error);
+                            if(errorMessage.result){
+                                app.system.systemMessage(errorMessage.result)
+
+                            }else if(errorMessage.error){
+                                app.system.systemMessage(errorMessage.error)
+                            }
 
                         }).then(function (data) {
 

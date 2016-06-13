@@ -41,12 +41,16 @@ appCh.UserController = (function () {
                     app.connect.cookie.delete('session');
                     location.href = "/leave_application/user/login"
                 }
-
             }
 
-            let dataObject = JSON.parse(data.responseJSON);
+            let errorMessage = JSON.parse(data.responseJSON);
 
-            app.system.systemMessage(dataObject.error);
+            if(errorMessage.result){
+                app.system.systemMessage(errorMessage.result)
+
+            }else if(errorMessage.error){
+                app.system.systemMessage(errorMessage.error)
+            }
 
         }).then(function (data) {
 
@@ -77,38 +81,6 @@ appCh.UserController = (function () {
             }
 
         });
-
-        //$("#saveUserInfo").on('click', function () {
-        //
-        //    var userObject = {};
-        //    var session = app.connect.cookie.get("session");
-        //
-        //    userObject.ID = app.connect.cookie.get("userID");
-        //    userObject.UserName = app.connect.cookie.get("username");
-        //    userObject.Password = null;
-        //    userObject.FullName = $('#names').val();
-        //    userObject.Email = $('#email').val();
-        //    userObject.Role = app.connect.cookie.get("role");
-        //    userObject.isActive = isActive;
-        //
-        //    var response = app.connect.post("User/EditUser",{"Content-type": "application/json", SessionId : session},userObject);
-        //
-        //    response.then(function (data) {
-        //
-        //        if(data){
-        //
-        //            var resultObject = JSON.parse(data);
-        //
-        //            if(resultObject.result){
-        //
-        //                app.system.systemMessage("Успешно променен профил");
-        //            }else{
-        //                app.system.systemMessage("Проблем при промяна на профил",true);
-        //            }
-        //
-        //        }
-        //    })
-        //})
     }
 
     function login(){
