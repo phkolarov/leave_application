@@ -36,7 +36,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Отпуски</a>
+                <a class="navbar-brand" href="/leave_application/home/index">Отпуски</a>
 
 
             </div>
@@ -87,7 +87,7 @@
                     <li><a href="/leave_application/user/profile">Профил</a>
 
                     <li>
-                        <a class="btn btn-default btn-outline btn-circle"  href="/leave_application/user/logout"  >Изход</a>
+                        <a class="btn btn-success btn-sm" href="/leave_application/user/logout" style="height: 30px" ><span style="color:white">Изход</span></a>
 <!--                        <a class="btn btn-default btn-outline btn-circle"  data-toggle="collapse" href="/leave_application/user/login" aria-expanded="false" aria-controls="nav-collapse2" >Изход</a>-->
                     </li>
                 </ul>

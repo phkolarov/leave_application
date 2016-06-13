@@ -94,11 +94,9 @@ appCh.HomeController = (function () {
 
             data = JSON.parse(data);
 
+          if(data.result){
 
-
-
-          if(data.result.length > 0){
-
+              data.result.reverse();
               let offLeaveLastOne = data.result[0];
               let dateFrom = moment(offLeaveLastOne.DateFrom);
               let dateTo = moment(offLeaveLastOne.DateTo);

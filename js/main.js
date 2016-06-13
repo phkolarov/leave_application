@@ -8,14 +8,14 @@ app.run = (function () {
 
     function loadController() {
 
-        var params = urlParser();
-        var controllerPath = "/leave_application/js/controllers/" + params.controllerName + ".js";
-        var systemFuncPath = "/leave_application/js/extendedSystemFunctions/systemFunctions.js";
-        var moment = "/leave_application/libraries/moment/moment.js";
-        var action = params.action;
-        var controllerfileref = document.createElement('script');
-        var systemfileref = document.createElement('script');
-        var momentfileref = document.createElement('script');
+        let params = urlParser();
+        let controllerPath = "/leave_application/js/controllers/" + params.controllerName + ".js";
+        let systemFuncPath = "/leave_application/js/extendedSystemFunctions/systemFunctions.js";
+        let moment = "/leave_application/libraries/moment/moment.js";
+        let action = params.action;
+        let controllerfileref = document.createElement('script');
+        let systemfileref = document.createElement('script');
+        let momentfileref = document.createElement('script');
 
         controllerfileref.setAttribute("type", "text/javascript");
         controllerfileref.setAttribute("src", controllerPath);
@@ -49,7 +49,10 @@ app.run = (function () {
                         counter++;
 
                         if (counter < 10000) {
-                            objectGetter();
+
+                            setTimeout(function () {
+                                objectGetter();
+                            }, 1000);
                         } else {
                             console.log("ERROR: Can't load file controller: " + params.controllerName);
                             return;

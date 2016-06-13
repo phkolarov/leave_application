@@ -784,6 +784,12 @@ appCh.AdministrationController = (function () {
 
                             data = JSON.parse(data);
 
+                            $('#previewDate').text('');
+
+                            $('#previewType').text('');
+
+                            $('#previewMessage').text('');
+
                             if(data.result && data.result != null){
 
                                 let outputDate = moment(data.result.Date);
