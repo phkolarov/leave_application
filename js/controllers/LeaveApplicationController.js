@@ -9,6 +9,15 @@ appCh.LeaveApplicationController = (function () {
 
     function addOfficialLeaveApplication() {
         let session = app.connect.cookie.get("session");
+        $("#expand").hide();
+        $("#showExpand").click(function () {
+            if ($("#expand").is(":visible")) {
+                $("#expand").hide("slow");
+            } else {
+                $("#expand").show("slow");
+
+            }
+        })
 
         $(document).ready(function () {
             app.connect.get("User/GetAllUsers", {
@@ -39,7 +48,7 @@ appCh.LeaveApplicationController = (function () {
                 var id = app.connect.cookie.get("userID");
                 var session = app.connect.cookie.get("session");
                 var selectedYear = $("#showYear").val();
-                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriod?DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
+                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID=" + id + "&DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
                     "Content-type": "application/json",
                     "SessionId": session
                 }).then(function (data) {
@@ -48,26 +57,28 @@ appCh.LeaveApplicationController = (function () {
                     console.log(obj);
                     $("#tableData").empty();
 
+                    if (obj !== undefined) {
+                        obj.reverse();
+                        obj.forEach(function (el) {
 
-                    obj.forEach(function (el) {
 
+                                var dateFrom = el.DateFrom.split('T')[0];
+                                console.log(dateFrom)
+                                var dateTo = el.DateTo.split('T')[0];
+                                console.log(dateTo);
 
-                            var dateFrom = el.DateFrom.split('T')[0];
-                            console.log(dateFrom)
-                            var dateTo = el.DateTo.split('T')[0];
-                            console.log(dateTo);
+                                var debuty = el.SubstitutedBy.FullName;
+                                $("#tableData").append(
+                                    "<tr>" +
+                                    "<td><strong>" + dateFrom + "</strong> до <strong>" + dateTo + "</strong></td>" +
+                                    "<td>" + el.WorkingDays + "</td>" +
+                                    "<td>" + debuty + "</td>" +
+                                    "</tr>"
+                                )
 
-                            var debuty = el.SubstitutedBy.FullName;
-                            $("#tableData").append(
-                                "<tr>" +
-                                "<td><strong>" + dateFrom + "</strong> до <strong>"+dateTo + "</strong></td>" +
-                                "<td>" + el.WorkingDays + "</td>" +
-                                "<td>" + debuty + "</td>" +
-                                "</tr>"
-                            )
-
-                        }
-                    )
+                            }
+                        )
+                    }
                     $("#hideTable").show("slow");
                 })
             } else {
@@ -97,7 +108,7 @@ appCh.LeaveApplicationController = (function () {
                 let errorMessage = JSON.parse(data.responseJSON);
 
                 console.log(errorMessage);
-                app.system.systemMessage(errorMessage.result)
+                app.system.systemMessage(errorMessage.error);
 
 
             }).then(
@@ -120,7 +131,7 @@ appCh.LeaveApplicationController = (function () {
 
 
     }
-    
+
     function addUnofficialLeaveApplication() {
         $("#fromDate").datepicker();
         let session = app.connect.cookie.get("session");
@@ -161,7 +172,7 @@ appCh.LeaveApplicationController = (function () {
             }).then(function (data) {
                 var res = JSON.parse(data);
                 var index = 0;
-                $("#unOfficialLeaveTable").hide();
+                $("#unOfficialLeaveTable").hide("slow");
                 $("#unOfficialLeaveTable tbody").empty();
                 res.result.forEach(function (leave) {
                     console.log(!$("a#" + leave.ID));
@@ -250,18 +261,22 @@ appCh.LeaveApplicationController = (function () {
 
         getRequests();
         loadHolidays();
+
         $("#submit").click(function () {
             var id = app.connect.cookie.get("userID");
             var session = app.connect.cookie.get("session");
             var date = $("#fromDate").val().split('.');
             var dateFormat = "" + date[2] + "-" + date[1] + "-" + date[0];
+            var theDate = new Date();
+            theDate.setHours(theDate.getHours() + 3);
+            var isodate = theDate.toISOString();
             var data = {
                 "DateFrom": dateFormat,
                 "Description": $("#desc").val(),
                 "isApproved": null,
                 "isApprovedByMitko": null,
                 "isApprovedByPlamen": null,
-                "RequestDateTime": "" + new Date().toISOString() + "",
+                "RequestDateTime": "" + isodate,
                 "RequestedMinutes": ($("#numberDays").val() * 8 * 60 + $("#numberHours").val() * 60 + $("#numberMinutes").val() * 1).toString(),
                 "Type": "Неофициална отпуска",
                 "UserID": id
@@ -348,7 +363,7 @@ appCh.LeaveApplicationController = (function () {
 
                     let disabled = '';
 
-                    if(status == 'Одобрена' || status == 'Неодобрена'){
+                    if (status == 'Одобрена' || status == 'Неодобрена') {
 
                         disabled = 'disabled'
                     }
@@ -362,8 +377,8 @@ appCh.LeaveApplicationController = (function () {
                         "<td>" + plAppr + "</td>" +
                         "<td>" + mtAppr + "</td>" +
                         "<td>" + status + "</td>" +
-                        "<td>" + "<button "+disabled +"  requestId='"+leaveElement.ID +"' class='apprUnnofficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
-                        "<td>" + "<button "+disabled +" requestId='"+leaveElement.ID +"' class='deniedUnnofficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
+                        "<td>" + "<button " + disabled + "  requestId='" + leaveElement.ID + "' class='apprUnnofficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
+                        "<td>" + "<button " + disabled + " requestId='" + leaveElement.ID + "' class='deniedUnnofficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
                         "</tr>";
                     tableSource += tempStr;
                 }
@@ -375,7 +390,7 @@ appCh.LeaveApplicationController = (function () {
 
                     let requestId = $(this).attr('requestId');
 
-                    app.connect.post('Request/AcceptDeclineRequest?EditUserID='+ userId +'&action=accept&requestID=' + requestId, {
+                    app.connect.post('Request/AcceptDeclineRequest?EditUserID=' + userId + '&action=accept&requestID=' + requestId, {
                         "Content-type": "application/json",
                         "SessionId": session
                     }).error(function (data) {
@@ -388,11 +403,11 @@ appCh.LeaveApplicationController = (function () {
 
                         data = JSON.parse(data);
                         console.log(data);
-                        if(data.result){
+                        if (data.result) {
 
-                            app.system.systemMessage("Успешно одобрена отпуска",true);
-                        }else {
-                            app.system.systemMessage("Неуспешно одобрена отпуска",true);
+                            app.system.systemMessage("Успешно одобрена отпуска", true);
+                        } else {
+                            app.system.systemMessage("Неуспешно одобрена отпуска", true);
                         }
                     })
 
@@ -402,7 +417,7 @@ appCh.LeaveApplicationController = (function () {
 
                     let requestId = $(this).attr('requestId');
 
-                    app.connect.post('Request/AcceptDeclineRequest?EditUserID='+ userId +'&action=reject&requestID=' + requestId, {
+                    app.connect.post('Request/AcceptDeclineRequest?EditUserID=' + userId + '&action=reject&requestID=' + requestId, {
                         "Content-type": "application/json",
                         "SessionId": session
                     }).error(function (data) {
@@ -413,11 +428,11 @@ appCh.LeaveApplicationController = (function () {
 
                     }).then(function (data) {
                         data = JSON.parse(data);
-                        if(data.result){
+                        if (data.result) {
 
-                            app.system.systemMessage("Успешно отхвърлена отпуска",true);
-                        }else {
-                            app.system.systemMessage("Неуспешно отхвърлена отпуска",true);
+                            app.system.systemMessage("Успешно отхвърлена отпуска", true);
+                        } else {
+                            app.system.systemMessage("Неуспешно отхвърлена отпуска", true);
                         }
                     })
                 });
@@ -427,7 +442,7 @@ appCh.LeaveApplicationController = (function () {
 
                     $('.table-hover > tbody > tr').css('background-color', 'transparent');
 
-                    $(this).css('background-color','darkgrey');
+                    $(this).css('background-color', 'darkgrey');
                 })
 
             });
@@ -474,17 +489,16 @@ appCh.LeaveApplicationController = (function () {
                     let status = 'Чакаща';
 
 
-
                     for (let i in offleaveObject.result) {
 
 
-                        if(offleaveObject.result[i].isApproved == true){
+                        if (offleaveObject.result[i].isApproved == true) {
 
                             status = 'Одобрена';
-                        }else if(offleaveObject.result[i].isApproved == false){
+                        } else if (offleaveObject.result[i].isApproved == false) {
 
                             status = 'Неодобрена';
-                        }else {
+                        } else {
 
                             status = 'Чакаща';
                         }
@@ -503,8 +517,8 @@ appCh.LeaveApplicationController = (function () {
                             "<td>" + fromDay + " " + fromMoth + " - " + toDay + " " + toMoth + "</td>" +
                             "<td>" + offleaveObject.result[i].SubstitutedBy.FullName + "</td>" +
                             "<td>" + status + "</td>" +
-                            "<td>" + "<button id='"+leaveElement.ID +"' class='apprOfficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
-                            "<td>" + "<button id='"+leaveElement.ID +"' class='deniedOfficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
+                            "<td>" + "<button id='" + leaveElement.ID + "' class='apprOfficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
+                            "<td>" + "<button id='" + leaveElement.ID + "' class='deniedOfficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
                             "</tr>";
                         tableSource += tempStr;
                     }
@@ -516,10 +530,10 @@ appCh.LeaveApplicationController = (function () {
 
                         let leaveAppId = $(this)[0].id;
 
-                        app.connect.post('OfficialVacation/AcceptDeclineOfficialVacation?EditUserID='+ userId +'&action=accept&requestID=' + leaveAppId, {
-                            "Content-type" : "application/json",
-                            "SessionId" : session
-                        },null).error(function (data) {
+                        app.connect.post('OfficialVacation/AcceptDeclineOfficialVacation?EditUserID=' + userId + '&action=accept&requestID=' + leaveAppId, {
+                            "Content-type": "application/json",
+                            "SessionId": session
+                        }, null).error(function (data) {
 
                             if (data.responseText) {
 
@@ -539,11 +553,11 @@ appCh.LeaveApplicationController = (function () {
                         }).then(function (data) {
                             data = JSON.parse(data);
 
-                            if(data.result){
+                            if (data.result) {
 
-                                app.system.systemMessage("Успешно одобрена официална отпуска",true);
-                            }else{
-                                app.system.systemMessage("Неуспешно одобрена официална отпуска",true);
+                                app.system.systemMessage("Успешно одобрена официална отпуска", true);
+                            } else {
+                                app.system.systemMessage("Неуспешно одобрена официална отпуска", true);
                             }
                         });
                     });
@@ -552,10 +566,10 @@ appCh.LeaveApplicationController = (function () {
 
                         let leaveAppId = $(this)[0].id;
 
-                        app.connect.post('OfficialVacation/AcceptDeclineOfficialVacation?EditUserID='+ userId +'&action=reject&requestID=' + leaveAppId, {
-                            "Content-type" : "application/json",
-                            "SessionId" : session
-                        },null).error(function (data) {
+                        app.connect.post('OfficialVacation/AcceptDeclineOfficialVacation?EditUserID=' + userId + '&action=reject&requestID=' + leaveAppId, {
+                            "Content-type": "application/json",
+                            "SessionId": session
+                        }, null).error(function (data) {
 
                             if (data.responseText) {
 
@@ -575,18 +589,20 @@ appCh.LeaveApplicationController = (function () {
                         }).then(function (data) {
                             data = JSON.parse(data);
 
-                            if(data.result){
+                            if (data.result) {
 
-                                app.system.systemMessage("Успешно отхвърлена официална отпуска",true);
-                            }else{
-                                app.system.systemMessage("Неуспешно отхвърлена официална отпуска",true);
+                                app.system.systemMessage("Успешно отхвърлена официална отпуска", true);
+                            } else {
+                                app.system.systemMessage("Неуспешно отхвърлена официална отпуска", true);
                             }
                         });
                     });
                 });
             }
+
             getApps();
         }
+
         unOfficialLeaveApp();
         officialLeaveApp();
     }

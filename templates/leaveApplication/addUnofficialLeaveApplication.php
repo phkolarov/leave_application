@@ -6,7 +6,7 @@
             <h4>Нова заявка</h4>
         </div>
         <hr/>
-        <div class="row">
+        <div class="row fixedPosition">
             <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-6">
@@ -55,9 +55,8 @@
     <div class="row heading-div">
         <h4>Регистър <span class="glyphicon glyphicon-plus pull-right" id="expand"></span></h4>
     </div>
-    <hr/>
     <div class="row ">
-        <div>
+        <div class="col-lg-12" id="hideTable">
             <table id="unOfficialLeaveTable" class="table table-bordered table-hover">
                 <thead>
                 <th>Заявена на</th>

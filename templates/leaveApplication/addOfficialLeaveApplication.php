@@ -29,30 +29,30 @@
         </div>
     </div>
     <hr/>
-    <div class="row heading-div">
-        <h4>Заявени отпуски</h4>
+    <div class="row heading-div ">
+        <h4>Заявени отпуски<span class="glyphicon glyphicon-plus pull-right" id="showExpand"></span></h4>
     </div>
+    <div id="expand">
     <hr/>
-
-    <div class="row">
-        <div class="col-sm-12">
-            <label for="showYear">Година</label>
-            <select class="year form-control" id="showYear">
-
-            </select>
+        <div class="row">
+            <div class="col-sm-2">
+                <label for="showYear">Година</label>
+                <select class="year form-control" id="showYear">
+                </select>
+            </div>
         </div>
-    </div>
-    <hr/>
-    <div id="officialLeavesTable">
-        <table class="table table-bordered table-hover" id="officialLeaveTable">
-            <thead>
-            <th>Период</th>
-            <th>Брой работни дни</th>
-            <th>Заместван от</th>
-            </thead>
-            <tbody id="tableData">
-            </tbody>
-        </table>
+<hr/>
+        <div id="officialLeavesTable">
+            <table class="table table-bordered table-hover" id="officialLeaveTable">
+                <thead>
+                <th>Период</th>
+                <th>Брой работни дни</th>
+                <th>Заместван от</th>
+                </thead>
+                <tbody id="tableData">
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 <?php
