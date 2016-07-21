@@ -43,7 +43,7 @@ appCh.UserController = (function () {
                 }
             }
 
-            let errorMessage = JSON.parse(data.responseJSON);
+            let errorMessage = (data.responseJSON);
 
             if(errorMessage.result){
                 app.system.systemMessage(errorMessage.result)
@@ -54,8 +54,13 @@ appCh.UserController = (function () {
 
         }).then(function (data) {
 
-            var userObject = JSON.parse(data);
-            userObject = userObject.result;
+            let inputObject = data;
+            if(typeof(data) != "object"){
+
+                inputObject = JSON.parse(data);
+            }
+
+            var userObject = inputObject.result;
 
             let dayd = (parseInt((parseInt(userObject.VacationMinutes) / 60) / 8));
             let hours = (parseInt((parseInt(userObject.VacationMinutes) / 60) % 8));

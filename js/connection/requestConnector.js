@@ -4,6 +4,7 @@ var app = app || {};
 app.connect = (function () {
 
     var baseServiceURL = "http://external.euroins.bg/VacationsWebAPI/api/";
+    var baseServiceURL = "http://192.168.4.124:1234/back/";
 
     function _get(url, headers) {
 
@@ -28,7 +29,7 @@ app.connect = (function () {
     function connector(url, method, headers, data) {
 
         return $.ajax({
-            url: baseServiceURL + url,
+            url:( baseServiceURL + url),
             method: method,
             headers: headers,
             data: JSON.stringify(data),
@@ -40,14 +41,13 @@ app.connect = (function () {
                     'background-color': 'rgba(39, 39, 39, 0.29)'
                 });
             },
-            complete: function(data){
+            complete: function (data) {
 
                 $('#pending').css({
                     'z-index': -10,
                     'display': 'none',
                     'background-color': 'transparent'
                 });
-
             }
         });
     }
@@ -89,9 +89,22 @@ app.connect = (function () {
         return "";
     }
 
-
-    function deleteCookie(name){
+    function deleteCookie(name) {
         document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;"
+    }
+
+    function eraseCookieFromAllPaths(name) {
+        // This function will attempt to remove a cookie from all paths.
+        var pathBits = location.pathname.split('/');
+        var pathCurrent = ' path=';
+
+        // do a simple pathless delete first.
+        document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;';
+
+        for (var i = 0; i < pathBits.length; i++) {
+            pathCurrent += ((pathCurrent.substr(-1) != '/') ? '/' : '') + pathBits[i];
+            document.cookie = name + '=; expires=Thu, 01-Jan-1970 00:00:01 GMT;' + pathCurrent + ';';
+        }
     }
 
     return {
@@ -102,7 +115,8 @@ app.connect = (function () {
         cookie: {
             get: getCookie,
             set: setCookie,
-            delete: deleteCookie
+            delete: deleteCookie,
+            deleteAll: eraseCookieFromAllPaths
         }
     }
 })();

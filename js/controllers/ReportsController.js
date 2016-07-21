@@ -3,14 +3,13 @@ var appCh = appCh || {};
 appCh.ReportsController = (function () {
 
 
-
-    function index(){
+    function index() {
 
         console.log("report");
 
     }
 
-    function myOfficialVacations(){
+    function myOfficialVacations() {
 
         var optionSource = "";
         var session = app.connect.cookie.get("session");
@@ -43,7 +42,7 @@ appCh.ReportsController = (function () {
             let year = $("#year").val();
             let userId = app.connect.cookie.get('userID');
 
-            app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID="+ userId +"&DateFrom=" + year + "-01-01&DateTo=" + year + "-12-30",
+            app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID=" + userId + "&DateFrom=" + year + "-01-01&DateTo=" + year + "-12-30",
                 {
                     "Content-type": "application/json",
                     "SessionId": session
@@ -61,14 +60,14 @@ appCh.ReportsController = (function () {
 
                 }
 
-                let dataObject = JSON.parse(data.responseJSON);
+                let dataObject = (data.responseJSON);
 
                 app.system.systemMessage(dataObject.error);
 
             }).then(function (data) {
 
                 tableSource = "";
-                let offleaveObject = JSON.parse(data);
+                let offleaveObject = (data);
 
                 for (let i in offleaveObject.result) {
 
@@ -95,7 +94,8 @@ appCh.ReportsController = (function () {
         }
 
     }
-    function officialHolidays(){
+
+    function officialHolidays() {
 
         let session = app.connect.cookie.get("session");
 
@@ -116,12 +116,12 @@ appCh.ReportsController = (function () {
                     }
                 }
 
-                let errorMessage = JSON.parse(data.responseJSON);
+                let errorMessage = (data.responseJSON);
 
-                if(errorMessage.result){
+                if (errorMessage.result) {
                     app.system.systemMessage(errorMessage.result)
 
-                }else if(errorMessage.error){
+                } else if (errorMessage.error) {
                     app.system.systemMessage(errorMessage.error)
                 }
 
@@ -134,7 +134,7 @@ appCh.ReportsController = (function () {
 
                 let date;
                 let dateArray = [];
-                let holidayDates = JSON.parse(data);
+                let holidayDates = (data);
 
                 for (var i in holidayDates.result) {
 
@@ -144,15 +144,13 @@ appCh.ReportsController = (function () {
                     dateArray.push(date);
                 }
 
-
                 $('#full-year').multiDatesPicker({
-                    onSelect: function(date) {
-
+                    onSelect: function (date, test, tes1t) {
 
                         let currentDate = moment(date);
 
 
-                        app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'),{
+                        app.connect.get('Holiday/GetHolidayByDate?Date=' + currentDate.format('YYYY-MM-DD'), {
                             "Content-type": "application/json",
                             "SessionId": session
                         }).error(function (data) {
@@ -167,25 +165,23 @@ appCh.ReportsController = (function () {
                                 }
                             }
 
-                            let errorMessage = JSON.parse(data.responseJSON);
+                            let errorMessage = (data.responseJSON);
 
-                            if(errorMessage.result){
+                            if (errorMessage.result) {
                                 app.system.systemMessage(errorMessage.result)
 
-                            }else if(errorMessage.error){
+                            } else if (errorMessage.error) {
                                 app.system.systemMessage(errorMessage.error)
                             }
 
                         }).then(function (data) {
 
-                            data = JSON.parse(data);
-
-                            if(data.result && data.result != null){
+                            if (data.result && data.result != null) {
 
                                 let outputDate = moment(data.result.Date);
                                 let type = 'Работен';
 
-                                if(type == false){
+                                if (type == false) {
 
                                     type = 'Неработен'
                                 }
@@ -204,16 +200,83 @@ appCh.ReportsController = (function () {
                     addDates: dateArray,
                     dateFormat: "m/d/yy",
                     numberOfMonths: [3, 4],
-                    defaultDate: '1' + '/1/' + y
+                    defaultDate: '1' + '/1/' + y,
+                    disabled: true
                 });
+
 
             });
         }
 
         loadHolidays();
 
-        $("document").ready(function(){
+        $("document").ready(function () {
 
+           setTimeout(function () {
+               $('td').on('click',function(){
+
+                   let year = new Date().getFullYear();
+                   let month = "0" + (parseInt($(this).attr('data-month'))+ 1);
+                   month = month.slice(-2);
+
+                   let day =  $($(this).children()[0]).html();
+                   let outDate = year + "-"+ month + "-" + day;
+
+                   app.connect.get('Holiday/GetHolidayByDate?Date=' + outDate, {
+                       "Content-type": "application/json",
+                       "SessionId": session
+                   }).error(function (data) {
+
+                       if (data.responseText) {
+
+                           let errorObject = JSON.parse(data.responseText);
+
+                           if (errorObject.error == 'Session not exists or expired') {
+                               app.connect.cookie.delete('session');
+                               location.href = "/leave_application/user/login"
+                           }
+                       }
+
+                       let errorMessage = (data.responseJSON);
+
+                       if (errorMessage.result) {
+                           app.system.systemMessage(errorMessage.result)
+
+                       } else if (errorMessage.error) {
+                           app.system.systemMessage(errorMessage.error)
+                       }
+
+                   }).then(function (data) {
+
+
+                       if (data.result && data.result != null) {
+
+                           let outputDate = moment(data.result.Date);
+                           let type = 'Работен';
+
+                           if (type == false) {
+
+                               type = 'Неработен'
+                           }
+                           $('#previewDate').text(outputDate.format('L'));
+
+                           $('#previewType').text(type);
+
+                           $('#previewMessage').text(data.result.Description);
+                       }else{
+
+                           let date= moment(outDate)
+                           $('#previewDate').text(date.format('L'));
+
+                           $('#previewType').text("Без промяна за конкретния ден");
+
+                           $('#previewMessage').text("Без промяна за конкретния ден");
+                       }
+
+
+                   });
+               });
+           },300);
             $(".ui-datepicker-inline").width("78em");
         });
 

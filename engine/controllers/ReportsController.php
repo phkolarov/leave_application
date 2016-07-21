@@ -24,7 +24,7 @@ class ReportsController extends Controller
      */
     public function officialHolidays(){
 
-        $this->view->add = "officialReport TEST";
+        $this->view->add = "officialReport";
         $this->view->render();
     }
 
@@ -35,7 +35,7 @@ class ReportsController extends Controller
      */
     public function myOfficialVacations(){
 
-        $this->view->add = "unofficialReport TEST";
+        $this->view->add = "unofficialReport";
         $this->view->render();
     }
 }

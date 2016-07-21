@@ -54,14 +54,14 @@ app.system = (function () {
         notice.get().click(function () {
             notice.remove();
         });
-
-
     }
 
 
-    function systemMessage(message, reload) {
+    function systemMessage(message, reload, title, titleMessage, deleteButton, enableSound) {
 
-        $("#systemMessage").text(message);
+        $('#deleteSystemMessage').remove();
+        $('#addMeetingRightClickMenu').remove();
+        $("#systemMessage").html(message);
         $("#myModal").modal('show');
 
         if (reload == true) {
@@ -70,6 +70,41 @@ app.system = (function () {
                 window.location.reload();
             });
         }
+
+        if (title == true) {
+
+            $('.modal-title').html(titleMessage);
+        }
+        if (deleteButton == true) {
+
+            $('#deleteSystemMessage').remove();
+            $('.modal-footer.infoModal').prepend('<button id="deleteSystemMessage" type="button" class="btn btn-warning" data-dismiss="modal">Изтрий</button>');
+        }
+        if (enableSound == true) {
+
+            let audio = new Audio('/leave_application/css/audio/popup2.wav');
+            audio.play();
+        }
+    }
+
+    function addEvent(reload, title, titleMessage) {
+
+        $('#deleteSystemMessage').remove();
+        $('#addMeetingRightClickMenu').remove();
+        $("#addEvent").modal('show');
+
+        if (reload == true) {
+            $('#closeSystemMessage').on('click', function () {
+
+                window.location.reload();
+            });
+        }
+
+        if (title == true) {
+
+            $('.modal-title').html(titleMessage);
+        }
+
     }
 
     function notificationSeeker() {
@@ -86,12 +121,10 @@ app.system = (function () {
             success: function (result) {
 
                 show_stack_bar_bottom('approvedOff');
-
                 notificationSeeker();
             },
             timeout: 10000
         }).then(function () {
-
 
             console.log(12121);
         });
@@ -101,7 +134,8 @@ app.system = (function () {
 
     return {
         systemMessage: systemMessage,
-        notificationSeeker: notificationSeeker
+        notificationSeeker: notificationSeeker,
+        addEvent: addEvent
     }
 
 })();

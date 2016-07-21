@@ -1,5 +1,5 @@
-<h1>Редакция на отпуска</h1>
-<hr>
+<!--<h1>Редакция на отпуска</h1>-->
+<!--<hr>-->
 
 <div class="PageWrapper">
 
@@ -43,6 +43,8 @@
     </div>
 
     <div id="addRemoveOfficialLeave">
+        <input type="hidden" id="totalSelectedMinutes">
+
         <div class="row">
 
             <div class="col-lg-3">
@@ -107,8 +109,7 @@
         </div>
         <div class="row">
             <div class="col-lg-12" id="officialButtonsWrapper">
-                <button id="addOfficial" class="btn btn-sm btn-success">Добави</button>
-                <button id="substrOfficial" class="btn btn-sm btn-warning">Отнеми</button>
+                <button id="changeOfficial" class="btn btn-sm btn-success">Промени</button>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
-<h1>Профил</h1>
-<hr>
-
+<!--<h1>Профил</h1>-->
+<!--<hr>-->
+<!---->
 
 <div class="PageWrapper">
    <div id="InfoHeading" class="row">

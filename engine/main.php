@@ -47,7 +47,6 @@ class LeaveApp
 
         if(isset($_COOKIE['session'])){
 
-//            var_dump($_COOKIE);
             $this->mainMenuLoader();
         }
 
@@ -71,7 +70,7 @@ class LeaveApp
             ob_start();
             echo ($template);
             $php_output = ob_get_contents();
-            //ob_end_clean();
+            //ob_end_flush();
 
         } else {
             throw new \Exception("LELE NQMA MENU!!!");

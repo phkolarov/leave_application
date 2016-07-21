@@ -19,6 +19,8 @@ class serviceConnection
     public function __construct($session = null)
     {
         $baseUrl = "http://external.euroins.bg/VacationsWebAPI/api/";
+        $baseUrl = "http://192.168.4.124:1234/back/";
+
         $this->setBaseUrl($baseUrl);
         $this->setSession($session);
     }

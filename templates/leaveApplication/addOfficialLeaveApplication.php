@@ -1,9 +1,9 @@
-<h1>Добави официална отпуска</h1>
-<hr/>
+<!--<h1>Добави официална отпуска</h1>-->
+<!--<hr/>-->
 <div class="PageWrapper">
     <div class="row" id="InfoHeading">
 
-        <h4>Добавяне</h4>
+        <h4>Добави официална отпуска</h4>
     </div>
     <hr/>
 
@@ -29,8 +29,8 @@
         </div>
     </div>
     <hr/>
-    <div class="row heading-div ">
-        <h4>Заявени отпуски<span class="glyphicon glyphicon-plus pull-right" id="showExpand"></span></h4>
+    <div class="row heading-div " id="showExpand">
+        <h4>Заявени отпуски<span class="glyphicon glyphicon-plus pull-right" ></span></h4>
     </div>
     <div id="expand">
     <hr/>

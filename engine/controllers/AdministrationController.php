@@ -76,6 +76,15 @@ class AdministrationController extends Controller
      * @AUTHENTICATE
      * @MODERATOR
      */
+    public function boardroom(){
+
+        $this->view->render();
+    }
+
+    /**
+     * @AUTHENTICATE
+     * @MODERATOR
+     */
     public function addUser(){
 
         if(($_COOKIE['role'] == 'admin') && isset($_COOKIE['session'])){

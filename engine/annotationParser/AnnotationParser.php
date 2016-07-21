@@ -55,9 +55,25 @@ class AnnotationParser
 
     private static function authentication()
     {
-        if(!isset($_SESSION['session'])){
-            ob_end_clean();
-            header("Location: /leave_application/user/login");
+        //ob_end_flush();
+
+        if(!isset($_COOKIE['session'])){
+
+
+            unset($_COOKIE['session']);
+            unset($_SESSION['session']);
+            setcookie('session', null, -1, '/');
+            unset($_COOKIE['username']);
+            setcookie('username', null, -1, '/');
+            unset($_COOKIE['password']);
+            setcookie('password', null, -1, '/');
+            unset($_COOKIE['userID']);
+            setcookie('userID', null, -1, '/');
+            unset($_COOKIE['isAdmin']);
+            setcookie('isAdmin', null, -1, '/');
+
+
+            //header("Location: /leave_application/user/login");
             die();
         }
     }

@@ -11,18 +11,18 @@ app.run = (function () {
         let params = urlParser();
         let controllerPath = "/leave_application/js/controllers/" + params.controllerName + ".js";
         let systemFuncPath = "/leave_application/js/extendedSystemFunctions/systemFunctions.js";
-        let moment = "/leave_application/libraries/moment/moment.js";
+        //let moment = "/leave_application/libraries/moment/moment.js";
         let action = params.action;
         let controllerfileref = document.createElement('script');
         let systemfileref = document.createElement('script');
-        let momentfileref = document.createElement('script');
+        //let momentfileref = document.createElement('script');
 
         controllerfileref.setAttribute("type", "text/javascript");
         controllerfileref.setAttribute("src", controllerPath);
         systemfileref.setAttribute("type", "text/javascript");
         systemfileref.setAttribute("src", systemFuncPath);
-        momentfileref.setAttribute("type", "text/javascript");
-        momentfileref.setAttribute("src", moment);
+        //momentfileref.setAttribute("type", "text/javascript");
+        //momentfileref.setAttribute("src", moment);
 
         asynchronizer();
 
@@ -32,9 +32,9 @@ app.run = (function () {
         if (typeof systemfileref != "undefined") {
             $(document.getElementsByTagName("head")[0]).append(systemfileref);
         }
-        if (typeof momentfileref != "undefined") {
-            $(document.getElementsByTagName("head")[0]).append(momentfileref);
-        }
+        //if (typeof momentfileref != "undefined") {
+        //    $(document.getElementsByTagName("head")[0]).append(momentfileref);
+        //}
 
         $(document).ready(function () {
 
@@ -87,6 +87,10 @@ app.run = (function () {
         var controller = params[0];
         var action = "index";
 
+        if(params[0] == ""){
+            controller = "Home"
+            action = "index";
+        }
         if (params.length > 1) {
             action = params[1];
         }

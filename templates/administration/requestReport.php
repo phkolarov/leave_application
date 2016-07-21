@@ -1,9 +1,9 @@
-<h1>Справка всички молби</h1>
+<!--<h1>Справка всички молби</h1>-->
 <div class="PageWrapper">
 
     <div id="InfoHeading" class="row">
         <div class="pull-left">
-            <h4>Всички молби за отпуск</h4>
+            <h4>Справка всички молби</h4>
         </div>
         <div class="pull-right">
         </div>

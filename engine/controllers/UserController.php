@@ -41,10 +41,8 @@ class UserController extends Controller
     {
         if (isset($_POST['username']) && isset($_POST['password'])) {
 
-
             $username = $_POST['username'];
             $password = $_POST['password'];
-
             $userRepo = new UserRepository();
 
             $user = $userRepo->userLogin($username, $password);
@@ -80,7 +78,10 @@ class UserController extends Controller
                     $_COOKIE['isAdmin'] = true;
                 }
                 ob_end_clean();
+
                 header("Location: /leave_application/home/index");
+                //header("Location: /leave_application/user/profile");
+
                 exit;
 
             } else {
@@ -100,8 +101,8 @@ class UserController extends Controller
 
         if (isset($_COOKIE['session'])) {
 
-            unset($_COOKIE['session']);
             unset($_SESSION['session']);
+            unset($_COOKIE['session']);
             setcookie('session', null, -1, '/');
             unset($_COOKIE['username']);
             setcookie('username', null, -1, '/');
@@ -111,7 +112,16 @@ class UserController extends Controller
             setcookie('userID', null, -1, '/');
             unset($_COOKIE['isAdmin']);
             setcookie('isAdmin', null, -1, '/');
+            unset($_COOKIE['name']);
+            setcookie('name', null, -1, '/');
+            unset($_COOKIE['isActive']);
+            setcookie('isActive', null, -1, '/');
+            unset($_COOKIE['role']);
+            setcookie('role', null, -1, '/');
+            unset($_COOKIE['_ga']);
+            setcookie('_ga', null, -1, '/');
 
+            ob_end_clean();
             header("Location: /leave_application/user/login");
             exit;
         }
@@ -124,14 +134,22 @@ class UserController extends Controller
     public function changeUserParams()
     {
         $userRepo = new UserRepository();
-        $password = hash('sha512', $_POST['password']);
+        $password = '';
+        if($_POST['password'] != ''){
+            $password =  hash('sha512', $_POST['password']);
+        }
         $names = $_POST['names'];
         $userId = $_COOKIE['userID'];
         $email = $_POST['email'];
         $username = $_COOKIE['username'];
 
         $result = $userRepo->changeUserParams($userId,$username,$names,$email,$password);
-        $jsonOutput = json_decode($result);
+
+        $jsonOutput = $result;
+
+        if(gettype ($result) != "object"){
+            $jsonOutput = json_decode($result);
+        }
 
         if(isset($jsonOutput->result)){
 
@@ -144,7 +162,6 @@ class UserController extends Controller
     }
 
     public function profile(){
-
 
         $this->view->render();
     }

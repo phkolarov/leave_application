@@ -1,5 +1,5 @@
-<h1>Начална страница</h1>
-<hr>
+<!--<h1>Начална страница</h1>-->
+<!--<hr>-->
 <div class="PageWrapper">
 
     <div id="InfoHeading" class="row">
@@ -24,14 +24,17 @@
 
 
                             <p>Вие имате <span id="unOfficialLeaveInfo"></span> неофициална отпуска</p>
-                            <a href="/leave_application/leaveApplication/addOfficialLeaveApplication"><input type="button" class="btn btn-success btn-sm" value="Нова молба"></a>
+                            <a href="/leave_application/leaveApplication/addUnofficialLeaveApplication"><input type="button" class="btn btn-success btn-sm" value="Нова молба"></a>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 homePageInfoWraper">
-                            <p>Последна официална подадена отпуска: <span id="officialLeaveInfo"> </span></p>
+                            <p>Вие имате <span id="officialLeaveInfo"></span> дни официална отпуска</p>
+                            <p>Последна официална подадена отпуска: <span id="LastOfficialLeaveInfo"> </span></p>
                             <p>Статус на молбата: <span id="offLeaveInfoStatus"> </span></p>
-                            <a href="/leave_application/leaveApplication/addUnofficialLeaveApplication"><input type="button" class="btn btn-success btn-sm" value="Нова молба"></a>
+                            <a href="/leave_application/leaveApplication/addOfficialLeaveApplication"><input type="button" class="btn btn-success btn-sm" value="Нова молба"></a>
+
                         </div>
                     </div>
                 </div>

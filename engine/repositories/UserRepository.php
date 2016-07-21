@@ -16,7 +16,6 @@ require_once('engine/models/User.php');
 
 class UserRepository
 {
-
     public function userLogin($username, $password)
     {
         $hashedPassword = hash('sha512', $password);
@@ -24,7 +23,10 @@ class UserRepository
         $connection = new serviceConnection();
         $empty = array("null" => "null");
         $data = $connection->postData($loginUri, $empty);
-        $tempObject = json_decode($data);
+        $tempObject = $data;
+        if (gettype($data) != "object") {
+            $tempObject = json_decode($data);
+        }
 
         if (isset($tempObject->result)) {
 
@@ -68,7 +70,11 @@ class UserRepository
 
         $connection = new serviceConnection($session);
         $data = $connection->postData($saveUserUrl, $userObject);
-        $tempObject = json_decode($data);
+
+        $tempObject = $data;
+        if (gettype($data) != "object") {
+            $tempObject = json_decode($data);
+        }
 
 
         if (isset($tempObject->result)) {
@@ -83,8 +89,6 @@ class UserRepository
 
     public function changeUserParams($userId, $username, $names, $email, $password)
     {
-
-
         $changeUserUrl = "User/EditUser";
         $session = $_COOKIE['session'];
 
@@ -96,7 +100,7 @@ class UserRepository
             "Email" => $email,
             "VacationMinutes" => 0,
             "OfficialVacationDays" => 0,
-            "Role" => $_COOKIE['userID'],
+            "Role" => $_COOKIE['role'],
             "isActive" => true
         );
 

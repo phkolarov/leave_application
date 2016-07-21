@@ -46,3 +46,6 @@ h4{
 .addBtn{
 	background-color: #8CBBFF;
 }
+#expand,#showExpand{
+	padding-right: 15px;
+}

@@ -17,14 +17,19 @@ appCh.LeaveApplicationController = (function () {
                 $("#expand").show("slow");
 
             }
-        })
+        });
 
         $(document).ready(function () {
-            app.connect.get("User/GetAllUsers", {
+            app.connect.get("User/GetAllUsers?active=true", {
                 "Content-type": "application/json",
                 "SessionId": session
             }).then(function (data) {
-                var obj = JSON.parse(data);
+
+                var obj = (data);
+
+                if (typeof (data) != "object") {
+                    obj = JSON.parse(data);
+                }
                 obj = obj.result;
                 obj.forEach(function (el) {
                     var debutyId = el.ID;
@@ -41,18 +46,26 @@ appCh.LeaveApplicationController = (function () {
             .append("<option>" + (new Date().getFullYear() - 1) + "</option>")
             .append("<option>" + new Date().getFullYear() + "</option>")
             .append("<option selected='selected'>Изберете година</option>");
+
         $("#hideTable").hide();
+
         $("#showYear").change(function () {
             $("#tableData").empty();
             if ($("#showYear").val() != "Изберете година") {
                 var id = app.connect.cookie.get("userID");
                 var session = app.connect.cookie.get("session");
                 var selectedYear = $("#showYear").val();
-                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID=" + id + "&DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-31", {
+
+                app.connect.get("OfficialVacation/GetAllOfficialVacationsForPeriodAndUser?UserID=" + id + "&DateFrom=" + selectedYear + "-01-01&DateTo=" + selectedYear + "-12-30", {
                     "Content-type": "application/json",
                     "SessionId": session
                 }).then(function (data) {
-                    var obj = JSON.parse(data);
+
+                    var obj = (data);
+
+                    if (typeof (data) != "object") {
+                        obj = JSON.parse(data);
+                    }
                     obj = obj.result;
                     $("#tableData").empty();
 
@@ -60,11 +73,10 @@ appCh.LeaveApplicationController = (function () {
                         obj.reverse();
                         obj.forEach(function (el) {
 
-
-                                var dateFrom = el.DateFrom.split('T')[0];
-                                var dateTo = el.DateTo.split('T')[0];
-
+                                var dateFrom = el.DateFrom.split(' ')[0];
+                                var dateTo = el.DateTo.split(' ')[0];
                                 var debuty = el.SubstitutedBy.FullName;
+
                                 $("#tableData").append(
                                     "<tr>" +
                                     "<td><strong>" + dateFrom + "</strong> до <strong>" + dateTo + "</strong></td>" +
@@ -72,8 +84,6 @@ appCh.LeaveApplicationController = (function () {
                                     "<td>" + debuty + "</td>" +
                                     "</tr>"
                                 )
-
-
                             }
                         )
                     }
@@ -87,6 +97,7 @@ appCh.LeaveApplicationController = (function () {
         $("#startDate, #endDate").datepicker();
 
         $("#submit").click(function () {
+
             var startDate = $("#startDate").val().split('.');
             var startDateFormated = startDate[2] + "-" + startDate[1] + "-" + startDate[0] + "";
             var endDate = $("#endDate").val().split('.');
@@ -113,26 +124,24 @@ appCh.LeaveApplicationController = (function () {
                     }
                 }
 
-                let errorMessage = JSON.parse(data.responseJSON);
+                let errorMessage = (data.responseJSON);
 
-                if(errorMessage.result){
+                if (errorMessage.result) {
                     app.system.systemMessage(errorMessage.result)
 
-                }else if(errorMessage.error){
+                } else if (errorMessage.error) {
                     app.system.systemMessage(errorMessage.error)
                 }
 
-            }).then(
-                function (data) {
-
-                    data = JSON.parse(data);
+            }).then(function (data) {
 
                     if (data.result) {
 
                         app.system.systemMessage("Молбата за отпуска беше изпратена за потвърждение")
                     } else {
 
-                        app.system.systemMessage("Неуспешно изпратена официална отпуска")
+                        console.log(data);
+                        app.system.systemMessage(data.error)
                     }
 
                 }
@@ -150,6 +159,27 @@ appCh.LeaveApplicationController = (function () {
             app.connect.get("Holiday/GetAllHolidaysForPeriod?DateFrom=" + new Date().getFullYear() + "-1-1&DateTo=" + new Date().getFullYear() + "-12-30", {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+                }
+
+                let errorMessage = (data.responseJSON);
+
+                if (errorMessage.result) {
+                    app.system.systemMessage(errorMessage.result)
+
+                } else if (errorMessage.error) {
+                    app.system.systemMessage(errorMessage.error)
+                }
+
             }).then(function (data) {
 
                 let today = new Date();
@@ -157,7 +187,10 @@ appCh.LeaveApplicationController = (function () {
                 let m = today.getMonth();
                 let date;
                 let dateArray = [];
-                let holidayDates = JSON.parse(data);
+
+                let holidayDates = (data);
+
+
                 // for (var i in holidayDates.result) {
                 //
                 //     tempDate = moment(holidayDates.result[i]);
@@ -168,7 +201,7 @@ appCh.LeaveApplicationController = (function () {
                 $('#full-year').multiDatesPicker({
                     dateFormat: "m/d/yy",
                     numberOfMonths: [1, 2],
-                    defaultDate: m + '/1/' + y
+                    defaultDate: m + '/1/' + y,
                 });
             });
 
@@ -179,8 +212,34 @@ appCh.LeaveApplicationController = (function () {
             app.connect.get("Request/GetRequestsForPeriod?DateFrom=" + new Date().getFullYear() + "-01-01&DateTo=" + new Date().getFullYear() + "-12-31&UserID=" + app.connect.cookie.get("userID"), {
                 "Content-type": "application/json",
                 "SessionId": session
+            }).error(function (data) {
+
+                if (data.responseText) {
+
+                    let errorObject = JSON.parse(data.responseText);
+
+                    if (errorObject.error == 'Session not exists or expired') {
+                        app.connect.cookie.delete('session');
+                        location.href = "/leave_application/user/login"
+                    }
+                }
+
+                let errorMessage = (data.responseJSON);
+
+                if (errorMessage.result) {
+                    app.system.systemMessage(errorMessage.result)
+
+                } else if (errorMessage.error) {
+                    app.system.systemMessage(errorMessage.error)
+                }
+
             }).then(function (data) {
-                var res = JSON.parse(data);
+
+                var res = (data);
+                if (typeof(data) != 'object') {
+
+                    res = JSON.parse(data);
+                }
                 var index = 0;
                 $("#unOfficialLeaveTable").hide("slow");
                 $("#unOfficialLeaveTable tbody").empty();
@@ -195,15 +254,17 @@ appCh.LeaveApplicationController = (function () {
                             "<td></td>" +
                             "<td></td>" +
                             "<td></td>" +
+                            "<td ></td>" +
                             "<td class='link'></td>" +
                             "</tr>");
                     }
 
-                    var requestedFrom = leave.RequestDateTime.split('T');
+                    var requestedFrom = leave.RequestDateTime.split(' ');
                     requestedFromDate = requestedFrom[0];
                     requestedFromTime = requestedFrom[1].split('.')[0];
                     requestedFromDate += "/" + requestedFromTime;
                     var tableCells = $("tr#" + index + " td").toArray();
+
                     $(tableCells[0]).text(requestedFromDate);
                     $(tableCells[1]).text(leave.User.FullName);
                     $(tableCells[2]).text(leave.DateFrom.split('T')[0]);
@@ -225,13 +286,22 @@ appCh.LeaveApplicationController = (function () {
                     $(tableCells[3]).text(calculateDays(leaveTimeInMins))
                     $(tableCells[4]).text(leave.isApprovedByPlamen === null ? "Чакаща" : leave.isApprovedByPlamen == true ? "Одобрена" : "Отказана");
                     $(tableCells[5]).text(leave.isApprovedByMitko === null ? "Чакаща" : leave.isApprovedByMitko == true ? "Одобрена" : "Отказана");
-                    if (leave.isApproved === true) {
-                        $(tableCells[7]).empty()
+
+
+                    if (leave.isApproved == '1') {
+                        $(tableCells[6]).text('Одобрена');
+                    } else if (leave.isApproved == '0') {
+                        $(tableCells[6]).text('Неодобрена');
+                    } else {
+                        $(tableCells[6]).text('Чакаща');
                     }
-                    else {
-                        $(tableCells[6]).append("<a href='#' class='deleteRequest' id='" + leave.ID + "'>Изтрий</a>");
+
+
+                    if (leave.isApproved == null) {
+                        $(tableCells[7]).append("<a href='#' class='deleteRequest' id='" + leave.ID + "'>Изтрий</a>");
                     }
-                })
+
+                });
 
                 $(".deleteRequest").on("click", (function () {
 
@@ -241,10 +311,31 @@ appCh.LeaveApplicationController = (function () {
                     app.connect.delete("Request/DeleteRequest?ID=" + unofficialID, {
                         "Content-type": "application/json",
                         "SessionId": session
+                    }).error(function (data) {
+
+                        if (data.responseText) {
+
+                            let errorObject = JSON.parse(data.responseText);
+
+                            if (errorObject.error == 'Session not exists or expired') {
+                                app.connect.cookie.delete('session');
+                                location.href = "/leave_application/user/login"
+                            }
+                        }
+
+                        let errorMessage = data.responseJSON;
+
+                        if (errorMessage.result) {
+                            app.system.systemMessage(errorMessage.result)
+
+                        } else if (errorMessage.error) {
+                            app.system.systemMessage(errorMessage.error)
+                        }
+
                     }).then(function () {
 
-                        getRequests()
-                        app.system.systemMessage("Молбата беше изтрита");
+                        getRequests();
+                        app.system.systemMessage("Молбата беше изтрита", true);
 
                     })
                 }));
@@ -291,10 +382,16 @@ appCh.LeaveApplicationController = (function () {
             app.connect.post("Request/AddRequest", {
                 "Content-type": "application/json",
                 "SessionId": session
-            }, data).then(function () {
+            }, data).then(function (data) {
+
+                if (data.result) {
+                    app.system.systemMessage("Молбата беше подадена");
+
+                } else {
+                    app.system.systemMessage(data.error);
+                }
                 getRequests();
-            })
-            app.system.systemMessage("Молбата беше подадена", true);
+            });
         });
 
     }
@@ -329,19 +426,25 @@ appCh.LeaveApplicationController = (function () {
                     }
                 }
 
-                let errorMessage = JSON.parse(data.responseJSON);
+                let errorMessage = (data.responseJSON);
 
-                if(errorMessage.result){
+                if (errorMessage.result) {
                     app.system.systemMessage(errorMessage.result)
 
-                }else if(errorMessage.error){
+                } else if (errorMessage.error) {
                     app.system.systemMessage(errorMessage.error)
                 }
 
             }).then(function (data) {
 
                 tableSource = "";
-                let offleaveObject = JSON.parse(data);
+
+                let offleaveObject = (data);
+
+                if (typeof (data) != 'object') {
+                    offleaveObject = JSON.parse(data);
+                }
+
 
                 for (let i in offleaveObject.result) {
 
@@ -399,7 +502,7 @@ appCh.LeaveApplicationController = (function () {
                         "<td>" + plAppr + "</td>" +
                         "<td>" + mtAppr + "</td>" +
                         "<td>" + status + "</td>" +
-                        "<td>" + "<button " + disabled + "  requestId='" + leaveElement.ID + "' class='apprUnnofficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
+                        "<td >" + "<button " + disabled + "  requestId='" + leaveElement.ID + "' class='apprUnnofficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
                         "<td>" + "<button " + disabled + " requestId='" + leaveElement.ID + "' class='deniedUnnofficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
                         "</tr>";
                     tableSource += tempStr;
@@ -427,18 +530,21 @@ appCh.LeaveApplicationController = (function () {
                             }
                         }
 
-                        let errorMessage = JSON.parse(data.responseJSON);
+                        let errorMessage = (data.responseJSON);
 
-                        if(errorMessage.result){
+                        if (errorMessage.result) {
                             app.system.systemMessage(errorMessage.result)
 
-                        }else if(errorMessage.error){
+                        } else if (errorMessage.error) {
                             app.system.systemMessage(errorMessage.error)
                         }
 
                     }).then(function (data) {
 
-                        data = JSON.parse(data);
+                        if (typeof (data) != 'object') {
+                            data = JSON.parse(data);
+                        }
+
                         if (data.result) {
 
                             app.system.systemMessage("Успешно одобрена отпуска", true);
@@ -468,18 +574,20 @@ appCh.LeaveApplicationController = (function () {
                             }
                         }
 
-                        let errorMessage = JSON.parse(data.responseJSON);
+                        let errorMessage = (data.responseJSON);
 
-                        if(errorMessage.result){
+                        if (errorMessage.result) {
                             app.system.systemMessage(errorMessage.result)
 
-                        }else if(errorMessage.error){
+                        } else if (errorMessage.error) {
                             app.system.systemMessage(errorMessage.error)
                         }
 
                     }).then(function (data) {
 
-                        data = JSON.parse(data);
+                        if (typeof (data) != 'object') {
+                            data = JSON.parse(data);
+                        }
                         if (data.result) {
 
                             app.system.systemMessage("Успешно отхвърлена отпуска", true);
@@ -529,19 +637,24 @@ appCh.LeaveApplicationController = (function () {
                         }
                     }
 
-                    let errorMessage = JSON.parse(data.responseJSON);
+                    let errorMessage = (data.responseJSON);
 
-                    if(errorMessage.result){
+                    if (errorMessage.result) {
                         app.system.systemMessage(errorMessage.result)
 
-                    }else if(errorMessage.error){
+                    } else if (errorMessage.error) {
                         app.system.systemMessage(errorMessage.error)
                     }
 
                 }).then(function (data) {
 
                     tableSource = "";
-                    let offleaveObject = JSON.parse(data);
+                    let offleaveObject = (data);
+
+                    if (typeof (data) != 'object') {
+                        offleaveObject = JSON.parse(data);
+                    }
+
                     let status = 'Чакаща';
 
 
@@ -564,14 +677,14 @@ appCh.LeaveApplicationController = (function () {
                         let dateFrom = new Date(leaveElement.DateFrom);
                         let fromMoth = moths[dateFrom.getMonth()];
                         let fromDay = dateFrom.getDate();
-                        let dateTo = new Date(leaveElement.DateFrom);
+                        let dateTo = new Date(leaveElement.DateTo);
                         let toMoth = moths[dateTo.getMonth()];
                         let toDay = dateTo.getDate();
 
                         let tempStr = "<tr>" +
-                            "<td>" + offleaveObject.result[i].User.FullName + "</td>" +
+                            "<td>" + offleaveObject.result[i].FullName + "</td>" +
                             "<td>" + fromDay + " " + fromMoth + " - " + toDay + " " + toMoth + "</td>" +
-                            "<td>" + offleaveObject.result[i].SubstitutedBy.FullName + "</td>" +
+                            "<td>" + offleaveObject.result[i].SubstitutedBy + "</td>" +
                             "<td>" + status + "</td>" +
                             "<td>" + "<button id='" + leaveElement.ID + "' class='apprOfficial btn btn-sm btn-success'>Одобри</button>" + "</td>" +
                             "<td>" + "<button id='" + leaveElement.ID + "' class='deniedOfficial btn btn-sm btn-warning'>Откажи</button>" + "</td>" +
@@ -601,17 +714,16 @@ appCh.LeaveApplicationController = (function () {
                                 }
                             }
 
-                            let errorMessage = JSON.parse(data.responseJSON);
+                            let errorMessage = (data.responseJSON);
 
-                            if(errorMessage.result){
+                            if (errorMessage.result) {
                                 app.system.systemMessage(errorMessage.result)
 
-                            }else if(errorMessage.error){
+                            } else if (errorMessage.error) {
                                 app.system.systemMessage(errorMessage.error)
                             }
 
                         }).then(function (data) {
-                            data = JSON.parse(data);
 
                             if (data.result) {
 
@@ -641,17 +753,16 @@ appCh.LeaveApplicationController = (function () {
                                 }
                             }
 
-                            let errorMessage = JSON.parse(data.responseJSON);
+                            let errorMessage = (data.responseJSON);
 
-                            if(errorMessage.result){
+                            if (errorMessage.result) {
                                 app.system.systemMessage(errorMessage.result)
 
-                            }else if(errorMessage.error){
+                            } else if (errorMessage.error) {
                                 app.system.systemMessage(errorMessage.error)
                             }
 
                         }).then(function (data) {
-                            data = JSON.parse(data);
 
                             if (data.result) {
 
@@ -678,3 +789,4 @@ appCh.LeaveApplicationController = (function () {
     }
 
 })();
+

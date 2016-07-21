@@ -1,5 +1,5 @@
-<h1>Официални празници</h1>
-<hr>
+<!--<h1>Официални празници</h1>-->
+<!--<hr>-->
 <div class="PageWrapper">
 
     <div id="InfoHeading" class="row">

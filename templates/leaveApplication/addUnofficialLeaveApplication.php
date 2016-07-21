@@ -1,9 +1,9 @@
-<h1>Добави неофициален формуляр</h1>
-<hr/>
+<!--<h1>Добави неофициален формуляр</h1>-->
+<!--<hr/>-->
 <div class="PageWrapper">
     <div calss="newApplicationWrapper">
         <div class="row" id="InfoHeading">
-            <h4>Нова заявка</h4>
+            <h4>Добави неофициален формуляр</h4>
         </div>
         <hr/>
         <div class="row fixedPosition">
@@ -52,8 +52,8 @@
        <hr/>
     </div>
 
-    <div class="row heading-div">
-        <h4>Регистър <span class="glyphicon glyphicon-plus pull-right" id="expand"></span></h4>
+    <div class="row heading-div"  id="expand">
+        <h4>Регистър <span class="glyphicon glyphicon-plus pull-right"></span></h4>
     </div>
     <div class="row ">
         <div class="col-lg-12" id="hideTable">
@@ -65,6 +65,7 @@
                 <th>дни/часове/минути</th>
                 <th>Пламен</th>
                 <th>Митко</th>
+                <th>Статус</th>
                 <th>Изтрий</th>
                 </thead>
                 <tbody>

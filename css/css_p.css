@@ -9,16 +9,23 @@ body {
     /*background-repeat: no-repeat;*/
     /*background-color: transparent;*/
     /*height: 100%;*/
-    background-image: url('images/blue-block.jpg');
-
+    /*background-image: url('images/blue-block.jpg');*/
+    background-color: #4282C9;
     margin-bottom: 100px;
 }
 
 html {
     /*background-repeat: no-repeat;*/
-    background-image: url('images/blue-block.jpg');
+    /*background-image: url('images/blue-block.jpg');*/
+    background-color: #4282C9;
+
     /*background-image: linear-gradient(rgb(101, 136, 236), rgb(70, 70, 144));*/
     height: auto;
+}
+h1{
+    margin-top: 10px;
+    margin-bottom: -10px;
+    font-size: 26px;
 }
 
 .card-container.card {
@@ -229,7 +236,7 @@ html {
 
     display: block;
     margin-top: 20px;
-    padding-bottom: 50px;
+    padding-bottom: 20px;
 }
 
 .PageWrapper div h5 {
@@ -342,7 +349,7 @@ html {
 #description {
     position: static;
     max-width: 390px;
-    min-height: 130px;
+    min-height:70px;
 }
 
 .datePreview {
@@ -546,4 +553,111 @@ html {
     padding: 10px;
     background-color: white;
     border: 1px solid lightgray;
+}
+/*----------------------*/
+#calendar{
+
+    margin-top: 10px;
+}
+
+#addMeetingWrapper{
+    margin-top: 10px;
+}
+#addMeeting{
+    /*margin-top: 10px;*/
+}
+#addEvent{
+
+    margin-top: 12%;
+}
+#description{
+
+
+    max-width: 400px;
+    max-height: 150px;
+}
+#meetingRightClickMenu,#addMeetingRightClickMenu{
+
+    width: 160px;
+    height: 37px;
+    position: fixed;
+    z-index: 3003;
+    margin-top: 3px;
+    margin-left: 10px;
+    padding: 5px;
+    border: 1px solid darkgray;
+    background-color: #F8F8F8;
+    border-radius: 3px;
+    color: black;
+}
+#meetingRightClickMenu p, #addMeetingRightClickMenu p{
+    padding: 3px;
+    border-radius: 2px;
+}
+#meetingRightClickMenu p a,#addMeetingRightClickMenu p a{
+    text-decoration: none;
+    color: black;
+}
+
+#meetingRightClickMenu p:hover>a ,#addMeetingRightClickMenu p:hover>a {
+
+    color: white;
+}
+#meetingRightClickMenu p:hover,#addMeetingRightClickMenu p:hover{
+
+    color: white;
+    background-color: #449d44;
+}
+.modal-title{
+    padding: 5px;
+}
+.fc-center>h2{
+    display: none;
+}
+.fc-event-big {
+    position: relative;
+    display: block;
+    font-size: 1.2em;
+    line-height: 1.6;
+    border-radius: 3px;
+    border: 1px solid #3a87ad;
+    background-color: #3a87ad;
+    font-weight: normal;
+}
+
+.fc-row .fc-highlight-skeleton {
+    z-index: -1;
+}
+.fc-content-skeleton{
+    z-index: 0;
+}
+.fc-row .fc-content-skeleton{
+    z-index: 4;
+
+}
+.modal-dialog{
+    margin-top: 12%;
+}
+.close{
+    margin-top: 5px !important;
+    margin-right: 5px;
+    font-size: 25px;
+    opacity: 0.8;
+    color: white;
+    font-family: Arial;
+}
+
+#full-year .ui-state-disabled {
+    BACKGROUND-IMAGE: none; FILTER: none; opacity: .99;
+}
+.ui-datepicker .ui-datepicker-calendar .ui-state-highlight a {
+    background: #743620 none;
+    color: white;
+}
+
+@media screen and (max-width: 700px) {
+
+    #description{
+        max-width: 720px;
+    }
 }

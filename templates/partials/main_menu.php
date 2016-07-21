@@ -59,9 +59,11 @@
                     <li class="admin"><a href="/leave_application/leaveApplication/pendingRequests">Чакащи молби</a>
 
                     </li>
+
                     <li class="admin"><a href="" data-toggle="dropdown">Администрация<b class="caret"></b></a>
 
                         <ul class="dropdown-menu multi-level" role="menu" aria-labelledby="dropdownMenu">
+                            <li><a href="/leave_application/administration/boardroom">График заседателна зала</a></li>
                             <li><a href="/leave_application/administration/editRemainingLeave">Редакция на оставаща отпуска</a></li>
                             <li><a href="/leave_application/administration/usersList">Потребители</a></li>
                             <li><a href="/leave_application/administration/officialHolidays">Официални празници</a></li>
@@ -125,11 +127,9 @@
         return "";
     }
 
-    console.log(getCookie('role'));
     if(getCookie('role') != 'admin'){
 
         $('.admin').css({
-
             display: 'none'
         })
 

@@ -67,6 +67,8 @@
 							this.multiDatesPicker.originalBeforeShow.call(this, input, inst);
 					},
 					onSelect : function(dateText, inst) {
+
+
 						var $this = $(this);
 						this.multiDatesPicker.changed = true;
 						
@@ -131,7 +133,10 @@
 							bsdReturn = this.multiDatesPicker.originalBeforeShowDay.call(this, date);
 						
 						bsdReturn[1] = gotThisDate ? 'ui-state-highlight' : bsdReturn[1];
-						bsdReturn[0] = bsdReturn[0] && !(isDisabledCalendar || isDisabledDate || (areAllSelected && !bsdReturn[1]));
+
+						//bsdReturn[0] = bsdReturn[0] && !(isDisabledCalendar || isDisabledDate || (areAllSelected && !bsdReturn[1]));
+
+
 						return bsdReturn;
 					}
 				};
@@ -148,6 +153,7 @@
 					this.multiDatesPicker.originalBeforeShow = options.beforeShow;
 					this.multiDatesPicker.originalOnSelect = options.onSelect;
 					this.multiDatesPicker.originalBeforeShowDay = options.beforeShowDay;
+
 					this.multiDatesPicker.originalOnClose = options.onClose;
 					
 					// datepicker init
@@ -181,6 +187,7 @@
 				
 				// Updates the calendar view
 				$this.datepicker('refresh');
+
 			},
 			compareDates : function(date1, date2) {
 				date1 = dateConvert.call(this, date1);
@@ -293,6 +300,7 @@
 				}
 			},
 			addDates : function( dates, type ) {
+
 				if(dates.length > 0) {
 					if(!type) type = 'picked';
 					switch(typeof dates) {
@@ -300,8 +308,10 @@
 						case 'array':
 							if(dates.length) {
 								for(var i = 0; i < dates.length; i++)
+
 									addDate.call(this, dates[i], type, true);
 								sortDates.call(this, type);
+
 								break;
 							} // else does the same as 'string'
 						case 'string':
@@ -418,6 +428,9 @@
 		};
 		
 		this.each(function() {
+
+
+
 			var $this = $(this);
 			if (!this.multiDatesPicker) {
 				this.multiDatesPicker = {

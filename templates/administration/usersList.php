@@ -1,5 +1,5 @@
-<h1>Списък c потребители</h1>
-<hr>
+<!--<h1>Списък c потребители</h1>-->
+<!--<hr>-->
 
 <div class="PageWrapper">
 
@@ -82,7 +82,7 @@
                 </select>
                 <div >
                     <label for="isActive">Статус</label>
-                    <select name="isActive" id="isActive" class="form-control">
+                    <select disabled="disabled" name="isActive" id="isActive" class="form-control">
                         <option value="1">Активен</option>
                         <option value="2">Неактивен</option>
                     </select>
