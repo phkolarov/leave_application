@@ -571,11 +571,10 @@ h1{
     margin-top: 12%;
 }
 #description{
-
-
-    max-width: 400px;
+    max-width: 900px;
     max-height: 150px;
 }
+
 #meetingRightClickMenu,#addMeetingRightClickMenu{
 
     width: 160px;

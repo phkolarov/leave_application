@@ -3,7 +3,7 @@ var app = app || {};
 
 app.connect = (function () {
 
-    var baseServiceURL = "http://external.euroins.bg/VacationsWebAPI/api/";
+    //var baseServiceURL = "http://external.euroins.bg/VacationsWebAPI/api/";
     var baseServiceURL = "http://192.168.4.124:1234/back/";
 
     function _get(url, headers) {

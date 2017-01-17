@@ -27,7 +27,6 @@ class LeaveApp
             $this->controller = $CAObject[0];
             $this->action = $CAObject[1];
         }else if(count(($CAObject)) == 1){
-
             $this->controller = $CAObject[0];
         }
     }
@@ -50,6 +49,7 @@ class LeaveApp
             $this->mainMenuLoader();
         }
 
+        
         if(method_exists($controller,$this->action)){
 
             $methodName = $this->action;

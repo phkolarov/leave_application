@@ -88,7 +88,7 @@ app.run = (function () {
         var action = "index";
 
         if(params[0] == ""){
-            controller = "Home"
+            controller = "Home";
             action = "index";
         }
         if (params.length > 1) {

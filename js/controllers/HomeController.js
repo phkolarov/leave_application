@@ -15,8 +15,10 @@ appCh.HomeController = (function () {
 
         if(session){
 
+
             app.connect.get("User/GetUserByID?ID=" + userId,{'Content-type': 'application/json', SessionId : session}).error(function (data) {
 
+                console.log(data);
                 if (data.responseText) {
 
                     let errorObject = JSON.parse(data.responseText);
@@ -145,13 +147,9 @@ appCh.HomeController = (function () {
 
                     });
                     $('#offLeaveInfoStatus').text(status);
-
-
                 }
             });
         }
-
-
     }
 
     function home(){

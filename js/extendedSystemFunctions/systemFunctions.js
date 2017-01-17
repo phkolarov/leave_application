@@ -12,7 +12,6 @@ app.system = (function () {
         "context": $("body"),
         "modal": false
     };
-
     function show_stack_bar_bottom(type) {
         var opts = {
             title: "Over Here",
